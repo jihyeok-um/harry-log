@@ -1,24 +1,25 @@
-import { useState } from "react";
 import styled from "styled-components";
+import SearchImage from "./pages/SearchImage";
+import Thumbnails from "./pages/Thumbnails";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div className="App">
-      <S.Title>Vite + React</S.Title>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </div>
+    <S.App>
+      <SearchImage />
+      <Thumbnails />
+    </S.App>
   );
-}
+};
 
 const S = {
-  Title: styled.h1`
-    color: blue;
+  App: styled.main`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    height: 100%;
   `,
 };
 
