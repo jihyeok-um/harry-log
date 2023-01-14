@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import ThumbnailPoint from "./ThumbnailPoint";
 
 const Thumbnail = ({ src }: ThumbnailProps) => {
-  return <S.Image src={src} />;
+  return (
+    <S.Container>
+      <S.Image src={src} />
+      <ThumbnailPoint />
+    </S.Container>
+  );
 };
 
 interface ThumbnailProps {
@@ -9,9 +15,15 @@ interface ThumbnailProps {
 }
 
 const S = {
-  Image: styled.img`
+  Container: styled.div`
+    position: relative;
     width: 1600px;
     height: 900px;
+  `,
+
+  Image: styled.img`
+    width: inherit;
+    height: inherit;
   `,
 };
 
