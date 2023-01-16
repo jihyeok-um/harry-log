@@ -6,8 +6,6 @@ const SearchImage = () => {
 
   const handleSubmitKeywordForm = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(inputRef.current?.value);
-    //console.log(requestGetKeywordSearchResult());
   };
 
   return (
