@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import SearchImage from "./pages/SearchImage";
 import Thumbnails from "./pages/Thumbnails";
 
 const App = () => {
   return (
     <S.App>
-      <SearchImage />
       <Thumbnails />
     </S.App>
   );
