@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
+import { getCoordinate } from "../utils/utils";
 
 const useRandomTriangle = (index: number) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [rotatePercent, setRotatePercent] = useState(0);
   const [coordinate, setCoordinate] = useState({ x: 0, y: 0 });
-  const [rgbaValue, setRgbaValue] = useState([0, 0, 0, 0]);
 
   const getRandomWidth = () => {
-    // width 50~100
-    const newWidth = Math.random() * (100 - 50) + 50;
+    const newWidth = 30;
     setWidth(newWidth);
     return newWidth;
   };
@@ -19,16 +18,10 @@ const useRandomTriangle = (index: number) => {
     setHeight(width * (Math.random() * (3 - 1) + 1));
   };
 
-  const getCoordinate = () => {
-    setCoordinate({ x: (index % 32) * 50 - 50, y: (index / 32) * 50 - 50 });
-  };
-
-  const getRgbaValue = () => {};
-
   useEffect(() => {
     const width = getRandomWidth();
     getRandomHeight(width);
-    getCoordinate();
+    setCoordinate(getCoordinate(index));
     setRotatePercent(Math.random());
   }, []);
 
@@ -39,11 +32,5 @@ const useRandomTriangle = (index: number) => {
     coordinate,
   };
 };
-
-interface getRgbaValueParams {
-  width: number;
-  height: number;
-  coordinate: number;
-}
 
 export default useRandomTriangle;
