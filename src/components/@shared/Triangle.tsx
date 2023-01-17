@@ -1,45 +1,42 @@
 import styled from "styled-components";
+import { TRIANGLE_WIDTH } from "../../constants";
 import useRandomTriangle from "../../hooks/useRandomTriangle";
 import { Coordinate } from "../../types";
 
-const ThumbnailPoint = ({ index, currentPixel, backgroundColor }: ThumbnailPointProps) => {
-  const { width, height, rotatePercent, coordinate } = useRandomTriangle(index);
-
-  // console.log("pixel, background: ", currentPixel, backgroundColor);
+const Triangle = ({ index, backgroundColor }: TriangleProps) => {
+  const { height, rotatePercent, coordinate } = useRandomTriangle(index);
 
   return (
-    <S.Point
-      width={width}
+    <S.Triangle
       height={height}
       rotatePercent={rotatePercent}
-      coordinate={coordinate}
       backgroundColor={backgroundColor}
+      coordinate={coordinate}
     />
   );
 };
 
-interface ThumbnailPointProps {
+interface TriangleProps {
   index: number;
-  backgroundColor: Array<number>;
-  currentPixel: number;
-}
-interface ThumbnailPointStyleProps {
-  width: number;
-  height: number;
-  rotatePercent: number;
-  coordinate: Coordinate;
   backgroundColor: Array<number>;
 }
 
+interface TriangleAttrProps {
+  height: number;
+  rotatePercent: number | string;
+  coordinate: Coordinate;
+  backgroundColor: Array<number> | string;
+}
+
 const S = {
-  Point: styled.div<ThumbnailPointStyleProps>`
+  Triangle: styled.div<TriangleAttrProps>`
     position: absolute;
     top: ${(props) => props.coordinate.y}px;
     left: ${(props) => props.coordinate.x}px;
 
     width: 0;
     height: 0;
-    border: ${(props) => props.width}px solid transparent;
+    border: ${TRIANGLE_WIDTH}px solid transparent;
     border-top: 0;
     border-bottom: ${(props) => props.height}px solid
       rgba(${(props) => props.backgroundColor.toString()});
@@ -48,4 +45,4 @@ const S = {
   `,
 };
 
-export default ThumbnailPoint;
+export default Triangle;
