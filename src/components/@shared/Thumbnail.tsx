@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../../constants";
-import useDrawThumbnail from "../../hooks/useDrawThumbnail";
+import { useDrawThumbnail } from "../../hooks/useDrawThumbnail";
 import { getCoordinate } from "../../utils/utils";
-import Triangle from "./Triangle";
+import { Triangle } from "./Triangle";
 
-const Thumbnail = ({ src }: ThumbnailProps) => {
+export const Thumbnail = ({ src }: ThumbnailProps) => {
   const { triangleArray, canvasRef, imageRef, rgba } = useDrawThumbnail();
 
   return (
@@ -56,5 +56,3 @@ const S = {
     height: inherit;
   `,
 };
-
-export default Thumbnail;

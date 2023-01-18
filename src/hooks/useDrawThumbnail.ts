@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { RGBA_ARRAY_SIZE, THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH, TRIANGLE_COUNT } from "../constants";
 
-const useDrawThumbnail = () => {
+export const useDrawThumbnail = () => {
   const triangleArray = Array.from({ length: TRIANGLE_COUNT }, () => 0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -31,5 +31,3 @@ const useDrawThumbnail = () => {
     rgba,
   };
 };
-
-export default useDrawThumbnail;

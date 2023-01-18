@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { TRIANGLE_WIDTH } from "../../constants";
-import useRandomTriangle from "../../hooks/useRandomTriangle";
+import { useRandomTriangle } from "../../hooks/useRandomTriangle";
 import { Coordinate } from "../../types";
 
-const Triangle = ({ index, backgroundColor }: TriangleProps) => {
+export const Triangle = ({ index, backgroundColor }: TriangleProps) => {
   const { height, rotatePercent, coordinate } = useRandomTriangle(index);
 
   return (
@@ -44,5 +44,3 @@ const S = {
     transform: rotate(${(props) => props.rotatePercent}turn);
   `,
 };
-
-export default Triangle;
