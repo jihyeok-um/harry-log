@@ -1,12 +1,11 @@
+import { useRoutes } from "react-router-dom";
 import styled from "styled-components";
-import Thumbnails from "./pages/Thumbnails";
+import routes from "./routes/Routes";
 
 const App = () => {
-  return (
-    <S.App>
-      <Thumbnails />
-    </S.App>
-  );
+  const content = useRoutes(routes);
+
+  return <S.App>{content}</S.App>;
 };
 
 const S = {
