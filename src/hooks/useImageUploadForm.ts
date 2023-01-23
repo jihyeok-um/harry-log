@@ -10,7 +10,6 @@ export const useImageUploadForm = () => {
 
     if (!inputRef.current) return;
     const imageUrl = URL.createObjectURL(inputRef.current.files![0]);
-    console.log(imageUrl);
 
     navigate(`thumbnail-result`, { state: imageUrl });
   };
