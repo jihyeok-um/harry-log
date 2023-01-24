@@ -1,25 +1,30 @@
 import styled from "styled-components";
-import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../../constants";
-import { useDrawThumbnail } from "../../hooks/useDrawThumbnail";
-import { getCoordinate } from "../../utils/utils";
-import { Triangle } from "./Triangle";
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants";
+import { useGetImageRgba } from "../hooks/useGetImageRgba";
+import { useMakeRandomRectangle } from "../hooks/useMakeRandomRectangle";
+import { ThumbnailProps } from "../types";
+import { Rectangle } from "./@shared/Rectangle";
 
-export const Thumbnail = ({ src }: ThumbnailProps) => {
-  const { triangleArray, canvasRef, imageRef, rgba } = useDrawThumbnail();
+export const Glitch = ({ src }: ThumbnailProps) => {
+  const { componentArray, canvasRef, imageRef, rgba } = useGetImageRgba();
+  const { width, height, coordinate } = useMakeRandomRectangle();
+
+  console.log("?");
 
   return (
     <S.Container>
       <S.Canvas ref={canvasRef} width={THUMBNAIL_WIDTH} height={THUMBNAIL_HEIGHT}></S.Canvas>
       <S.Image src={src} ref={imageRef} />
       {rgba &&
-        triangleArray.map((el, index) => {
-          const coordinate = getCoordinate(index);
+        componentArray.map((el, index) => {
           const currentPixel = Math.floor(coordinate.x + coordinate.y * THUMBNAIL_WIDTH);
 
           return (
-            <Triangle
+            <Rectangle
               key={index}
-              index={index}
+              width={width}
+              height={height}
+              coordinate={coordinate}
               backgroundColor={[
                 rgba[currentPixel][0],
                 rgba[currentPixel][1],
@@ -33,10 +38,6 @@ export const Thumbnail = ({ src }: ThumbnailProps) => {
   );
 };
 
-interface ThumbnailProps {
-  src: string;
-}
-
 const S = {
   Container: styled.div`
     position: relative;
@@ -48,7 +49,6 @@ const S = {
   Canvas: styled.canvas`
     width: inherit;
     height: inherit;
-    filter: blur(5px);
   `,
 
   Image: styled.img`

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { TRIANGLE_WIDTH } from "../../constants";
-import { useRandomTriangle } from "../../hooks/useRandomTriangle";
+import { useMakeRandomTriangle } from "../../hooks/useMakeRandomTriangle";
 import { Coordinate } from "../../types";
 
 export const Triangle = ({ index, backgroundColor }: TriangleProps) => {
-  const { height, rotatePercent, coordinate } = useRandomTriangle(index);
+  const { height, rotatePercent, coordinate } = useMakeRandomTriangle(index);
 
   return (
     <S.Triangle

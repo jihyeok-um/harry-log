@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { RGBA_ARRAY_SIZE, THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH, TRIANGLE_COUNT } from "../constants";
 
-export const useDrawThumbnail = () => {
-  const triangleArray = Array.from({ length: TRIANGLE_COUNT }, () => 0);
+export const useGetImageRgba = () => {
+  const componentArray = Array.from({ length: TRIANGLE_COUNT }, () => 0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const [rgba, setRgba] = useState<Uint8ClampedArray[] | null>(null);
+  const [rgba, setRgba] = useState<number[][] | null>(null);
 
   useEffect(() => {
     if (canvasRef.current && imageRef.current) {
@@ -17,15 +17,15 @@ export const useDrawThumbnail = () => {
         const rgbaData = canvas?.getImageData(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).data;
 
         for (let i = 0; i < rgbaData.length; i += RGBA_ARRAY_SIZE) {
-          rgbaArray.push(rgbaData.slice(i, i + RGBA_ARRAY_SIZE));
+          rgbaArray.push(Array.from(rgbaData.slice(i, i + RGBA_ARRAY_SIZE)));
         }
         setRgba(rgbaArray);
       }
     }
-  }, [imageRef.current]);
+  }, [canvasRef.current, imageRef.current]);
 
   return {
-    triangleArray,
+    componentArray,
     canvasRef,
     imageRef,
     rgba,
