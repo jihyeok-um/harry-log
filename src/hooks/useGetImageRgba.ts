@@ -2,12 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH, TRIANGLE_COUNT } from "../constants/triangle";
 import { RGBA_ARRAY_SIZE } from "./../constants/triangle";
 
-export const useGetImageRgba = (src: string) => {
+export const useGetImageRgba = () => {
   const componentArray = Array.from({ length: TRIANGLE_COUNT }, () => 0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const [rgba, setRgba] = useState<number[][] | null>(null);
-  const image = new Image();
 
   const createImageData = () => {
     if (!canvasRef.current || !imageRef.current) return;

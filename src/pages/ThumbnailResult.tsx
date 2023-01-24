@@ -8,7 +8,7 @@ export const ThumbnailResult = () => {
 
   return (
     <S.Container>
-      {<Pointillism src={""} />}
+      {<Pointillism />}
       {/* {imageUrl && <Glitch src={imageUrl} />} */}
     </S.Container>
   );
