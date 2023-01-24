@@ -30,7 +30,7 @@ export const useGetImageRgba = (src: string) => {
 
   useEffect(() => {
     createRgbaArray(createImageData());
-  }, [canvasRef.current, image]);
+  }, [canvasRef.current]);
 
   return {
     componentArray,
