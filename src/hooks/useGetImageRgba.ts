@@ -2,19 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH, TRIANGLE_COUNT } from "../constants/triangle";
 import { RGBA_ARRAY_SIZE } from "./../constants/triangle";
 
-export const useGetImageRgba = () => {
+export const useGetImageRgba = (src: string) => {
   const componentArray = Array.from({ length: TRIANGLE_COUNT }, () => 0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
   const [rgba, setRgba] = useState<number[][] | null>(null);
+  const image = new Image();
+  image.src = src;
 
   const createImageData = () => {
-    if (!canvasRef.current || !imageRef.current) return;
+    if (!canvasRef.current || !image) return;
 
-    const canvas = canvasRef.current.getContext("2d", { willReadFrequently: true });
-    canvas?.drawImage(imageRef.current, 0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
+    const ctx = canvasRef.current.getContext("2d", { willReadFrequently: true });
+    ctx?.drawImage(image, 0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
 
-    return canvas?.getImageData(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).data;
+    return ctx?.getImageData(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).data;
   };
 
   const createRgbaArray = (imageData: Uint8ClampedArray | undefined) => {
@@ -29,12 +30,11 @@ export const useGetImageRgba = () => {
 
   useEffect(() => {
     createRgbaArray(createImageData());
-  }, [canvasRef.current, imageRef.current]);
+  }, [canvasRef.current, image]);
 
   return {
     componentArray,
     canvasRef,
-    imageRef,
     rgba,
   };
 };

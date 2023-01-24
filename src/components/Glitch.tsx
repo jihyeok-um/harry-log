@@ -6,13 +6,12 @@ import { ThumbnailProps } from "../types";
 import { Rectangle } from "./@shared/Rectangle";
 
 export const Glitch = ({ src }: ThumbnailProps) => {
-  const { componentArray, canvasRef, imageRef, rgba } = useGetImageRgba();
+  const { componentArray, canvasRef, rgba } = useGetImageRgba(src);
   const { width, height, coordinate } = useMakeRandomRectangle();
 
   return (
     <S.Container>
       <S.Canvas ref={canvasRef} width={THUMBNAIL_WIDTH} height={THUMBNAIL_HEIGHT}></S.Canvas>
-      <S.Image src={src} ref={imageRef} />
       {rgba &&
         componentArray.map((el, index) => {
           const currentPixel = Math.floor(coordinate.x + coordinate.y * THUMBNAIL_WIDTH);
@@ -45,11 +44,6 @@ const S = {
   `,
 
   Canvas: styled.canvas`
-    width: inherit;
-    height: inherit;
-  `,
-
-  Image: styled.img`
     width: inherit;
     height: inherit;
   `,

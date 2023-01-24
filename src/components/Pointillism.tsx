@@ -6,16 +6,16 @@ import { getCoordinate } from "../utils/utils";
 import { Triangle } from "./@shared/Triangle";
 
 export const Pointillism = () => {
-  const { componentArray, canvasRef, imageRef, rgba } = useGetImageRgba();
+  const { componentArray, canvasRef, rgba } = useGetImageRgba(jobs);
 
   return (
     <S.Container>
       <S.Canvas ref={canvasRef} width={THUMBNAIL_WIDTH} height={THUMBNAIL_HEIGHT}></S.Canvas>
-      <S.Image src={jobs} ref={imageRef} />
       {rgba &&
         componentArray.map((el, index) => {
           const coordinate = getCoordinate(index);
           const currentPixel = Math.floor(coordinate.x + coordinate.y * THUMBNAIL_WIDTH);
+
           return (
             <Triangle
               key={index}
@@ -42,11 +42,6 @@ const S = {
   `,
 
   Canvas: styled.canvas`
-    width: inherit;
-    height: inherit;
-  `,
-
-  Image: styled.img`
     width: inherit;
     height: inherit;
   `,

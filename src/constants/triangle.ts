@@ -1,10 +1,10 @@
 export const THUMBNAIL_WIDTH = 1600;
 export const THUMBNAIL_HEIGHT = 900;
 
-export const TRIANGLE_WIDTH = 12;
-export const TRIANGLE_GAP = TRIANGLE_WIDTH;
+export const TRIANGLE_WIDTH = 18;
 export const TRIANGLE_MAX_HEIGHT = 3;
 export const TRIANGLE_MIN_HEIGHT = 1;
+export const TRIANGLE_GAP = TRIANGLE_WIDTH;
 export const TRIANGLE_DRAW_START_X = -TRIANGLE_WIDTH;
 export const TRIANGLE_DRAW_START_Y = -TRIANGLE_WIDTH;
 export const TRIANGLE_COUNT =
