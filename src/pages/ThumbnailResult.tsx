@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { Glitch } from "../components/Glitch";
+import { Pointillism } from "../components/Pointillism";
 
 export const ThumbnailResult = () => {
   const location = useLocation();
@@ -8,8 +8,8 @@ export const ThumbnailResult = () => {
 
   return (
     <S.Container>
-      {/* {imageUrl && <Pointillism src={imageUrl} />} */}
-      {imageUrl && <Glitch src={imageUrl} />}
+      {imageUrl && <Pointillism src={imageUrl} />}
+      {/* {imageUrl && <Glitch src={imageUrl} />} */}
     </S.Container>
   );
 };

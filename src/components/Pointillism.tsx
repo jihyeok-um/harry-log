@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import jobs from "../assets/Steve-Jobs.jpeg";
 import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants";
 import { useGetImageRgba } from "../hooks/useGetImageRgba";
 import { ThumbnailProps } from "../types";
@@ -12,7 +12,7 @@ export const Pointillism = ({ src }: ThumbnailProps) => {
   return (
     <S.Container>
       <S.Canvas ref={canvasRef} width={THUMBNAIL_WIDTH} height={THUMBNAIL_HEIGHT}></S.Canvas>
-      <S.Image src={src} ref={imageRef} />
+      <S.Image src={jobs} ref={imageRef} />
       {rgba &&
         componentArray.map((el, index) => {
           const coordinate = getCoordinate(index);
