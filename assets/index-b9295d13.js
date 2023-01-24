@@ -103,7 +103,7 @@ Error generating stack: `+o.message+`
       rgba(${e=>e.backgroundColor.toString()});
 
     transform: rotate(${e=>e.rotatePercent}turn);
-  `},Qv=({src:e})=>{const{componentArray:t,canvasRef:n,imageRef:r,rgba:l}=Bv(),[o,i]=R.useState("block");return Au(_i.Container,{children:[Ge(_i.Canvas,{isDisplay:o,ref:n,width:at,height:Jt}),Ge(_i.Image,{isDisplay:o,src:Dv,ref:r}),l&&t.map((u,s)=>{const a=bd(s),p=Math.floor(a.x+a.y*at);return p===Jt*at&&i("none"),Ge(Wv,{index:s,backgroundColor:[l[p][0],l[p][1],l[p][2],l[p][3]]},s)})]})},_i={Container:Rt.div`
+  `},Qv=({src:e=""})=>{const{componentArray:t,canvasRef:n,imageRef:r,rgba:l}=Bv(),[o,i]=R.useState("block");return Au(_i.Container,{children:[Ge(_i.Canvas,{isDisplay:o,ref:n,width:at,height:Jt}),Ge(_i.Image,{isDisplay:o,src:Dv,ref:r}),l&&t.map((u,s)=>{const a=bd(s),p=Math.floor(a.x+a.y*at);return p===Jt*at&&i("none"),Ge(Wv,{index:s,backgroundColor:[l[p][0],l[p][1],l[p][2],l[p][3]]},s)})]})},_i={Container:Rt.div`
     overflow: hidden;
     position: relative;
     width: 1600px;
