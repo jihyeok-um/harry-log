@@ -102,7 +102,6 @@ Error generating stack: `+o.message+`
   `,Canvas:Rt.canvas`
     width: inherit;
     height: inherit;
-    filter: blur(5px);
   `,Image:Rt.img`
     width: inherit;
     height: inherit;
