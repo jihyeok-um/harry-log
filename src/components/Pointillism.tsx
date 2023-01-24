@@ -44,7 +44,6 @@ const S = {
   Canvas: styled.canvas`
     width: inherit;
     height: inherit;
-    filter: blur(5px);
   `,
 
   Image: styled.img`
