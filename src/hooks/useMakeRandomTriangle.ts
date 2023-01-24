@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TRIANGLE_MAX_HEIGHT, TRIANGLE_MIN_HEIGHT, TRIANGLE_WIDTH } from "../constants/index";
+import { TRIANGLE_MAX_HEIGHT, TRIANGLE_MIN_HEIGHT, TRIANGLE_WIDTH } from "../constants/triangle";
 import { getCoordinate } from "../utils/utils";
 
 export const useMakeRandomTriangle = (index: number) => {
