@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants";
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/triangle";
 import { useGetImageRgba } from "../hooks/useGetImageRgba";
 import { useMakeRandomRectangle } from "../hooks/useMakeRandomRectangle";
 import { ThumbnailProps } from "../types";

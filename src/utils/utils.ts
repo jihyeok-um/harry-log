@@ -3,7 +3,7 @@ import {
   THUMBNAIL_WIDTH,
   TRIANGLE_GAP,
   TRIANGLE_WIDTH,
-} from "./../constants/index";
+} from "../constants/triangle";
 import { Coordinate } from "./../types/index";
 
 export const getCoordinate = (index: number) => {

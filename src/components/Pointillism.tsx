@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import jobs from "../assets/Steve-Jobs.jpeg";
-import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants";
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/triangle";
 import { useGetImageRgba } from "../hooks/useGetImageRgba";
 import { ThumbnailProps } from "../types";
 import { getCoordinate } from "../utils/utils";

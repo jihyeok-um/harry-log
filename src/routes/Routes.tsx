@@ -1,4 +1,4 @@
-import { ROUTE_PATH } from "../constants";
+import { ROUTE_PATH } from "../constants/route";
 import { ImageUpload } from "../pages/ImageUpload";
 import { ThumbnailResult } from "../pages/ThumbnailResult";
 

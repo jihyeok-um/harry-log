@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { RGBA_ARRAY_SIZE, THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH, TRIANGLE_COUNT } from "../constants";
+import {
+  RGBA_ARRAY_SIZE,
+  THUMBNAIL_HEIGHT,
+  THUMBNAIL_WIDTH,
+  TRIANGLE_COUNT,
+} from "../constants/triangle";
 
 export const useGetImageRgba = () => {
   const componentArray = Array.from({ length: TRIANGLE_COUNT }, () => 0);

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TRIANGLE_WIDTH } from "../../constants";
+import { TRIANGLE_WIDTH } from "../../constants/triangle";
 import { useMakeRandomTriangle } from "../../hooks/useMakeRandomTriangle";
 import { Coordinate } from "../../types";
 

@@ -11,8 +11,3 @@ export const TRIANGLE_COUNT =
   (THUMBNAIL_WIDTH / TRIANGLE_WIDTH) * (THUMBNAIL_HEIGHT / TRIANGLE_WIDTH) * 2;
 
 export const RGBA_ARRAY_SIZE = 4;
-
-export const ROUTE_PATH = {
-  HOME: "/",
-  THUMBNAIL_RESULT: "thumbnail-result",
-};
