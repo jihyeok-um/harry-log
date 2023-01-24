@@ -6,10 +6,8 @@ import { ThumbnailProps } from "../types";
 import { Rectangle } from "./@shared/Rectangle";
 
 export const Glitch = ({ src }: ThumbnailProps) => {
-  const { componentArray, canvasRef, imageRef, rgba } = useGetImageRgba();
+  const { componentArray, canvasRef, imageRef, rgba } = useGetImageRgba(src);
   const { width, height, coordinate } = useMakeRandomRectangle();
-
-  console.log("?");
 
   return (
     <S.Container>
