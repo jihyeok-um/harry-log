@@ -1,7 +1,7 @@
 export const THUMBNAIL_WIDTH = 1600;
 export const THUMBNAIL_HEIGHT = 900;
 
-export const TRIANGLE_WIDTH = 14;
+export const TRIANGLE_WIDTH = 16;
 export const TRIANGLE_GAP = 5;
 
 export const TRIANGLE_COUNT =
