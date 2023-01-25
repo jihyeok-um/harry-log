@@ -1,40 +1,34 @@
 import styled from "styled-components";
-import jobs from "../assets/Steve-Jobs.jpeg";
 import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/triangle";
 import { useGetImageRgba } from "../hooks/useGetImageRgba";
-import { getCoordinate } from "../utils/utils";
-import { Triangle } from "./@shared/Triangle";
+import { ThumbnailProps } from "../types";
 
-export const Pointillism = () => {
-  const { componentArray, canvasRef, rgba } = useGetImageRgba(jobs);
+export const Pointillism = ({ src }: ThumbnailProps) => {
+  const { canvasRef } = useGetImageRgba(src);
 
   return (
     <S.Container>
-      <S.Canvas ref={canvasRef} width={THUMBNAIL_WIDTH} height={THUMBNAIL_HEIGHT}></S.Canvas>
-      {rgba &&
-        componentArray.map((el, index) => {
-          const coordinate = getCoordinate(index);
-          const currentPixel = Math.floor(coordinate.x + coordinate.y * THUMBNAIL_WIDTH);
-
-          return (
-            <Triangle
-              key={index}
-              index={index}
-              backgroundColor={[
-                rgba[currentPixel][0],
-                rgba[currentPixel][1],
-                rgba[currentPixel][2],
-                rgba[currentPixel][3],
-              ]}
-            />
-          );
-        })}
+      <S.ThumbnailContainer>
+        <S.Canvas ref={canvasRef} width={THUMBNAIL_WIDTH} height={THUMBNAIL_HEIGHT}></S.Canvas>
+      </S.ThumbnailContainer>
     </S.Container>
   );
 };
 
 const S = {
   Container: styled.div`
+    position: relative;
+  `,
+
+  DownloadButton: styled.a`
+    border: 1px solid #666666;
+    border-radius: 2px;
+    margin-left: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+  `,
+
+  ThumbnailContainer: styled.div`
     overflow: hidden;
     position: relative;
     width: 1600px;

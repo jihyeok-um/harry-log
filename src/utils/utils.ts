@@ -21,5 +21,9 @@ export const getCoordinate = (index: number) => {
 };
 
 export const getCurrentPixel = (coordinate: Coordinate) => {
-  const currentPixel = Math.floor(coordinate.x + coordinate.y * THUMBNAIL_WIDTH);
+  return Math.floor(coordinate.x + coordinate.y * THUMBNAIL_WIDTH);
+};
+
+export const randomInt = (min = -TRIANGLE_WIDTH, max = TRIANGLE_WIDTH) => {
+  return Math.floor(Math.random() * (max - min)) + min;
 };
