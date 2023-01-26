@@ -6,8 +6,9 @@ import {
   TRIANGLE_COUNT,
 } from "../constants/triangle";
 import { getCoordinate, getCurrentPixel } from "../utils/utils";
+import { TRIANGLE_SIZE } from "./../constants/triangle";
 
-export const useGetImageRgba = (src: string) => {
+export const usePointillism = (src: string) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const image = new Image();
 
@@ -24,10 +25,16 @@ export const useGetImageRgba = (src: string) => {
     for (let i = 0; i < TRIANGLE_COUNT; i++) {
       const ctx = canvasRef.current.getContext("2d");
       const coordinate = getCoordinate(i);
-      const firstPoint = [coordinate.x, coordinate.y + Math.floor(Math.random() * 40)];
-      const secondPoint = [coordinate.x + Math.floor(Math.random() * 40), coordinate.y];
-      const thirdPoint = [coordinate.x + Math.floor(Math.random() * 40), coordinate.y + 40];
-      const currentPixel = getCurrentPixel({ x: coordinate.x + 20, y: coordinate.y + 20 });
+      const firstPoint = [coordinate.x, coordinate.y + Math.floor(Math.random() * TRIANGLE_SIZE)];
+      const secondPoint = [coordinate.x + Math.floor(Math.random() * TRIANGLE_SIZE), coordinate.y];
+      const thirdPoint = [
+        coordinate.x + Math.floor(Math.random() * TRIANGLE_SIZE),
+        coordinate.y + TRIANGLE_SIZE,
+      ];
+      const currentPixel = getCurrentPixel({
+        x: coordinate.x,
+        y: coordinate.y,
+      });
 
       if (!ctx) continue;
       if (currentPixel >= 1600 * 900) continue;
@@ -53,11 +60,6 @@ export const useGetImageRgba = (src: string) => {
     return rgba;
   };
 
-  const drawPointillismThumbnail = () => {
-    const rgba = createRgbaValues(createImageData());
-    createTriangles(rgba);
-  };
-
   image.addEventListener("load", () => {
     const imageData = createImageData();
     const rgba = createRgbaValues(imageData);
@@ -67,6 +69,5 @@ export const useGetImageRgba = (src: string) => {
 
   return {
     canvasRef,
-    drawPointillismThumbnail,
   };
 };
