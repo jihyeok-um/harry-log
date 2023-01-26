@@ -90,7 +90,7 @@ Error generating stack: `+o.message+`
     border-radius: 2px;
     margin-left: 5px;
     padding: 5px;
-  `},Mv="/harry-log/assets/Steve-Jobs-f78ed763.jpeg",_t=1600,Kn=900,Ln=16,pc=5,jv=_t/Ln*(Kn/Ln)*10,hc=4,Dv=e=>{const t={x:Math.floor(e%(_t/pc))*Ln-Ln/2,y:Math.floor(e/(_t/pc))*Ln-Ln/2};return t.x<0&&(t.x=0),t.y<0&&(t.y=0),t.x>=_t&&(t.x=_t-1),t.y>=Kn&&(t.y=Kn-1),t},Fv=e=>Math.floor(e.x+e.y*_t),Uv=e=>{const t=O.useRef(null),n=new Image,r=()=>{var u;const i=(u=t.current)==null?void 0:u.getContext("2d",{willReadFrequently:!0});return i==null||i.drawImage(n,0,0,_t,Kn),i==null?void 0:i.getImageData(0,0,_t,Kn).data},l=i=>{if(!(!t.current||!n||!i))for(let u=0;u<jv;u++){const s=t.current.getContext("2d"),a=Dv(u),p=[a.x,a.y+Math.floor(Math.random()*40)],m=[a.x+Math.floor(Math.random()*40),a.y],h=[a.x+Math.floor(Math.random()*40),a.y+40],g=Fv({x:a.x+20,y:a.y+20});s&&(g>=1600*900||g<=0||(s.beginPath(),s.moveTo(p[0],p[1]),s.lineTo(m[0],m[1]),s.lineTo(h[0],h[1]),s.fillStyle=`rgba(${i[g][0]}, ${i[g][1]}, ${i[g][2]}, ${i[g][3]})`,s.fill()))}},o=i=>{const u=[];if(i){for(let s=0;s<i.length;s+=hc)u.push(Array.from(i.slice(s,s+hc)));return u}};return n.addEventListener("load",()=>{const i=r(),u=o(i);l(u)}),n.src=e,{canvasRef:t}},Bv=({src:e})=>{const{canvasRef:t}=Uv(Mv);return et(_i.Container,{children:et(_i.ThumbnailContainer,{children:et(_i.Canvas,{ref:t,width:_t,height:Kn})})})},_i={Container:xt.div`
+  `},Mv="/harry-log/assets/Steve-Jobs-f78ed763.jpeg",_t=1600,Kn=900,Ln=16,pc=5,jv=_t/Ln*(Kn/Ln)*10,hc=4,Dv=e=>{const t={x:Math.floor(e%(_t/pc))*Ln-Ln/2,y:Math.floor(e/(_t/pc))*Ln-Ln/2};return t.x<0&&(t.x=0),t.y<0&&(t.y=0),t.x>=_t&&(t.x=_t-1),t.y>=Kn&&(t.y=Kn-1),t},Fv=e=>Math.floor(e.x+e.y*_t),Uv=e=>{const t=O.useRef(null),n=new Image,r=()=>{var u;const i=(u=t.current)==null?void 0:u.getContext("2d",{willReadFrequently:!0});return i==null||i.drawImage(n,0,0,_t,Kn),i==null?void 0:i.getImageData(0,0,_t,Kn).data},l=i=>{if(!(!t.current||!n||!i))for(let u=0;u<jv;u++){const s=t.current.getContext("2d"),a=Dv(u),p=[a.x,a.y+Math.floor(Math.random()*40)],m=[a.x+Math.floor(Math.random()*40),a.y],h=[a.x+Math.floor(Math.random()*40),a.y+40],g=Fv({x:a.x+20,y:a.y+20});s&&(g>=1600*900||g<=0||(s.beginPath(),s.moveTo(p[0],p[1]),s.lineTo(m[0],m[1]),s.lineTo(h[0],h[1]),s.fillStyle=`rgba(${i[g][0]}, ${i[g][1]}, ${i[g][2]}, ${i[g][3]})`,s.fill()))}},o=i=>{const u=[];if(i){for(let s=0;s<i.length;s+=hc)u.push(Array.from(i.slice(s,s+hc)));return u}};return n.addEventListener("load",()=>{const i=r(),u=o(i);l(u)}),n.src=e,{canvasRef:t}},Bv=()=>{const{canvasRef:e}=Uv(Mv);return et(_i.Container,{children:et(_i.ThumbnailContainer,{children:et(_i.Canvas,{ref:e,width:_t,height:Kn})})})},_i={Container:xt.div`
     position: relative;
   `,DownloadButton:xt.a`
     border: 1px solid #666666;
@@ -105,7 +105,7 @@ Error generating stack: `+o.message+`
   `,Canvas:xt.canvas`
     width: inherit;
     height: inherit;
-  `},Hv=()=>{const t=Rs().state;return et(Vv.Container,{children:et(Bv,{src:t})})},Vv={Container:xt.div``},Wv=[{path:dc.HOME,element:et(Av,{})},{path:dc.THUMBNAIL_RESULT,element:et(Hv,{})}],Qv=()=>{const e=g0(Wv);return et(Gv.App,{children:e})},Gv={App:xt.main`
+  `},Hv=()=>(Rs().state,et(Vv.Container,{children:et(Bv,{})})),Vv={Container:xt.div``},Wv=[{path:dc.HOME,element:et(Av,{})},{path:dc.THUMBNAIL_RESULT,element:et(Hv,{})}],Qv=()=>{const e=g0(Wv);return et(Gv.App,{children:e})},Gv={App:xt.main`
     display: flex;
     justify-content: center;
     align-items: center;
