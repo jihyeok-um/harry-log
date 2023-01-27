@@ -3,7 +3,7 @@ export const useThumbnail = (canvasRef: React.RefObject<HTMLCanvasElement>, draw
   const [thumbnailURL, setThumbnailURL] = useState<string | undefined>();
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current || !drawDone) return;
 
     setThumbnailURL(canvasRef.current.toDataURL());
   }, [drawDone]);
