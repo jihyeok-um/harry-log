@@ -1,16 +1,11 @@
 import { useRoutes } from "react-router-dom";
 import styled from "styled-components";
-import { ThumbnailResult } from "./pages/ThumbnailResult";
 import routes from "./routes/Routes";
 
 const App = () => {
   const content = useRoutes(routes);
 
-  return (
-    <S.App>
-      <ThumbnailResult />
-    </S.App>
-  );
+  return <S.App>{content}</S.App>;
 };
 
 const S = {

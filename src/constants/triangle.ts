@@ -1,13 +1,17 @@
 export const THUMBNAIL_WIDTH = 1600;
 export const THUMBNAIL_HEIGHT = 900;
+export const RESOLUTION = THUMBNAIL_HEIGHT * THUMBNAIL_WIDTH;
 
-export const TRIANGLE_WIDTH = 18;
-export const TRIANGLE_MAX_HEIGHT = 3;
-export const TRIANGLE_MIN_HEIGHT = 1;
-export const TRIANGLE_GAP = TRIANGLE_WIDTH;
-export const TRIANGLE_DRAW_START_X = -TRIANGLE_WIDTH;
-export const TRIANGLE_DRAW_START_Y = -TRIANGLE_WIDTH;
-export const TRIANGLE_COUNT =
-  (THUMBNAIL_WIDTH / TRIANGLE_WIDTH) * (THUMBNAIL_HEIGHT / TRIANGLE_WIDTH);
+export const TRIANGLE_SIZE = 40;
+export const TRIANGLE_GAP = 12;
+
+export const TRIANGLE_COUNT = (THUMBNAIL_WIDTH / TRIANGLE_GAP) * (THUMBNAIL_HEIGHT / TRIANGLE_GAP);
 
 export const RGBA_ARRAY_SIZE = 4;
+
+//            size | gap
+// 가장 거칠게    60    20
+// 거칠게        50    16
+// 중간         40    12
+// 부드럽게      30    10
+// 가장 부드럽게  20     8
