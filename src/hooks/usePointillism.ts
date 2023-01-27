@@ -16,25 +16,23 @@ export const usePointillism = (src: string) => {
   const image = new Image();
 
   const createImageData = (): Uint8ClampedArray | undefined => {
-    const ctx = canvasRef.current?.getContext("2d", { willReadFrequently: true });
-    ctx?.drawImage(image, 0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
+    if (!canvasRef.current) return;
 
-    return ctx?.getImageData(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).data;
+    const ctx = canvasRef.current.getContext("2d", { willReadFrequently: true });
+
+    if (!ctx) return;
+
+    ctx.drawImage(image, 0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
+
+    return ctx.getImageData(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).data;
   };
 
   const createTriangleInfo = (triangleIndex: number): TriangleInfo => {
-    const coordinate = getCoordinate(triangleIndex);
-    const firstPoint = { x: coordinate.x, y: coordinate.y + randomInt(TRIANGLE_SIZE) };
-    const secondPoint = { x: coordinate.x + randomInt(TRIANGLE_SIZE), y: coordinate.y };
-    const thirdPoint = {
-      x: coordinate.x + randomInt(TRIANGLE_SIZE),
-      y: coordinate.y + TRIANGLE_SIZE,
-    };
-    const rgbaPixel = getRgbaPixel({
-      x: coordinate.x,
-      y: coordinate.y,
-    });
-
+    const coord = getCoordinate(triangleIndex);
+    const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y });
+    const firstPoint = { x: coord.x, y: coord.y + randomInt(TRIANGLE_SIZE) };
+    const secondPoint = { x: coord.x + randomInt(TRIANGLE_SIZE), y: coord.y };
+    const thirdPoint = { x: coord.x + randomInt(TRIANGLE_SIZE), y: coord.y + TRIANGLE_SIZE };
     return { firstPoint, secondPoint, thirdPoint, rgbaPixel };
   };
 
@@ -59,19 +57,22 @@ export const usePointillism = (src: string) => {
   const createRgbaValues = (imageData: Uint8ClampedArray | undefined) => {
     if (!imageData) return;
 
-    const rgba: number[][] = new Array(RESOLUTION);
+    const rgbas: number[][] = Array.from({ length: imageData.length }, () => []);
+    let rgbaFirstIndex = 0;
 
-    rgba.map((pixelRgba, i) => (pixelRgba = Array.from(imageData.slice(i, i + RGBA_ARRAY_SIZE))));
+    return rgbas.map((_el, i) => {
+      rgbaFirstIndex = i * 4;
 
-    return rgba;
+      return Array.from(imageData.slice(rgbaFirstIndex, rgbaFirstIndex + RGBA_ARRAY_SIZE));
+    });
   };
 
   const drawPointillism = () => {
     const imageData = createImageData();
     const rgba = createRgbaValues(imageData);
-    const triangleDrawCount = new Array(TRIANGLE_COUNT);
+    const triangleDrawCount = Array.from({ length: TRIANGLE_COUNT }, () => 0);
 
-    triangleDrawCount.forEach((el, i) => {
+    triangleDrawCount.forEach((_el, i) => {
       const triangleInfo = createTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
@@ -82,5 +83,6 @@ export const usePointillism = (src: string) => {
 
   return {
     canvasRef,
+    thumbnailURL: canvasRef.current?.toDataURL(),
   };
 };

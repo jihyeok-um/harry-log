@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/triangle";
-import { usePointillism } from "../hooks/usePointillism";
-import { ThumbnailProps } from "../types";
 
-export const Pointillism = ({ src }: ThumbnailProps) => {
-  const { canvasRef } = usePointillism(src);
-
+export const Pointillism = ({ canvasRef }: PointillismProps) => {
   return (
     <S.Container>
       <S.Canvas ref={canvasRef} width={THUMBNAIL_WIDTH} height={THUMBNAIL_HEIGHT}></S.Canvas>
     </S.Container>
   );
 };
+
+interface PointillismProps {
+  canvasRef: React.RefObject<HTMLCanvasElement>;
+}
 
 const S = {
   Container: styled.div`

@@ -1,15 +1,19 @@
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Pointillism } from "../components/Pointillism";
+import { usePointillism } from "../hooks/usePointillism";
 
 export const ThumbnailResult = () => {
   const location = useLocation();
   const imageUrl = location.state;
+  const { canvasRef, thumbnailURL } = usePointillism(imageUrl);
 
   return (
     <S.Container>
-      <Pointillism src={imageUrl} />
-      <S.DownloadButton>썸네일 다운로드</S.DownloadButton>
+      <Pointillism canvasRef={canvasRef} />
+      <S.DownloadButton href={thumbnailURL} download="thumbnail">
+        썸네일 다운로드
+      </S.DownloadButton>
     </S.Container>
   );
 };
