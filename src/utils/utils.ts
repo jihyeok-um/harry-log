@@ -10,6 +10,10 @@ export const getCoordinate = (index: number) => {
   return coordinate;
 };
 
-export const getCurrentPixel = (coordinate: Coordinate) => {
+export const getRgbaPixel = (coordinate: Coordinate) => {
   return Math.floor(coordinate.x + coordinate.y * THUMBNAIL_WIDTH);
+};
+
+export const randomInt = (max: number, min: number = 0) => {
+  return Math.floor(Math.random() * max - min) + min;
 };
