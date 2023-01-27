@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     ${Styles.FullWidthAndHeight}
+    overflow: hidden;
   }
   
   button {

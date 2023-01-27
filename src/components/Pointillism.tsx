@@ -18,6 +18,11 @@ const S = {
     position: relative;
     width: 1600px;
     height: 900px;
+
+    @media (max-width: 1600px) {
+      width: 100%;
+      height: 100%;
+    }
   `,
 
   Canvas: styled.canvas`
