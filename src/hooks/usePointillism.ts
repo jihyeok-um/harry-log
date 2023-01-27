@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   RESOLUTION,
   RGBA_ARRAY_SIZE,
@@ -13,6 +13,7 @@ import { randomInt } from "./../utils/utils";
 
 export const usePointillism = (src: string) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [drawDone, setDrawDone] = useState(false);
   const image = new Image();
 
   const createImageData = (): Uint8ClampedArray | undefined => {
@@ -68,6 +69,8 @@ export const usePointillism = (src: string) => {
   };
 
   const drawPointillism = () => {
+    if (drawDone) return;
+
     const imageData = createImageData();
     const rgba = createRgbaValues(imageData);
     const triangleDrawCount = Array.from({ length: TRIANGLE_COUNT }, () => 0);
@@ -76,6 +79,7 @@ export const usePointillism = (src: string) => {
       const triangleInfo = createTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
+    setDrawDone(true);
   };
 
   image.addEventListener("load", drawPointillism);
@@ -83,6 +87,6 @@ export const usePointillism = (src: string) => {
 
   return {
     canvasRef,
-    thumbnailURL: canvasRef.current?.toDataURL(),
+    drawDone,
   };
 };
