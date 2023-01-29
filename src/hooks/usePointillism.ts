@@ -91,7 +91,7 @@ export const usePointillism = (src: string) => {
       const triangleInfo = createTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
-    // createDimmer();
+    createDimmer();
     setCanvasStatus("done");
   };
 
