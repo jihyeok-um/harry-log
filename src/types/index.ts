@@ -18,3 +18,5 @@ export interface DrawTriangleParams {
   rgba: number[][] | undefined;
   triangleInfo: TriangleInfo;
 }
+
+export type CanvasStatus = "none" | "loading" | "done";
