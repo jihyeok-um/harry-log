@@ -7,12 +7,12 @@ import { usePointillism } from "../hooks/usePointillism";
 export const ThumbnailResult = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
-  const { canvasRef, drawDone } = usePointillism(imageUrl!);
+  const { canvasRef, canvasStatus } = usePointillism(imageUrl!);
 
   return (
     <S.Container>
       <Pointillism canvasRef={canvasRef} />
-      <DownloadButton canvasRef={canvasRef} drawDone={drawDone} />
+      <DownloadButton canvasRef={canvasRef} canvasStatus={canvasStatus} />
     </S.Container>
   );
 };

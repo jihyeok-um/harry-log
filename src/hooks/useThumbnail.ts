@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
-export const useThumbnail = (canvasRef: React.RefObject<HTMLCanvasElement>, drawDone: boolean) => {
+import { CanvasStatus } from "./../types/index";
+export const useThumbnail = ({ canvasRef, canvasStatus }: useThumbnailParams) => {
   const [thumbnailURL, setThumbnailURL] = useState<string | undefined>();
 
   useEffect(() => {
-    if (!canvasRef.current || !drawDone) return;
+    if (!canvasRef.current || canvasStatus !== "done") return;
 
     setThumbnailURL(canvasRef.current.toDataURL());
-  }, [drawDone]);
+  }, [canvasStatus]);
 
   return {
     thumbnailURL,
   };
 };
+
+interface useThumbnailParams {
+  canvasRef: React.RefObject<HTMLCanvasElement>;
+  canvasStatus: CanvasStatus;
+}
