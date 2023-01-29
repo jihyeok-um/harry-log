@@ -7,30 +7,43 @@ export const useImageUploadForm = () => {
 
   const handleSubmitImageUploadForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    redirectThumbnailResultPage(createThumbnailURL());
+  };
 
+  const handleDragImage = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const createThumbnailURL = () => {
     if (!inputRef.current) return;
 
-    const imageUrl = URL.createObjectURL(inputRef.current.files![0]);
+    return URL.createObjectURL(inputRef.current.files![0]);
+  };
 
+  const redirectThumbnailResultPage = (imageUrl: string | undefined) => {
     navigate(`thumbnail-result?imageUrl=${imageUrl}`);
   };
 
-  const handleDropImageDiv = (e: React.DragEvent<HTMLDivElement | HTMLInputElement>) => {
+  const handleDropImageDiv = (e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
 
     if (!inputRef.current) return;
 
     const files = e.dataTransfer.files;
     inputRef.current.files = files;
+    redirectThumbnailResultPage(createThumbnailURL());
   };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
+    e.preventDefault();
+    redirectThumbnailResultPage(createThumbnailURL());
   };
 
   return {
     inputRef,
     handleSubmitImageUploadForm,
+    handleDragImage,
     handleDropImageDiv,
     handleChangeInput,
   };
