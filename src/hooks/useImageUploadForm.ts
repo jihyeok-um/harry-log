@@ -15,7 +15,7 @@ export const useImageUploadForm = () => {
     e.preventDefault();
   };
 
-  const handleDropImageDiv = (e: React.DragEvent) => {
+  const handleDropImageContainer = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -53,7 +53,7 @@ export const useImageUploadForm = () => {
     thumbnailSource,
     handleSubmitImageUploadForm,
     handleDragImage,
-    handleDropImageDiv,
+    handleDropImageContainer,
     handleChangeInput,
     handleClickCancelButton,
   };

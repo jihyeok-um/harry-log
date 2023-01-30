@@ -4,8 +4,8 @@ export const animation = {
   closeUp: css`
     @keyframes closeUp {
       from {
-        width: 48px;
-        height: 27px;
+        width: 240px;
+        height: 135px;
       }
       to {
         width: 480px;
