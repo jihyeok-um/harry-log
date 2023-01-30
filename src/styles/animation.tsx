@@ -1,15 +1,13 @@
 import { css } from "styled-components";
 
 export const animation = {
-  closeUp: css`
-    @keyframes closeUp {
+  scaleUp: css`
+    @keyframes scaleUp {
       from {
-        width: 240px;
-        height: 135px;
+        scale: 0.5;
       }
       to {
-        width: 480px;
-        height: 270px;
+        scale: 1;
       }
     }
   `,
