@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import jihyeon from "../asset/jihyeon.jpg";
 import {
   RESOLUTION,
   RGBA_ARRAY_SIZE,
@@ -92,12 +91,12 @@ export const usePointillism = (src: string) => {
       const triangleInfo = createTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
-    drawDimmer();
+    // drawDimmer();
     setCanvasStatus("done");
   };
 
   image.addEventListener("load", drawPointillism);
-  image.src = jihyeon;
+  image.src = src;
 
   return {
     canvasRef,

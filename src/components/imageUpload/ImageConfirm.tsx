@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import cancelIcon from "../../asset/cancelIcon.svg";
+import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import { animation } from "../../styles/animation";
 import { Styles } from "../../styles/GlobalStyles";
 import { Image } from "../@shared/Image";
