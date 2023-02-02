@@ -41,6 +41,14 @@ const GlobalStyle = createGlobalStyle`
   
   button {
     all: unset;
+    cursor: pointer;
+
+    :hover {
+      filter: brightness(0.8);
+    }
+    :active {
+      filter: brightness(0.7);
+    }
   }
 `;
 

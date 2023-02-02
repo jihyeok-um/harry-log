@@ -1,48 +1,48 @@
 import styled from "styled-components";
-import AddPicture from "../asset/add-document.svg";
-import { Image } from "../components/@shared/Image";
+import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
 import { useImageUploadForm } from "../hooks/useImageUploadForm";
+import { Styles } from "../styles/GlobalStyles";
 
 export const ImageUpload = () => {
   const {
     inputRef,
+    thumbnailSource,
     handleSubmitImageUploadForm,
-    handleDropImageDiv,
+    handleDropImageContainer,
     handleDragImage,
     handleChangeInput,
+    handleClickCancelButton,
   } = useImageUploadForm();
 
   return (
     <S.Container>
-      <S.Title>썸네일로 만들 이미지를 골라주세요!</S.Title>
-      <S.ImageUploadForm onSubmit={handleSubmitImageUploadForm}>
-        <S.InputDiv
-          onDragOver={handleDragImage}
-          onDragLeave={handleDragImage}
-          onDrop={handleDropImageDiv}
-        >
-          <S.Label htmlFor="imageInput">
-            <Image alt="이미지 추가" src={AddPicture} height={200} width={200} />
-          </S.Label>
-          <S.Input
-            id="imageInput"
-            type="file"
-            accept="image/png image/jpeg"
-            ref={inputRef}
-            onChange={handleChangeInput}
-          />
-        </S.InputDiv>
-      </S.ImageUploadForm>
+      <S.FormContainer>
+        {!thumbnailSource && <S.Title>썸네일로 만들 이미지를 골라주세요!</S.Title>}
+        {thumbnailSource && <S.Title>이 이미지가 맞나요?</S.Title>}
+        <ImageUploadForm
+          inputRef={inputRef}
+          thumbnailSource={thumbnailSource}
+          handleChangeInput={handleChangeInput}
+          handleClickCancelButton={handleClickCancelButton}
+          handleDragImage={handleDragImage}
+          handleDropImageContainer={handleDropImageContainer}
+          handleSubmitImageUploadForm={handleSubmitImageUploadForm}
+        />
+      </S.FormContainer>
     </S.Container>
   );
 };
 
 const S = {
   Container: styled.div`
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    ${Styles.FlexCenter}
+    ${Styles.FullWidthAndHeight}
+  `,
+
+  FormContainer: styled.div`
+    flex-direction: column;
+    ${Styles.FlexCenter}
     gap: 20px;
   `,
 
@@ -51,45 +51,7 @@ const S = {
     font-weight: 700;
   `,
 
-  ImageUploadForm: styled.form`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  `,
-
-  InputDiv: styled.div`
-    position: relative;
-    width: 500px;
-    height: 300px;
-    background-color: #888888;
-    border-radius: 10px;
-
-    @media (max-width: 500px) {
-      width: 350px;
-      height: 250px;
-    }
-  `,
-
-  Label: styled.label`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: inherit;
-    height: inherit;
-  `,
-
-  Input: styled.input`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: inherit;
-    height: inherit;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    visibility: hidden;
-    border: 0;
+  Picture: styled.img`
+    scale: 0.2;
   `,
 };

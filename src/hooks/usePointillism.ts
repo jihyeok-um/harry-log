@@ -61,14 +61,14 @@ export const usePointillism = (src: string) => {
     const rgbas: number[][] = Array.from({ length: imageData.length }, () => []);
     let rgbaFirstIndex = 0;
 
-    return rgbas.map((_el, i) => {
+    return rgbas.map((el, i) => {
       rgbaFirstIndex = i * 4;
 
       return Array.from(imageData.slice(rgbaFirstIndex, rgbaFirstIndex + RGBA_ARRAY_SIZE));
     });
   };
 
-  const createDimmer = () => {
+  const drawDimmer = () => {
     if (!canvasRef.current) return;
 
     const ctx = canvasRef.current.getContext("2d", { willReadFrequently: true });
@@ -87,11 +87,11 @@ export const usePointillism = (src: string) => {
     const rgba = createRgbaValues(imageData);
     const triangleDrawCount = Array.from({ length: TRIANGLE_COUNT }, () => 0);
 
-    triangleDrawCount.forEach((_el, i) => {
+    triangleDrawCount.forEach((el, i) => {
       const triangleInfo = createTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
-    createDimmer();
+    // drawDimmer();
     setCanvasStatus("done");
   };
 
