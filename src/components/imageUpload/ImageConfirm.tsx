@@ -10,19 +10,17 @@ export const ImageConfirm = ({ thumbnailSource, handleClickCancelButton }: Image
 
   return (
     <S.Container>
-      <S.AnimationContainer>
-        <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isImageDimmed} />
-        <S.Button
-          onMouseEnter={() => setIsImageDimmed(true)}
-          onMouseLeave={() => setIsImageDimmed(false)}
-          onClick={(e: React.MouseEvent) => {
-            handleClickCancelButton(e);
-            setIsImageDimmed(false);
-          }}
-        >
-          <Image src={cancelIcon} alt="이미지 삭제 아이콘" width={44} height={44} />
-        </S.Button>
-      </S.AnimationContainer>
+      <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isImageDimmed} />
+      <S.Button
+        onMouseEnter={() => setIsImageDimmed(true)}
+        onMouseLeave={() => setIsImageDimmed(false)}
+        onClick={(e: React.MouseEvent) => {
+          handleClickCancelButton(e);
+          setIsImageDimmed(false);
+        }}
+      >
+        <Image src={cancelIcon} alt="이미지 삭제 아이콘" width={100} height={100} />
+      </S.Button>
     </S.Container>
   );
 };
@@ -35,8 +33,8 @@ interface ImageConfirmProps {
 const S = {
   Container: styled.div`
     position: relative;
-    width: 480px;
-    height: 270px;
+    width: 850px;
+    height: 800px;
   `,
 
   AnimationContainer: styled.div`
@@ -50,7 +48,6 @@ const S = {
   ThumbnailSource: styled.img<{ isImageDimmer: boolean }>`
     width: inherit;
     height: inherit;
-    border-radius: 10px;
 
     ${(props) =>
       props.isImageDimmer
@@ -62,7 +59,9 @@ const S = {
 
   Button: styled.button`
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 30px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
   `,
 };

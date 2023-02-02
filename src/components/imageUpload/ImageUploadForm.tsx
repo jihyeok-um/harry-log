@@ -28,7 +28,6 @@ export const ImageUploadForm = ({
           handleClickCancelButton={handleClickCancelButton}
         />
       )}
-      <S.SubmitButton>다음</S.SubmitButton>
     </S.Form>
   );
 };
@@ -45,9 +44,10 @@ interface ImageUploadFormProps {
 
 const S = {
   Form: styled.form`
+    position: absolute;
+    top: 30px;
     ${Styles.FlexCenter}
     flex-direction: column;
-    ${Styles.FullWidthAndHeight}
     gap: 20px;
   `,
 

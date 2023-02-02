@@ -16,7 +16,7 @@ export const ImageUploadInput = ({
       onDrop={handleDropImageContainer}
     >
       <S.Label htmlFor="imageInput">
-        <Image alt="이미지 추가" src={addPictureIcon} height={100} width={100} />
+        <Image alt="이미지 추가" src={addPictureIcon} height={300} width={300} />
       </S.Label>
       <S.Input
         id="imageInput"
@@ -39,9 +39,7 @@ interface ImageUploadInputProps {
 const S = {
   InputContainer: styled.div`
     position: relative;
-    width: 480px;
-    height: 270px;
-    border-radius: 10px;
+    ${Styles.FullWidthAndHeight}
     background-color: #888888;
 
     @media (max-width: 500px) {
@@ -59,7 +57,8 @@ const S = {
 
   Label: styled.label`
     ${Styles.FlexCenter}
-    ${Styles.FullWidthAndHeight}
+    width: 850px;
+    height: 800px;
   `,
 
   Input: styled.input`

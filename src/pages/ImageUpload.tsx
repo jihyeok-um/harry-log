@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import polaroid from "../assets/images/polaroidFrame.png";
 import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
 import { useImageUploadForm } from "../hooks/useImageUploadForm";
 import { Styles } from "../styles/GlobalStyles";
@@ -16,9 +17,8 @@ export const ImageUpload = () => {
 
   return (
     <S.Container>
-      <S.FormContainer>
-        {!thumbnailSource && <S.Title>썸네일로 만들 이미지를 골라주세요!</S.Title>}
-        {thumbnailSource && <S.Title>이 이미지가 맞나요?</S.Title>}
+      <S.PolaroidContainer>
+        <S.Polaroid src={polaroid} />
         <ImageUploadForm
           inputRef={inputRef}
           thumbnailSource={thumbnailSource}
@@ -28,7 +28,7 @@ export const ImageUpload = () => {
           handleDropImageContainer={handleDropImageContainer}
           handleSubmitImageUploadForm={handleSubmitImageUploadForm}
         />
-      </S.FormContainer>
+      </S.PolaroidContainer>
     </S.Container>
   );
 };
@@ -38,12 +38,22 @@ const S = {
     flex-direction: column;
     ${Styles.FlexCenter}
     ${Styles.FullWidthAndHeight}
+    background-color: whitesmoke;
   `,
 
-  FormContainer: styled.div`
+  PolaroidContainer: styled.div`
+    position: relative;
     flex-direction: column;
     ${Styles.FlexCenter}
+    width: fit-content;
+    height: fit-content;
     gap: 20px;
+  `,
+
+  Polaroid: styled.img`
+    width: 900px;
+    height: 1200px;
+    box-shadow: 15px 15px 15px 15px #555555;
   `,
 
   Title: styled.h1`
