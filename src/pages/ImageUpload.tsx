@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import starNight from "../assets/images/starNight.png";
 import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
 import { useImageUploadForm } from "../hooks/useImageUploadForm";
 import { Styles } from "../styles/GlobalStyles";
@@ -17,7 +16,6 @@ export const ImageUpload = () => {
 
   return (
     <S.Container>
-      <S.Picture src={starNight} />
       <S.FormContainer>
         {!thumbnailSource && <S.Title>썸네일로 만들 이미지를 골라주세요!</S.Title>}
         {thumbnailSource && <S.Title>이 이미지가 맞나요?</S.Title>}
