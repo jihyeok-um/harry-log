@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import { animation } from "../../styles/animation";
 import { Styles } from "../../styles/GlobalStyles";
-import { Image } from "../@shared/Image";
 
 export const ImageConfirm = ({ thumbnailSource, handleClickCancelButton }: ImageConfirmProps) => {
   const [isImageDimmed, setIsImageDimmed] = useState(false);
@@ -19,7 +18,7 @@ export const ImageConfirm = ({ thumbnailSource, handleClickCancelButton }: Image
           setIsImageDimmed(false);
         }}
       >
-        <Image src={cancelIcon} alt="이미지 삭제 아이콘" width={100} height={100} />
+        <S.CancelImage src={cancelIcon} alt="이미지 삭제 아이콘" width={100} height={100} />
       </S.Button>
     </S.Container>
   );
@@ -35,6 +34,13 @@ const S = {
     position: relative;
     width: 850px;
     height: 800px;
+    margin-top: 30px;
+
+    @media (max-width: 900px) {
+      margin-top: 10px;
+      width: 277px;
+      height: 277px;
+    }
   `,
 
   AnimationContainer: styled.div`
@@ -63,5 +69,22 @@ const S = {
     right: 30px;
     width: 100px;
     height: 100px;
+
+    @media (max-width: 900px) {
+      top: 10px;
+      right: 10px;
+      width: 44px;
+      height: 44px;
+    }
+  `,
+
+  CancelImage: styled.img`
+    width: 100px;
+    height: 100px;
+
+    @media (max-width: 900px) {
+      width: 44px;
+      height: 44px;
+    }
   `,
 };

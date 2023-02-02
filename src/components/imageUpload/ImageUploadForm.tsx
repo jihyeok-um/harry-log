@@ -45,7 +45,7 @@ interface ImageUploadFormProps {
 const S = {
   Form: styled.form`
     position: absolute;
-    top: 30px;
+    top: 0px;
     ${Styles.FlexCenter}
     flex-direction: column;
     gap: 20px;

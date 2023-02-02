@@ -54,6 +54,11 @@ const S = {
     width: 900px;
     height: 1200px;
     box-shadow: 15px 15px 15px 15px #555555;
+
+    @media (max-width: 900px) {
+      width: 300px;
+      height: 400px;
+    }
   `,
 
   Title: styled.h1`

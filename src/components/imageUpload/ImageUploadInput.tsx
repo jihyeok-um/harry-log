@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import addPictureIcon from "../../assets/icons/addDocumentIcon.svg";
 import { Styles } from "../../styles/GlobalStyles";
-import { Image } from "../@shared/Image";
 
 export const ImageUploadInput = ({
   inputRef,
@@ -16,7 +15,7 @@ export const ImageUploadInput = ({
       onDrop={handleDropImageContainer}
     >
       <S.Label htmlFor="imageInput">
-        <Image alt="이미지 추가" src={addPictureIcon} height={300} width={300} />
+        <S.PolaroidContent alt="이미지 추가" src={addPictureIcon} height={300} width={300} />
       </S.Label>
       <S.Input
         id="imageInput"
@@ -40,11 +39,13 @@ const S = {
   InputContainer: styled.div`
     position: relative;
     ${Styles.FullWidthAndHeight}
+    margin-top: 30px;
     background-color: #888888;
 
-    @media (max-width: 500px) {
-      width: 350px;
-      height: 250px;
+    @media (max-width: 900px) {
+      margin-top: 10px;
+      width: 277px;
+      height: 277px;
     }
 
     :hover {
@@ -59,6 +60,21 @@ const S = {
     ${Styles.FlexCenter}
     width: 850px;
     height: 800px;
+
+    @media (max-width: 900px) {
+      width: 277px;
+      height: 277px;
+    }
+  `,
+
+  PolaroidContent: styled.img`
+    width: 300px;
+    height: 300px;
+
+    @media (max-width: 900px) {
+      width: 100px;
+      height: 100px;
+    }
   `,
 
   Input: styled.input`
