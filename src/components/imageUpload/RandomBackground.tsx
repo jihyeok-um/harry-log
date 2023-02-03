@@ -1,63 +1,25 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import styled from "styled-components";
-import gatsby from "../../assets/images/gatsby.webp";
-import gleaning from "../../assets/images/gleaning.webp";
-import jobs from "../../assets/images/jobs.webp";
-import lastMeal from "../../assets/images/lastMeal.webp";
-import monaLisa from "../../assets/images/monaLisa.webp";
-import pearl from "../../assets/images/pearl.webp";
-import scream from "../../assets/images/scream.webp";
-import starNight from "../../assets/images/starNight.webp";
-import venus from "../../assets/images/venus.webp";
-import einstein from "../../assets/images/einstein.webp";
-import jihyeon from "../../assets/images/jihyeon.webp";
-import monroe from "../../assets/images/monroe.webp";
-import sunflower from "../../assets/images/sunflower.webp";
-import karina from "../../assets/images/karina.webp";
-import sonOfHuman from "../../assets/images/sonOfHuman.webp";
-import dream from "../../assets/images/dream.webp";
 import { Coordinate } from "../../types";
+import { randomInt } from "../../utils/randomInt";
+import { photos } from "../../constants/photos";
+import { debounce } from "../../utils/debounce";
 
 export const RandomBackground = () => {
-  const photos = [
-    gatsby,
-    gleaning,
-    jobs,
-    lastMeal,
-    monaLisa,
-    pearl,
-    scream,
-    starNight,
-    venus,
-    einstein,
-    jihyeon,
-    monroe,
-    sunflower,
-    karina,
-    sonOfHuman,
-    dream,
-  ];
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
-  let debounce: NodeJS.Timeout | null = null;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
-  const handleResizeEvent = () => {
-    if (debounce) return;
-
-    debounce = setTimeout(() => {
-      setHeight(window.innerHeight);
-      setWidth(window.innerWidth);
-    }, 1000);
+  const handleResizeWindow = () => {
+    window.location.reload();
   };
 
-  window.addEventListener("resize", handleResizeEvent);
+  window.addEventListener("resize", () => debounce({ callback: handleResizeWindow, delay: 500 }));
 
   return (
     <S.BackgroundPolaroid>
       {photos.map((photo) => {
-        const randomCoord = { x: Math.random() * (width / 1.5), y: Math.random() * (height / 1.5) };
-        const randomRotate = Math.random() * 90 - 45;
+        const randomCoord = { x: randomInt(width / 1.5), y: randomInt(height / 1.5) };
+        const randomRotate = randomInt(90, -45);
 
         return (
           <motion.div
