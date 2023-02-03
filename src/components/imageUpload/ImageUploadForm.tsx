@@ -8,7 +8,6 @@ export const ImageUploadForm = () => {
   const {
     inputRef,
     thumbnailSource,
-    handleSubmitImageUploadForm,
     handleDropImageContainer,
     handleDragImage,
     handleChangeInput,
@@ -16,7 +15,7 @@ export const ImageUploadForm = () => {
   } = useImageUploadForm();
 
   return (
-    <S.Form onSubmit={handleSubmitImageUploadForm}>
+    <S.Form>
       {!thumbnailSource && (
         <ImageUploadInput
           inputRef={inputRef}
@@ -42,16 +41,5 @@ const S = {
     ${Styles.FlexCenter}
     flex-direction: column;
     gap: 20px;
-  `,
-
-  SubmitButton: styled.button`
-    text-align: center;
-    width: 100px;
-    height: 44px;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: #007afe;
-    color: white;
-    font-size: 18px;
   `,
 };

@@ -6,11 +6,6 @@ export const useImageUploadForm = () => {
   const navigate = useNavigate();
   const [thumbnailSource, setThumbnailSource] = useState<string | null>(null);
 
-  const handleSubmitImageUploadForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (thumbnailSource) redirectThumbnailResultPage(thumbnailSource);
-  };
-
   const handleDragImage = (e: React.DragEvent) => {
     e.preventDefault();
   };
@@ -22,16 +17,18 @@ export const useImageUploadForm = () => {
     if (!inputRef.current) return;
 
     const files = e.dataTransfer.files;
-    inputRef.current.files = files;
     const thumbnailSource = createThumbnailURL();
 
+    inputRef.current.files = files;
     if (thumbnailSource) setThumbnailSource(thumbnailSource);
+    redirectThumbnailResultPage(thumbnailSource);
   };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const thumbnailSource = createThumbnailURL();
     if (thumbnailSource) setThumbnailSource(thumbnailSource);
+    redirectThumbnailResultPage(thumbnailSource);
   };
 
   const handleClickCancelButton = (e: React.MouseEvent) => {
@@ -51,7 +48,6 @@ export const useImageUploadForm = () => {
   return {
     inputRef,
     thumbnailSource,
-    handleSubmitImageUploadForm,
     handleDragImage,
     handleDropImageContainer,
     handleChangeInput,

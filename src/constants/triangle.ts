@@ -2,8 +2,8 @@ export const THUMBNAIL_WIDTH = 1600;
 export const THUMBNAIL_HEIGHT = 900;
 export const RESOLUTION = THUMBNAIL_HEIGHT * THUMBNAIL_WIDTH;
 
-export const TRIANGLE_SIZE = 40;
-export const TRIANGLE_GAP = 12;
+export const TRIANGLE_SIZE = 30;
+export const TRIANGLE_GAP = 10;
 
 export const TRIANGLE_COUNT = (THUMBNAIL_WIDTH / TRIANGLE_GAP) * (THUMBNAIL_HEIGHT / TRIANGLE_GAP);
 

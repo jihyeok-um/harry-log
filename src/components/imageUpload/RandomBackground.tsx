@@ -1,4 +1,4 @@
-import { animate, motion, useAnimation, useWillChange } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import styled from "styled-components";
 import gatsby from "../../assets/images/gatsby.webp";
@@ -10,10 +10,34 @@ import pearl from "../../assets/images/pearl.webp";
 import scream from "../../assets/images/scream.webp";
 import starNight from "../../assets/images/starNight.webp";
 import venus from "../../assets/images/venus.webp";
+import einstein from "../../assets/images/einstein.webp";
+import jihyeon from "../../assets/images/jihyeon.webp";
+import monroe from "../../assets/images/monroe.webp";
+import sunflower from "../../assets/images/sunflower.webp";
+import karina from "../../assets/images/karina.webp";
+import sonOfHuman from "../../assets/images/sonOfHuman.webp";
+import dream from "../../assets/images/dream.webp";
 import { Coordinate } from "../../types";
 
 export const RandomBackground = () => {
-  const photos = [gatsby, gleaning, jobs, lastMeal, monaLisa, pearl, scream, starNight, venus];
+  const photos = [
+    gatsby,
+    gleaning,
+    jobs,
+    lastMeal,
+    monaLisa,
+    pearl,
+    scream,
+    starNight,
+    venus,
+    einstein,
+    jihyeon,
+    monroe,
+    sunflower,
+    karina,
+    sonOfHuman,
+    dream,
+  ];
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
   let debounce: NodeJS.Timeout | null = null;
@@ -40,7 +64,6 @@ export const RandomBackground = () => {
             key={photo}
             drag
             dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
-            whileDrag={{ scale: 1.1, zIndex: 10 }}
             dragConstraints={{
               top: -150,
               left: -150,
