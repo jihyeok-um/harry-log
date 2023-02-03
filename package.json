@@ -1,5 +1,5 @@
 {
-  "name": "harry-log",
+  "name": "noise-effector",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -38,8 +38,8 @@
     "vite": "^4.0.0"
   },
   "main": "index.js",
-  "homepage": "https://jihyeok-um.github.io/harry-log",
-  "repository": "https://github.com/jihyeok-um/harry-log.git",
+  "homepage": "https://jihyeok-um.github.io/noise-effector",
+  "repository": "https://github.com/jihyeok-um/noise-effector.git",
   "author": "jihyeok-um <75592315+jihyeok-um@users.noreply.github.com>",
   "license": "MIT"
 }
