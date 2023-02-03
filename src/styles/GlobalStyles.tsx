@@ -39,6 +39,12 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
   }
   
+  img {
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+  }
+
   button {
     all: unset;
     cursor: pointer;

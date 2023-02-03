@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import gatsby from "../../assets/images/gatsby.png";
 import gleaning from "../../assets/images/gleaning.png";
@@ -21,15 +22,25 @@ export const RandomBackground = () => {
         const randomCoord = { x: Math.random() * (width / 1.5), y: Math.random() * (height / 1.5) };
         const randomRotate = Math.random() * 90 - 45;
 
-        console.log(randomCoord);
-
         return (
-          <S.BackgroundPolaroidFrame
+          <motion.div
             key={photo}
-            src={photo}
-            randomCoord={randomCoord}
-            randomRotate={randomRotate}
-          />
+            drag
+            dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
+            whileDrag={{ scale: 1.1, zIndex: 10 }}
+            dragConstraints={{
+              top: -150,
+              left: -150,
+              right: 150,
+              bottom: 150,
+            }}
+          >
+            <S.BackgroundPolaroidFrame
+              src={photo}
+              randomCoord={randomCoord}
+              randomRotate={randomRotate}
+            />
+          </motion.div>
         );
       })}
     </S.BackgroundPolaroid>

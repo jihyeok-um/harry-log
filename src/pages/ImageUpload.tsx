@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
 import polaroidFrame from "../assets/images/polaroidFrame.png";
 import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
 import { RandomBackground } from "../components/imageUpload/RandomBackground";
@@ -9,10 +10,21 @@ export const ImageUpload = () => {
   return (
     <S.Container>
       <RandomBackground />
-      <S.PolaroidContainer>
-        <S.PolaroidFrame src={polaroidFrame} />
-        <ImageUploadForm />
-      </S.PolaroidContainer>
+      <motion.div
+        drag
+        dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
+        dragConstraints={{
+          top: -50,
+          left: -50,
+          right: 50,
+          bottom: 50,
+        }}
+      >
+        <S.PolaroidContainer>
+          <S.PolaroidFrame src={polaroidFrame} />
+          <ImageUploadForm />
+        </S.PolaroidContainer>
+      </motion.div>
     </S.Container>
   );
 };
