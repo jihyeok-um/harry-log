@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import polaroid from "../assets/images/polaroidFrame.png";
+import polaroidFrame from "../assets/images/polaroidFrame.png";
 import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
 import { useImageUploadForm } from "../hooks/useImageUploadForm";
 import { Styles } from "../styles/GlobalStyles";
@@ -18,7 +18,7 @@ export const ImageUpload = () => {
   return (
     <S.Container>
       <S.PolaroidContainer>
-        <S.Polaroid src={polaroid} />
+        <S.PolaroidFrame src={polaroidFrame} />
         <ImageUploadForm
           inputRef={inputRef}
           thumbnailSource={thumbnailSource}
@@ -50,15 +50,10 @@ const S = {
     gap: 20px;
   `,
 
-  Polaroid: styled.img`
-    width: 900px;
-    height: 1200px;
-    box-shadow: 15px 15px 15px 15px #555555;
-
-    @media (max-width: 900px) {
-      width: 300px;
-      height: 400px;
-    }
+  PolaroidFrame: styled.img`
+    width: 300px;
+    height: 400px;
+    box-shadow: 10px 10px 10px 10px #555555;
   `,
 
   Title: styled.h1`

@@ -32,15 +32,9 @@ interface ImageConfirmProps {
 const S = {
   Container: styled.div`
     position: relative;
-    width: 850px;
-    height: 800px;
-    margin-top: 30px;
-
-    @media (max-width: 900px) {
-      margin-top: 10px;
-      width: 277px;
-      height: 277px;
-    }
+    margin-top: 10px;
+    width: 277px;
+    height: 277px;
   `,
 
   AnimationContainer: styled.div`
@@ -65,17 +59,10 @@ const S = {
 
   Button: styled.button`
     position: absolute;
-    top: 30px;
-    right: 30px;
-    width: 100px;
-    height: 100px;
-
-    @media (max-width: 900px) {
-      top: 10px;
-      right: 10px;
-      width: 44px;
-      height: 44px;
-    }
+    top: 10px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
   `,
 
   CancelImage: styled.img`
