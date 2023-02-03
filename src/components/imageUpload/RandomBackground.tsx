@@ -19,7 +19,7 @@ export const RandomBackground = () => {
     <S.BackgroundPolaroid>
       {photos.map((photo) => {
         const randomCoord = { x: randomInt(width / 1.5), y: randomInt(height / 1.5) };
-        const randomRotate = randomInt(90, -45);
+        const randomRotate = randomInt(45, -45);
 
         return (
           <motion.div
