@@ -34,6 +34,7 @@ export const usePointillism = (src: string) => {
     const firstPoint = { x: coord.x, y: coord.y + randomInt(TRIANGLE_SIZE) };
     const secondPoint = { x: coord.x + randomInt(TRIANGLE_SIZE), y: coord.y };
     const thirdPoint = { x: coord.x + randomInt(TRIANGLE_SIZE), y: coord.y + TRIANGLE_SIZE };
+
     return { firstPoint, secondPoint, thirdPoint, rgbaPixel };
   };
 

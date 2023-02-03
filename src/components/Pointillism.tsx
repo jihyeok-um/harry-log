@@ -19,7 +19,7 @@ const S = {
     width: 1600px;
     height: 900px;
 
-    @media (max-width: 1600px) {
+    @media (max-width: 1200px) {
       width: 100%;
       height: 100%;
     }

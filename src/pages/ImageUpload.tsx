@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { motion } from "framer-motion";
 import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
@@ -11,7 +11,7 @@ export const ImageUpload = () => {
       <RandomBackground />
       <motion.div
         drag
-        dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
+        dragTransition={{ bounceStiffness: 100, bounceDamping: 10 }}
         dragConstraints={{
           top: -50,
           left: -50,
