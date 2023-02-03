@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useImageUploadForm } from "../../hooks/useImageUploadForm";
 import { Styles } from "../../styles/GlobalStyles";
 import { ImageConfirm } from "./ImageConfirm";
@@ -8,50 +8,50 @@ export const ImageUploadForm = () => {
   const {
     inputRef,
     thumbnailSource,
-    handleSubmitImageUploadForm,
+    thumbnailSize,
     handleDropImageContainer,
     handleDragImage,
     handleChangeInput,
     handleClickCancelButton,
+    handleSubmitImageUploadForm,
   } = useImageUploadForm();
 
   return (
-    <S.Form onSubmit={handleSubmitImageUploadForm}>
-      {!thumbnailSource && (
-        <ImageUploadInput
-          inputRef={inputRef}
-          handleChangeInput={handleChangeInput}
-          handleDragImage={handleDragImage}
-          handleDropImageContainer={handleDropImageContainer}
-        />
-      )}
-      {thumbnailSource && (
-        <ImageConfirm
-          thumbnailSource={thumbnailSource}
-          handleClickCancelButton={handleClickCancelButton}
-        />
-      )}
-    </S.Form>
+    <S.PolaroidContainer thumbnailSize={thumbnailSize}>
+      <S.Form onSubmit={handleSubmitImageUploadForm}>
+        {!thumbnailSource && (
+          <ImageUploadInput
+            inputRef={inputRef}
+            handleChangeInput={handleChangeInput}
+            handleDragImage={handleDragImage}
+            handleDropImageContainer={handleDropImageContainer}
+          />
+        )}
+        {thumbnailSource && (
+          <ImageConfirm
+            thumbnailSource={thumbnailSource}
+            handleClickCancelButton={handleClickCancelButton}
+          />
+        )}
+      </S.Form>
+    </S.PolaroidContainer>
   );
 };
 
 const S = {
-  Form: styled.form`
-    position: absolute;
-    top: 0px;
-    ${Styles.FlexCenter}
+  PolaroidContainer: styled.div<{ thumbnailSize: number }>`
+    position: relative;
     flex-direction: column;
-    gap: 20px;
+    ${Styles.FlexCenter}
+    width: fit-content;
+    height: fit-content;
+    border: 10px solid #fff;
+    border-bottom: 100px solid #fff;
+    box-shadow: 3px 3px 3px 3px black;
   `,
 
-  SubmitButton: styled.button`
-    text-align: center;
-    width: 100px;
-    height: 44px;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: #007afe;
-    color: white;
-    font-size: 18px;
+  Form: styled.form`
+    ${Styles.FlexCenter}
+    flex-direction: column;
   `,
 };

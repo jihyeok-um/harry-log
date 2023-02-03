@@ -1,38 +1,43 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import gatsby from "../../assets/images/gatsby.png";
-import gleaning from "../../assets/images/gleaning.png";
-import jobs from "../../assets/images/jobs.png";
-import lastMeal from "../../assets/images/lastMeal.png";
-import monaLisa from "../../assets/images/monaLisa.png";
-import pearl from "../../assets/images/pearl.png";
-import scream from "../../assets/images/scream.png";
-import starNight from "../../assets/images/starNight.png";
-import venus from "../../assets/images/venus.png";
 import { Coordinate } from "../../types";
+import { randomInt } from "../../utils/randomInt";
+import { photos } from "../../constants/photos";
+import { debounce } from "../../utils/debounce";
 
 export const RandomBackground = () => {
-  const photos = [gatsby, gleaning, jobs, lastMeal, monaLisa, pearl, scream, starNight, venus];
   const width = window.innerWidth;
   const height = window.innerHeight;
+
+  const handleResizeWindow = () => {
+    window.location.reload();
+  };
+
+  window.addEventListener("resize", () => debounce({ callback: handleResizeWindow, delay: 500 }));
 
   return (
     <S.BackgroundPolaroid>
       {photos.map((photo) => {
-        const randomCoord = { x: Math.random() * (width / 1.5), y: Math.random() * (height / 1.5) };
-        const randomRotate = Math.random() * 90 - 45;
+        const randomCoord = { x: randomInt(width / 1.5), y: randomInt(height / 1.5) };
+        const randomRotate = randomInt(45, -45);
 
         return (
           <motion.div
             key={photo}
             drag
             dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
-            whileDrag={{ scale: 1.1, zIndex: 10 }}
             dragConstraints={{
               top: -150,
               left: -150,
               right: 150,
               bottom: 150,
+            }}
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
             }}
           >
             <S.BackgroundPolaroidFrame
