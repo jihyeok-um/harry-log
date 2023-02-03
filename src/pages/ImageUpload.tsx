@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { motion } from "framer-motion";
-import polaroidFrame from "../assets/images/polaroidFrame.png";
+import polaroidFrame from "../assets/images/polaroidFrame.webp";
 import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
 import { RandomBackground } from "../components/imageUpload/RandomBackground";
 import { Styles } from "../styles/GlobalStyles";
@@ -18,6 +18,13 @@ export const ImageUpload = () => {
           left: -50,
           right: 50,
           bottom: 50,
+        }}
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
         }}
       >
         <S.PolaroidContainer>

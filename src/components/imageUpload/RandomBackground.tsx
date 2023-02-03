@@ -1,20 +1,33 @@
-import { motion } from "framer-motion";
+import { animate, motion, useAnimation, useWillChange } from "framer-motion";
+import { useState } from "react";
 import styled from "styled-components";
-import gatsby from "../../assets/images/gatsby.png";
-import gleaning from "../../assets/images/gleaning.png";
-import jobs from "../../assets/images/jobs.png";
-import lastMeal from "../../assets/images/lastMeal.png";
-import monaLisa from "../../assets/images/monaLisa.png";
-import pearl from "../../assets/images/pearl.png";
-import scream from "../../assets/images/scream.png";
-import starNight from "../../assets/images/starNight.png";
-import venus from "../../assets/images/venus.png";
+import gatsby from "../../assets/images/gatsby.webp";
+import gleaning from "../../assets/images/gleaning.webp";
+import jobs from "../../assets/images/jobs.webp";
+import lastMeal from "../../assets/images/lastMeal.webp";
+import monaLisa from "../../assets/images/monaLisa.webp";
+import pearl from "../../assets/images/pearl.webp";
+import scream from "../../assets/images/scream.webp";
+import starNight from "../../assets/images/starNight.webp";
+import venus from "../../assets/images/venus.webp";
 import { Coordinate } from "../../types";
 
 export const RandomBackground = () => {
   const photos = [gatsby, gleaning, jobs, lastMeal, monaLisa, pearl, scream, starNight, venus];
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+  let debounce: NodeJS.Timeout | null = null;
+
+  const handleResizeEvent = () => {
+    if (debounce) return;
+
+    debounce = setTimeout(() => {
+      setHeight(window.innerHeight);
+      setWidth(window.innerWidth);
+    }, 1000);
+  };
+
+  window.addEventListener("resize", handleResizeEvent);
 
   return (
     <S.BackgroundPolaroid>
@@ -33,6 +46,13 @@ export const RandomBackground = () => {
               left: -150,
               right: 150,
               bottom: 150,
+            }}
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
             }}
           >
             <S.BackgroundPolaroidFrame
