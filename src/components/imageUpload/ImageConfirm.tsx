@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
-import { animation } from "../../styles/animation";
-import { Styles } from "../../styles/GlobalStyles";
 
 export const ImageConfirm = ({ thumbnailSource, handleClickCancelButton }: ImageConfirmProps) => {
   const [isImageDimmed, setIsImageDimmed] = useState(false);
@@ -33,16 +31,14 @@ const S = {
   Container: styled.div`
     position: relative;
     margin-top: 10px;
-    width: 277px;
-    height: 277px;
-  `,
+    width: 279px;
+    height: 279px;
 
-  AnimationContainer: styled.div`
-    ${Styles.FullWidthAndHeight}
-    animation-name: scaleUp;
-    animation-duration: 0.3s;
-
-    ${animation.scaleUp}
+    @media (max-width: 600px) {
+      margin-top: 8px;
+      width: 232px;
+      height: 232px;
+    }
   `,
 
   ThumbnailSource: styled.img<{ isImageDimmer: boolean }>`
@@ -66,12 +62,7 @@ const S = {
   `,
 
   CancelImage: styled.img`
-    width: 100px;
-    height: 100px;
-
-    @media (max-width: 900px) {
-      width: 44px;
-      height: 44px;
-    }
+    width: 44px;
+    height: 44px;
   `,
 };

@@ -1,17 +1,20 @@
 import styled from "styled-components";
+import { useImageUploadForm } from "../../hooks/useImageUploadForm";
 import { Styles } from "../../styles/GlobalStyles";
 import { ImageConfirm } from "./ImageConfirm";
 import { ImageUploadInput } from "./ImageUploadInput";
 
-export const ImageUploadForm = ({
-  inputRef,
-  thumbnailSource,
-  handleSubmitImageUploadForm,
-  handleDropImageContainer,
-  handleDragImage,
-  handleChangeInput,
-  handleClickCancelButton,
-}: ImageUploadFormProps) => {
+export const ImageUploadForm = () => {
+  const {
+    inputRef,
+    thumbnailSource,
+    handleSubmitImageUploadForm,
+    handleDropImageContainer,
+    handleDragImage,
+    handleChangeInput,
+    handleClickCancelButton,
+  } = useImageUploadForm();
+
   return (
     <S.Form onSubmit={handleSubmitImageUploadForm}>
       {!thumbnailSource && (
@@ -31,16 +34,6 @@ export const ImageUploadForm = ({
     </S.Form>
   );
 };
-
-interface ImageUploadFormProps {
-  inputRef: React.RefObject<HTMLInputElement>;
-  thumbnailSource: string | null;
-  handleSubmitImageUploadForm: (e: React.FormEvent<HTMLFormElement>) => void;
-  handleDropImageContainer: (e: React.DragEvent<Element>) => void;
-  handleDragImage: (e: React.DragEvent<Element>) => void;
-  handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleClickCancelButton: (e: React.MouseEvent<Element, MouseEvent>) => void;
-}
 
 const S = {
   Form: styled.form`

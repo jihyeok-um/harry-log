@@ -38,10 +38,16 @@ interface ImageUploadInputProps {
 const S = {
   InputContainer: styled.div`
     position: relative;
-    width: 277px;
-    height: 277px;
+    width: 279px;
+    height: 279px;
     margin-top: 10px;
     background-color: #888888;
+
+    @media (max-width: 600px) {
+      margin-top: 8px;
+      width: 232px;
+      height: 232px;
+    }
 
     :hover {
       filter: brightness(0.8);
@@ -53,8 +59,8 @@ const S = {
 
   Label: styled.label`
     ${Styles.FlexCenter}
-    width: 277px;
-    height: 277px;
+    width: inherit;
+    height: inherit;
   `,
 
   PolaroidContent: styled.img`
