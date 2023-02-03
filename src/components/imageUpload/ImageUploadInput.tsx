@@ -40,11 +40,9 @@ const S = {
     position: relative;
     width: 279px;
     height: 279px;
-    margin-top: 10px;
     background-color: #888888;
 
     @media (max-width: 600px) {
-      margin-top: 8px;
       width: 232px;
       height: 232px;
     }
