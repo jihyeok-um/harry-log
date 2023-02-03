@@ -22,9 +22,9 @@ export const useImageUploadForm = () => {
     if (!inputRef.current) return;
 
     const files = e.dataTransfer.files;
+    inputRef.current.files = files;
     const thumbnailSource = createThumbnailURL();
 
-    inputRef.current.files = files;
     if (thumbnailSource) setThumbnailSource(thumbnailSource);
   };
 
