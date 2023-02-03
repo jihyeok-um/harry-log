@@ -1,34 +1,30 @@
 import styled from "styled-components";
-import polaroid from "../assets/images/polaroidFrame.png";
+
+import { motion } from "framer-motion";
+import polaroidFrame from "../assets/images/polaroidFrame.png";
 import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
-import { useImageUploadForm } from "../hooks/useImageUploadForm";
+import { RandomBackground } from "../components/imageUpload/RandomBackground";
 import { Styles } from "../styles/GlobalStyles";
 
 export const ImageUpload = () => {
-  const {
-    inputRef,
-    thumbnailSource,
-    handleSubmitImageUploadForm,
-    handleDropImageContainer,
-    handleDragImage,
-    handleChangeInput,
-    handleClickCancelButton,
-  } = useImageUploadForm();
-
   return (
     <S.Container>
-      <S.PolaroidContainer>
-        <S.Polaroid src={polaroid} />
-        <ImageUploadForm
-          inputRef={inputRef}
-          thumbnailSource={thumbnailSource}
-          handleChangeInput={handleChangeInput}
-          handleClickCancelButton={handleClickCancelButton}
-          handleDragImage={handleDragImage}
-          handleDropImageContainer={handleDropImageContainer}
-          handleSubmitImageUploadForm={handleSubmitImageUploadForm}
-        />
-      </S.PolaroidContainer>
+      <RandomBackground />
+      <motion.div
+        drag
+        dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
+        dragConstraints={{
+          top: -50,
+          left: -50,
+          right: 50,
+          bottom: 50,
+        }}
+      >
+        <S.PolaroidContainer>
+          <S.PolaroidFrame src={polaroidFrame} />
+          <ImageUploadForm />
+        </S.PolaroidContainer>
+      </motion.div>
     </S.Container>
   );
 };
@@ -50,10 +46,15 @@ const S = {
     gap: 20px;
   `,
 
-  Polaroid: styled.img`
-    width: 900px;
-    height: 1200px;
-    box-shadow: 15px 15px 15px 15px #555555;
+  PolaroidFrame: styled.img`
+    width: 300px;
+    height: 400px;
+    box-shadow: 3px 3px 3px 3px black;
+
+    @media (max-width: 600px) {
+      width: 250px;
+      height: 332px;
+    }
   `,
 
   Title: styled.h1`
