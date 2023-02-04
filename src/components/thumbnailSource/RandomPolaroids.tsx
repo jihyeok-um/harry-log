@@ -1,18 +1,22 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Coordinate } from "../../types";
 import { randomInt } from "../../utils/randomInt";
 import { photos } from "../../constants/photos";
 import { debounce } from "../../utils/debounce";
 import { Polaroid } from "./Polaroid";
 import { Styles } from "../../styles/Styles";
+import { useLocation } from "react-router-dom";
+import { ROUTE_PATH } from "../../constants/route";
 
 export const RandomPolaroids = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
+  const location = useLocation();
 
   const handleResizeWindow = () => {
-    window.location.reload();
+    if ((location.pathname = ROUTE_PATH.HOME)) {
+      window.location.reload();
+    }
   };
 
   window.addEventListener("resize", () => debounce({ callback: handleResizeWindow, delay: 500 }));
