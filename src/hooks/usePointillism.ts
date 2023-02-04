@@ -5,11 +5,11 @@ import {
   THUMBNAIL_HEIGHT,
   THUMBNAIL_WIDTH,
   TRIANGLE_COUNT,
-} from "../constants";
-import { getCoordinate, getRgbaPixel } from "../utils/triangle";
-import { TRIANGLE_SIZE } from "../constants";
+  TRIANGLE_SIZE,
+} from "../constants/triangle";
 import { CanvasStatus, DrawTriangleParams, TriangleInfo } from "./../types/index";
 import { randomInt } from "../utils/randomInt";
+import { getCoordinate, getRgbaPixel } from "../utils/triangle";
 
 export const usePointillism = (src: string) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
