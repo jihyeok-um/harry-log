@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 import { motion } from "framer-motion";
-import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
-import { RandomBackground } from "../components/imageUpload/RandomBackground";
-import { Styles } from "../styles/GlobalStyles";
+import { ThumbnailSourceForm } from "../components/thumbnailSource/ThumbnailSourceForm";
+import { RandomPolaroids } from "../components/thumbnailSource/RandomPolaroids";
+import { Styles } from "../styles/Styles";
 
-export const ImageUpload = () => {
+export const ThumbnailSourceAttach = () => {
   return (
     <S.Container>
-      <RandomBackground />
+      <RandomPolaroids />
       <motion.div
         drag
         dragTransition={{ bounceStiffness: 100, bounceDamping: 10 }}
@@ -26,7 +26,7 @@ export const ImageUpload = () => {
           damping: 20,
         }}
       >
-        <ImageUploadForm />
+        <ThumbnailSourceForm />
       </motion.div>
     </S.Container>
   );
@@ -34,10 +34,10 @@ export const ImageUpload = () => {
 
 const S = {
   Container: styled.div`
-    flex-direction: column;
     ${Styles.FlexCenter}
     ${Styles.FullWidthAndHeight}
-    background-color: whitesmoke;
+    flex-direction: column;
+    background-color: ${(props) => props.theme.BACKGROUND};
   `,
 
   Title: styled.h1`

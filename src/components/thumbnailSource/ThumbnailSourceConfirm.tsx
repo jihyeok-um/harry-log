@@ -2,31 +2,35 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import camera from "../../assets/icons/camera.svg";
+import { Image } from "../@shared/Image";
 
-export const ImageConfirm = ({ thumbnailSource, handleClickCancelButton }: ImageConfirmProps) => {
-  const [isImageDimmed, setIsImageDimmed] = useState(false);
+export const ThumbnailSourceConfirm = ({
+  thumbnailSource,
+  handleClickCancelButton,
+}: ThumbnailSourceConfirmProps) => {
+  const [isDimmed, setIsDimmed] = useState(false);
 
   return (
     <S.Container>
-      <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isImageDimmed} />
-      <S.Button
-        onMouseEnter={() => setIsImageDimmed(true)}
-        onMouseLeave={() => setIsImageDimmed(false)}
+      <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isDimmed} />
+      <S.CancelButton
+        onMouseEnter={() => setIsDimmed(true)}
+        onMouseLeave={() => setIsDimmed(false)}
         onClick={(e: React.MouseEvent) => {
           handleClickCancelButton(e);
-          setIsImageDimmed(false);
+          setIsDimmed(false);
         }}
       >
-        <S.ButtonImage src={cancelIcon} alt="이미지 삭제 아이콘" />
-      </S.Button>
+        <Image src={cancelIcon} alt="이미지 삭제 아이콘" width={44} height={44} />
+      </S.CancelButton>
       <S.SubmitButton>
-        <img src={camera} alt="이미지 편집 아이콘" width={60} height={60} />
+        <Image src={camera} alt="이미지 제출 아이콘" width={60} height={60} />
       </S.SubmitButton>
     </S.Container>
   );
 };
 
-interface ImageConfirmProps {
+interface ThumbnailSourceConfirmProps {
   thumbnailSource: string | null;
   handleClickCancelButton: (e: React.MouseEvent<Element, MouseEvent>) => void;
 }
@@ -44,15 +48,10 @@ const S = {
   `,
 
   ThumbnailSource: styled.img<{ isImageDimmer: boolean }>`
-    width: 279px;
-    height: 279px;
-    background-color: #888888;
     object-fit: cover;
-
-    @media (max-width: 600px) {
-      width: 232px;
-      height: 232px;
-    }
+    width: inherit;
+    height: inherit;
+    border: 1px solid ${(props) => props.theme.GRAY_400};
 
     ${(props) =>
       props.isImageDimmer
@@ -62,15 +61,10 @@ const S = {
         : css``};
   `,
 
-  Button: styled.button`
+  CancelButton: styled.button`
     position: absolute;
     top: 8px;
     right: 8px;
-    width: 44px;
-    height: 44px;
-  `,
-
-  ButtonImage: styled.img`
     width: 44px;
     height: 44px;
   `,

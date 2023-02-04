@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { useThumbnail } from "../hooks/useThumbnail";
+import { useThumbnailURL } from "../hooks/useThumbnailURL";
 import { CanvasStatus } from "../types";
 
 export const DownloadButton = ({ canvasRef, canvasStatus }: DownloadButtonProps) => {
-  const { thumbnailURL } = useThumbnail({ canvasRef, canvasStatus });
+  const { thumbnailURL } = useThumbnailURL({ canvasRef, canvasStatus });
 
   if (!thumbnailURL) return <h1>로딩중</h1>;
 
@@ -21,7 +21,7 @@ interface DownloadButtonProps {
 
 const S = {
   DownloadButton: styled.a`
-    border: 1px solid #666666;
+    border: 1px solid ${(props) => props.theme.GRAY_400};
     border-radius: 2px;
     margin-left: 5px;
     padding: 5px;

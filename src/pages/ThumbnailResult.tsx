@@ -3,11 +3,18 @@ import styled from "styled-components";
 import { DownloadButton } from "../components/DownloadButton";
 import { Pointillism } from "../components/Pointillism";
 import { usePointillism } from "../hooks/usePointillism";
+import { Styles } from "../styles/Styles";
 
 export const ThumbnailResult = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const imageUrl = searchParams.get("imageUrl");
-  const { canvasRef, canvasStatus } = usePointillism(imageUrl!);
+  const [searchParams] = useSearchParams();
+  const thumbnailSource = searchParams.get("thumbnail-source");
+  const noiseEffect = searchParams.get("noise-effect");
+  const noiseStrength = searchParams.get("noise-strength");
+  const { canvasRef, canvasStatus } = usePointillism({
+    thumbnailSource,
+    noiseEffect,
+    noiseStrength,
+  });
 
   return (
     <S.Container>
@@ -19,10 +26,8 @@ export const ThumbnailResult = () => {
 
 const S = {
   Container: styled.div`
-    display: flex;
+    ${Styles.FlexCenter}
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 20px;
   `,
 };

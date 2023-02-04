@@ -1,8 +1,8 @@
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
-export const Image = ({ src, alt, width, height }: ImageProps) => {
-  return <S.Image src={src} alt={alt} width={width} height={height} />;
+export const Image = ({ ...props }: ImageProps) => {
+  return <S.Image {...props} />;
 };
 
 interface ImageProps extends HTMLAttributes<HTMLImageElement> {

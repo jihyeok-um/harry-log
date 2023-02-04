@@ -4,8 +4,10 @@ import { Coordinate } from "../../types";
 import { randomInt } from "../../utils/randomInt";
 import { photos } from "../../constants/photos";
 import { debounce } from "../../utils/debounce";
+import { Polaroid } from "./Polaroid";
+import { Styles } from "../../styles/Styles";
 
-export const RandomBackground = () => {
+export const RandomPolaroids = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -16,7 +18,7 @@ export const RandomBackground = () => {
   window.addEventListener("resize", () => debounce({ callback: handleResizeWindow, delay: 500 }));
 
   return (
-    <S.BackgroundPolaroid>
+    <S.Container>
       {photos.map((photo) => {
         const randomCoord = { x: randomInt(width / 1.5), y: randomInt(height / 1.5) };
         const randomRotate = randomInt(45, -45);
@@ -40,46 +42,20 @@ export const RandomBackground = () => {
               damping: 20,
             }}
           >
-            <S.BackgroundPolaroidFrame
-              src={photo}
-              randomCoord={randomCoord}
-              randomRotate={randomRotate}
-            />
+            <Polaroid src={photo} randomCoord={randomCoord} randomRotate={randomRotate} />
           </motion.div>
         );
       })}
-    </S.BackgroundPolaroid>
+    </S.Container>
   );
 };
 
-interface BackgroundPolaroidFrameProps {
-  randomCoord: Coordinate;
-  randomRotate: number;
-}
-
 const S = {
-  BackgroundPolaroid: styled.div`
+  Container: styled.div`
+    ${Styles.FullWidthAndHeight}
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-  `,
-
-  BackgroundPolaroidFrame: styled.img<BackgroundPolaroidFrameProps>`
-    position: absolute;
-    top: ${(props) => props.randomCoord.y}px;
-    left: ${(props) => props.randomCoord.x}px;
-    width: 225px;
-    height: 300px;
-    box-shadow: 1px 1px 1px 1px #555555;
-
-    @media (max-width: 600px) {
-      width: 150px;
-      height: 200px;
-    }
-
-    transform: rotate(${(props) => props.randomRotate}deg);
   `,
 };
