@@ -4,6 +4,7 @@ import { Coordinate } from "../../types";
 import { randomInt } from "../../utils/randomInt";
 import { photos } from "../../constants/photos";
 import { debounce } from "../../utils/debounce";
+import { Polaroid } from "./Polaroid";
 
 export const RandomPolaroids = () => {
   const width = window.innerWidth;
@@ -40,18 +41,13 @@ export const RandomPolaroids = () => {
               damping: 20,
             }}
           >
-            <S.Polaroid src={photo} randomCoord={randomCoord} randomRotate={randomRotate} />
+            <Polaroid src={photo} randomCoord={randomCoord} randomRotate={randomRotate} />
           </motion.div>
         );
       })}
     </S.Container>
   );
 };
-
-interface PolaroidProps {
-  randomCoord: Coordinate;
-  randomRotate: number;
-}
 
 const S = {
   Container: styled.div`
@@ -61,21 +57,5 @@ const S = {
     left: 0;
     width: 100%;
     height: 100%;
-  `,
-
-  Polaroid: styled.img<PolaroidProps>`
-    position: absolute;
-    top: ${(props) => props.randomCoord.y}px;
-    left: ${(props) => props.randomCoord.x}px;
-    width: 225px;
-    height: 300px;
-    box-shadow: 1px 1px 1px 1px #555555;
-
-    @media (max-width: 600px) {
-      width: 150px;
-      height: 200px;
-    }
-
-    transform: rotate(${(props) => props.randomRotate}deg);
   `,
 };
