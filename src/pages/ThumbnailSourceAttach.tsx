@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 import { motion } from "framer-motion";
-import { ImageUploadForm } from "../components/imageUpload/ImageUploadForm";
-import { RandomBackground } from "../components/imageUpload/RandomBackground";
+import { ThumbnailSourceForm } from "../components/thumbnailSource/ThumbnailSourceForm";
+import { RandomPolaroids } from "../components/thumbnailSource/RandomPolaroids";
 import { Styles } from "../styles/GlobalStyles";
 
-export const ImageUpload = () => {
+export const ThumbnailSourceAttach = () => {
   return (
     <S.Container>
-      <RandomBackground />
+      <RandomPolaroids />
       <motion.div
         drag
         dragTransition={{ bounceStiffness: 100, bounceDamping: 10 }}
@@ -26,7 +26,7 @@ export const ImageUpload = () => {
           damping: 20,
         }}
       >
-        <ImageUploadForm />
+        <ThumbnailSourceForm />
       </motion.div>
     </S.Container>
   );

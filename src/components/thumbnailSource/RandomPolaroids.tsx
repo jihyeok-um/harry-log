@@ -5,7 +5,7 @@ import { randomInt } from "../../utils/randomInt";
 import { photos } from "../../constants/photos";
 import { debounce } from "../../utils/debounce";
 
-export const RandomBackground = () => {
+export const RandomPolaroids = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -16,7 +16,7 @@ export const RandomBackground = () => {
   window.addEventListener("resize", () => debounce({ callback: handleResizeWindow, delay: 500 }));
 
   return (
-    <S.BackgroundPolaroid>
+    <S.Container>
       {photos.map((photo) => {
         const randomCoord = { x: randomInt(width / 1.5), y: randomInt(height / 1.5) };
         const randomRotate = randomInt(45, -45);
@@ -40,25 +40,21 @@ export const RandomBackground = () => {
               damping: 20,
             }}
           >
-            <S.BackgroundPolaroidFrame
-              src={photo}
-              randomCoord={randomCoord}
-              randomRotate={randomRotate}
-            />
+            <S.Polaroid src={photo} randomCoord={randomCoord} randomRotate={randomRotate} />
           </motion.div>
         );
       })}
-    </S.BackgroundPolaroid>
+    </S.Container>
   );
 };
 
-interface BackgroundPolaroidFrameProps {
+interface PolaroidProps {
   randomCoord: Coordinate;
   randomRotate: number;
 }
 
 const S = {
-  BackgroundPolaroid: styled.div`
+  Container: styled.div`
     position: absolute;
     overflow: hidden;
     top: 0;
@@ -67,7 +63,7 @@ const S = {
     height: 100%;
   `,
 
-  BackgroundPolaroidFrame: styled.img<BackgroundPolaroidFrameProps>`
+  Polaroid: styled.img<PolaroidProps>`
     position: absolute;
     top: ${(props) => props.randomCoord.y}px;
     left: ${(props) => props.randomCoord.x}px;

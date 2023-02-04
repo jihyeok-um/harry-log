@@ -2,17 +2,17 @@ import styled from "styled-components";
 import addPictureIcon from "../../assets/icons/addDocumentIcon.svg";
 import { Styles } from "../../styles/GlobalStyles";
 
-export const ImageUploadInput = ({
-  inputRef,
-  handleChangeInput,
-  handleDragImage,
-  handleDropImageContainer,
+export const ThumbnailSourceInput = ({
+  thumbnailSourceInputRef,
+  handleChangeThumbnailSourceInput,
+  handleDragThumbnailSourceInput,
+  handleDropThumbnailSourceInput,
 }: ImageUploadInputProps) => {
   return (
     <S.InputContainer
-      onDragOver={handleDragImage}
-      onDragLeave={handleDragImage}
-      onDrop={handleDropImageContainer}
+      onDragOver={handleDragThumbnailSourceInput}
+      onDragLeave={handleDragThumbnailSourceInput}
+      onDrop={handleDropThumbnailSourceInput}
     >
       <S.Label htmlFor="imageInput">
         <S.PolaroidContent alt="이미지 추가" src={addPictureIcon} height={300} width={300} />
@@ -21,18 +21,18 @@ export const ImageUploadInput = ({
         id="imageInput"
         type="file"
         accept="image/*"
-        ref={inputRef}
-        onChange={handleChangeInput}
+        ref={thumbnailSourceInputRef}
+        onChange={handleChangeThumbnailSourceInput}
       />
     </S.InputContainer>
   );
 };
 
 interface ImageUploadInputProps {
-  inputRef: React.RefObject<HTMLInputElement>;
-  handleDropImageContainer: (e: React.DragEvent<Element>) => void;
-  handleDragImage: (e: React.DragEvent<Element>) => void;
-  handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  thumbnailSourceInputRef: React.RefObject<HTMLInputElement>;
+  handleDropThumbnailSourceInput: (e: React.DragEvent<Element>) => void;
+  handleDragThumbnailSourceInput: (e: React.DragEvent<Element>) => void;
+  handleChangeThumbnailSourceInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const S = {

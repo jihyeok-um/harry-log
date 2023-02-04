@@ -5,9 +5,9 @@ import { Pointillism } from "../components/Pointillism";
 import { usePointillism } from "../hooks/usePointillism";
 
 export const ThumbnailResult = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const imageUrl = searchParams.get("imageUrl");
-  const { canvasRef, canvasStatus } = usePointillism(imageUrl!);
+  const [searchParams] = useSearchParams();
+  const thumbnailSource = searchParams.get("thumbnail-source");
+  const { canvasRef, canvasStatus } = usePointillism(thumbnailSource!);
 
   return (
     <S.Container>
