@@ -8,7 +8,13 @@ import { Styles } from "../styles/Styles";
 export const ThumbnailResult = () => {
   const [searchParams] = useSearchParams();
   const thumbnailSource = searchParams.get("thumbnail-source");
-  const { canvasRef, canvasStatus } = usePointillism(thumbnailSource!);
+  const noiseEffect = searchParams.get("noise-effect");
+  const noiseStrength = searchParams.get("noise-strength");
+  const { canvasRef, canvasStatus } = usePointillism({
+    thumbnailSource,
+    noiseEffect,
+    noiseStrength,
+  });
 
   return (
     <S.Container>
