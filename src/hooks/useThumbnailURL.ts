@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { CanvasStatus } from "./../types/index";
+import { CanvasStatus } from "../types/index";
 
-export const useThumbnail = ({ canvasRef, canvasStatus }: useThumbnailParams) => {
+export const useThumbnailURL = ({ canvasRef, canvasStatus }: useThumbnailURLParams) => {
   const [thumbnailURL, setThumbnailURL] = useState<string | undefined>();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export const useThumbnail = ({ canvasRef, canvasStatus }: useThumbnailParams) =>
   };
 };
 
-interface useThumbnailParams {
+interface useThumbnailURLParams {
   canvasRef: React.RefObject<HTMLCanvasElement>;
   canvasStatus: CanvasStatus;
 }

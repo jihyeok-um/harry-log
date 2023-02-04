@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { useThumbnail } from "../hooks/useThumbnail";
+import { useThumbnailURL } from "../hooks/useThumbnailURL";
 import { CanvasStatus } from "../types";
 
 export const DownloadButton = ({ canvasRef, canvasStatus }: DownloadButtonProps) => {
-  const { thumbnailURL } = useThumbnail({ canvasRef, canvasStatus });
+  const { thumbnailURL } = useThumbnailURL({ canvasRef, canvasStatus });
 
   if (!thumbnailURL) return <h1>로딩중</h1>;
 
