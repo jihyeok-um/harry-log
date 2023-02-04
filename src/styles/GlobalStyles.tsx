@@ -22,7 +22,7 @@ export const Styles = {
   `,
 };
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   ${reset};
 
   html {
@@ -57,5 +57,3 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `;
-
-export default GlobalStyle;
