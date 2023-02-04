@@ -5,6 +5,7 @@ import { randomInt } from "../../utils/randomInt";
 import { photos } from "../../constants/photos";
 import { debounce } from "../../utils/debounce";
 import { Polaroid } from "./Polaroid";
+import { Styles } from "../../styles/Styles";
 
 export const RandomPolaroids = () => {
   const width = window.innerWidth;
@@ -51,11 +52,10 @@ export const RandomPolaroids = () => {
 
 const S = {
   Container: styled.div`
+    ${Styles.FullWidthAndHeight}
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
   `,
 };

@@ -37,7 +37,7 @@ const S = {
     ${Styles.FlexCenter}
     ${Styles.FullWidthAndHeight}
     flex-direction: column;
-    background-color: whitesmoke;
+    background-color: ${(props) => props.theme.BACKGROUND};
   `,
 
   Title: styled.h1`

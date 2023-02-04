@@ -51,7 +51,7 @@ const S = {
     width: 279px;
     height: 279px;
     object-fit: cover;
-    background-color: #888888;
+    background-color: ${(props) => props.theme.GRAY_400};
 
     @media (max-width: 600px) {
       width: 232px;

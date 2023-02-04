@@ -44,9 +44,9 @@ const S = {
     flex-direction: column;
     width: fit-content;
     height: fit-content;
-    border: 10px solid #fff;
-    border-bottom: 100px solid #fff;
-    box-shadow: 3px 3px 3px 3px black;
+    border: 10px solid ${(props) => props.theme.WHITE};
+    border-bottom: 100px solid ${(props) => props.theme.WHITE};
+    box-shadow: 2px 2px 2px 2px ${(props) => props.theme.GRAY_900};
   `,
 
   Form: styled.form`

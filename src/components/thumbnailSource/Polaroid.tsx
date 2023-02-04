@@ -24,7 +24,7 @@ const S = {
 
     width: 225px;
     height: 300px;
-    box-shadow: 1px 1px 1px 1px #555555;
+    box-shadow: 1px 1px 1px 1px ${(props) => props.theme.GRAY_800};
 
     @media (max-width: 600px) {
       width: 150px;

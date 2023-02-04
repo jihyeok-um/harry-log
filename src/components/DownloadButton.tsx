@@ -21,7 +21,7 @@ interface DownloadButtonProps {
 
 const S = {
   DownloadButton: styled.a`
-    border: 1px solid #666666;
+    border: 1px solid ${(props) => props.theme.GRAY_400};
     border-radius: 2px;
     margin-left: 5px;
     padding: 5px;
