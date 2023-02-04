@@ -1,10 +1,10 @@
-import { THUMBNAIL_WIDTH, TRIANGLE_GAP } from "../constants/triangle";
+import { THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { Coordinate } from "../types/index";
 
-export const getCoordinate = (index: number) => {
+export const getCoordinate = (index: number, triangleGap: number) => {
   const coordinate = {
-    x: Math.floor(index % (THUMBNAIL_WIDTH / TRIANGLE_GAP)) * TRIANGLE_GAP,
-    y: Math.floor(index / (THUMBNAIL_WIDTH / TRIANGLE_GAP)) * TRIANGLE_GAP,
+    x: Math.floor(index % (THUMBNAIL_WIDTH / triangleGap)) * triangleGap,
+    y: Math.floor(index / (THUMBNAIL_WIDTH / triangleGap)) * triangleGap,
   };
 
   return coordinate;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/triangle";
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 
 export const Pointillism = ({ canvasRef }: PointillismProps) => {
   return (

@@ -1,17 +1,20 @@
+import { NOISE_STRENGTH } from "../constants/pointillism";
 import { useRef, useState } from "react";
 import {
   RESOLUTION,
   RGBA_ARRAY_SIZE,
   THUMBNAIL_HEIGHT,
   THUMBNAIL_WIDTH,
-  TRIANGLE_COUNT,
-  TRIANGLE_SIZE,
-} from "../constants/triangle";
+} from "../constants/pointillism";
 import { CanvasStatus, DrawTriangleParams, TriangleInfo } from "./../types/index";
 import { randomInt } from "../utils/randomInt";
 import { getCoordinate, getRgbaPixel } from "../utils/triangle";
 
-export const usePointillism = (src: string) => {
+export const usePointillism = ({
+  thumbnailSource,
+  noiseEffect,
+  noiseStrength,
+}: usePointillismParams) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const image = new Image();
   const [canvasStatus, setCanvasStatus] = useState<CanvasStatus>("none");
@@ -28,11 +31,21 @@ export const usePointillism = (src: string) => {
   };
 
   const getTriangleInfo = (triangleIndex: number): TriangleInfo => {
-    const coord = getCoordinate(triangleIndex);
+    const coord = getCoordinate(triangleIndex, NOISE_STRENGTH[3].TRIANGLE_GAP);
     const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y });
-    const firstPoint = { x: coord.x, y: coord.y + randomInt(TRIANGLE_SIZE) };
-    const secondPoint = { x: coord.x + randomInt(TRIANGLE_SIZE), y: coord.y };
-    const thirdPoint = { x: coord.x + randomInt(TRIANGLE_SIZE), y: coord.y + TRIANGLE_SIZE };
+
+    const firstPoint = {
+      x: coord.x,
+      y: coord.y + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
+    };
+    const secondPoint = {
+      x: coord.x + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
+      y: coord.y,
+    };
+    const thirdPoint = {
+      x: coord.x + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
+      y: coord.y + NOISE_STRENGTH[3].TRIANGLE_SIZE,
+    };
 
     return { firstPoint, secondPoint, thirdPoint, rgbaPixel };
   };
@@ -85,7 +98,7 @@ export const usePointillism = (src: string) => {
 
     const imageData = getImageData();
     const rgba = getRgbaValues(imageData);
-    const triangleDrawCount = Array.from({ length: TRIANGLE_COUNT }, () => 0);
+    const triangleDrawCount = Array.from({ length: NOISE_STRENGTH[2].TRIANGLE_COUNT }, () => 0);
 
     triangleDrawCount.forEach((el, i) => {
       const triangleInfo = getTriangleInfo(i);
@@ -96,10 +109,16 @@ export const usePointillism = (src: string) => {
   };
 
   image.addEventListener("load", drawPointillism);
-  image.src = src;
+  if (thumbnailSource) image.src = thumbnailSource;
 
   return {
     canvasRef,
     canvasStatus,
   };
 };
+
+interface usePointillismParams {
+  thumbnailSource: string | null;
+  noiseEffect: string | null;
+  noiseStrength: string | null;
+}

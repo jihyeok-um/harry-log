@@ -1,3 +1,4 @@
+import { ROUTE_PATH } from "./../constants/route";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +13,8 @@ export const useThumbnailSourceForm = () => {
 
   const handleSubmitThumbnailSourceForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate(`thumbnail-result?thumbnail-source=${thumbnailSource}`);
+
+    navigate(`${ROUTE_PATH.THUMBNAIL_OPTIONS}?thumbnail-source=${thumbnailSource}`);
   };
 
   const handleDropThumbnailSourceInput = (e: React.DragEvent) => {
