@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { ThumbnailSourceForm } from "../components/thumbnailSource/ThumbnailSourceForm";
 import { RandomPolaroids } from "../components/thumbnailSource/RandomPolaroids";
-import { Styles } from "../styles/GlobalStyles";
+import { Styles } from "../styles/Styles";
 
 export const ThumbnailSourceAttach = () => {
   return (

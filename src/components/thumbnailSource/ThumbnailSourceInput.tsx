@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import addPictureIcon from "../../assets/icons/addDocumentIcon.svg";
-import { Styles } from "../../styles/GlobalStyles";
+import { Styles } from "../../styles/Styles";
 
 export const ThumbnailSourceInput = ({
   thumbnailSourceInputRef,

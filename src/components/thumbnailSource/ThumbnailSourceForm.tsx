@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useThumbnailSourceForm } from "../../hooks/useThumbnailSourceForm";
-import { Styles } from "../../styles/GlobalStyles";
+import { Styles } from "../../styles/Styles";
 import { ThumbnailSourceConfirm } from "./ThumbnailSourceConfirm";
 import { ThumbnailSourceInput } from "./ThumbnailSourceInput";
 
