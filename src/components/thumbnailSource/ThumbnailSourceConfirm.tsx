@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import camera from "../../assets/icons/camera.svg";
+import { Image } from "../@shared/Image";
 
 export const ThumbnailSourceConfirm = ({
   thumbnailSource,
@@ -20,10 +21,10 @@ export const ThumbnailSourceConfirm = ({
           setIsDimmed(false);
         }}
       >
-        <S.ButtonImage src={cancelIcon} alt="이미지 삭제 아이콘" />
+        <Image src={cancelIcon} alt="이미지 삭제 아이콘" width={44} height={44} />
       </S.Button>
       <S.SubmitButton>
-        <img src={camera} alt="이미지 제출 아이콘" width={60} height={60} />
+        <Image src={camera} alt="이미지 제출 아이콘" width={60} height={60} />
       </S.SubmitButton>
     </S.Container>
   );
@@ -69,11 +70,6 @@ const S = {
     position: absolute;
     top: 8px;
     right: 8px;
-    width: 44px;
-    height: 44px;
-  `,
-
-  ButtonImage: styled.img`
     width: 44px;
     height: 44px;
   `,
