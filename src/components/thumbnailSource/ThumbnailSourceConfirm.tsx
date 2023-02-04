@@ -48,15 +48,10 @@ const S = {
   `,
 
   ThumbnailSource: styled.img<{ isImageDimmer: boolean }>`
-    width: 279px;
-    height: 279px;
     object-fit: cover;
+    width: inherit;
+    height: inherit;
     border: 1px solid ${(props) => props.theme.GRAY_400};
-
-    @media (max-width: 600px) {
-      width: 232px;
-      height: 232px;
-    }
 
     ${(props) =>
       props.isImageDimmer

@@ -40,7 +40,7 @@ const S = {
     position: relative;
     width: 279px;
     height: 279px;
-    background-color: #888888;
+    background-color: ${(props) => props.theme.GRAY_500};
 
     @media (max-width: 600px) {
       width: 232px;
