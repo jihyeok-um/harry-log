@@ -39,9 +39,9 @@ export const ThumbnailSourceForm = () => {
 
 const S = {
   PolaroidContainer: styled.div`
+    ${Styles.FlexCenter}
     position: relative;
     flex-direction: column;
-    ${Styles.FlexCenter}
     width: fit-content;
     height: fit-content;
     border: 10px solid #fff;

@@ -34,9 +34,9 @@ export const ThumbnailSourceAttach = () => {
 
 const S = {
   Container: styled.div`
-    flex-direction: column;
     ${Styles.FlexCenter}
     ${Styles.FullWidthAndHeight}
+    flex-direction: column;
     background-color: whitesmoke;
   `,
 

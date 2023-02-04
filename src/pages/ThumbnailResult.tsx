@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { DownloadButton } from "../components/DownloadButton";
 import { Pointillism } from "../components/Pointillism";
 import { usePointillism } from "../hooks/usePointillism";
+import { Styles } from "../styles/Styles";
 
 export const ThumbnailResult = () => {
   const [searchParams] = useSearchParams();
@@ -19,10 +20,8 @@ export const ThumbnailResult = () => {
 
 const S = {
   Container: styled.div`
-    display: flex;
+    ${Styles.FlexCenter}
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 20px;
   `,
 };
