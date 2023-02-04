@@ -13,7 +13,7 @@ export const ThumbnailSourceConfirm = ({
   return (
     <S.Container>
       <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isDimmed} />
-      <S.Button
+      <S.CancelButton
         onMouseEnter={() => setIsDimmed(true)}
         onMouseLeave={() => setIsDimmed(false)}
         onClick={(e: React.MouseEvent) => {
@@ -22,7 +22,7 @@ export const ThumbnailSourceConfirm = ({
         }}
       >
         <Image src={cancelIcon} alt="이미지 삭제 아이콘" width={44} height={44} />
-      </S.Button>
+      </S.CancelButton>
       <S.SubmitButton>
         <Image src={camera} alt="이미지 제출 아이콘" width={60} height={60} />
       </S.SubmitButton>
@@ -50,8 +50,8 @@ const S = {
   ThumbnailSource: styled.img<{ isImageDimmer: boolean }>`
     width: 279px;
     height: 279px;
-    background-color: #888888;
     object-fit: cover;
+    background-color: #888888;
 
     @media (max-width: 600px) {
       width: 232px;
@@ -66,7 +66,7 @@ const S = {
         : css``};
   `,
 
-  Button: styled.button`
+  CancelButton: styled.button`
     position: absolute;
     top: 8px;
     right: 8px;
