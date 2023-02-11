@@ -31,20 +31,20 @@ export const usePointillism = ({
   };
 
   const getTriangleInfo = (triangleIndex: number): TriangleInfo => {
-    const coord = getCoordinate(triangleIndex, NOISE_STRENGTH[3].TRIANGLE_GAP);
+    const coord = getCoordinate(triangleIndex, NOISE_STRENGTH[noiseStrength].TRIANGLE_GAP);
     const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y });
 
     const firstPoint = {
       x: coord.x,
-      y: coord.y + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
+      y: coord.y + randomInt(NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE),
     };
     const secondPoint = {
-      x: coord.x + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
+      x: coord.x + randomInt(NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE),
       y: coord.y,
     };
     const thirdPoint = {
-      x: coord.x + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
-      y: coord.y + NOISE_STRENGTH[3].TRIANGLE_SIZE,
+      x: coord.x + randomInt(NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE),
+      y: coord.y + NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE,
     };
 
     return { firstPoint, secondPoint, thirdPoint, rgbaPixel };
@@ -71,7 +71,7 @@ export const usePointillism = ({
   const getRgbaValues = (imageData: Uint8ClampedArray | undefined) => {
     if (!imageData) return;
 
-    const rgbas: number[][] = Array.from({ length: imageData.length }, () => []);
+    const rgbas: [][] = Array.from({ length: imageData.length }, () => []);
     let rgbaFirstIndex = 0;
 
     return rgbas.map((el, i) => {
@@ -98,13 +98,16 @@ export const usePointillism = ({
 
     const imageData = getImageData();
     const rgba = getRgbaValues(imageData);
-    const triangleDrawCount = Array.from({ length: NOISE_STRENGTH[2].TRIANGLE_COUNT }, () => 0);
+    const triangleDrawCount = Array.from(
+      { length: NOISE_STRENGTH[noiseStrength].TRIANGLE_COUNT },
+      () => 0
+    );
 
     triangleDrawCount.forEach((el, i) => {
       const triangleInfo = getTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
-    // drawDimmer();
+    drawDimmer();
     setCanvasStatus("done");
   };
 
@@ -120,5 +123,5 @@ export const usePointillism = ({
 interface usePointillismParams {
   thumbnailSource: string | null;
   noiseEffect: string | null;
-  noiseStrength: string | null;
+  noiseStrength: number;
 }

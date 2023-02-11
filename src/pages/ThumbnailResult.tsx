@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { DownloadButton } from "../components/DownloadButton";
 import { Pointillism } from "../components/Pointillism";
@@ -7,13 +7,15 @@ import { Styles } from "../styles/Styles";
 
 export const ThumbnailResult = () => {
   const [searchParams] = useSearchParams();
-  const thumbnailSource = searchParams.get("thumbnail-source");
-  const noiseEffect = searchParams.get("noise-effect");
+  const location = useLocation();
   const noiseStrength = searchParams.get("noise-strength");
+  const noiseEffect = searchParams.get("noise-effect");
+
+  location.state.thumbnailSource;
   const { canvasRef, canvasStatus } = usePointillism({
-    thumbnailSource,
+    thumbnailSource: location.state.thumbnailSource,
+    noiseStrength: Number(noiseStrength) - 1,
     noiseEffect,
-    noiseStrength,
   });
 
   return (
