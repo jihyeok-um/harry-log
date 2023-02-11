@@ -12,8 +12,9 @@ import { getCoordinate, getRgbaPixel } from "../utils/triangle";
 
 export const usePointillism = ({
   thumbnailSource,
-  noiseEffect,
   noiseStrength,
+  canvasWidth,
+  canvasHeight,
 }: usePointillismParams) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const image = new Image();
@@ -24,15 +25,19 @@ export const usePointillism = ({
       const ctx = canvasRef.current.getContext("2d", { willReadFrequently: true });
 
       if (ctx) {
-        ctx.drawImage(image, 0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
-        return ctx.getImageData(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).data;
+        ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
+        return ctx.getImageData(0, 0, canvasWidth, canvasHeight).data;
       }
     }
   };
 
   const getTriangleInfo = (triangleIndex: number): TriangleInfo => {
-    const coord = getCoordinate(triangleIndex, NOISE_STRENGTH[noiseStrength].TRIANGLE_GAP);
-    const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y });
+    const coord = getCoordinate(
+      triangleIndex,
+      NOISE_STRENGTH[noiseStrength].TRIANGLE_GAP,
+      canvasWidth
+    );
+    const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y }, canvasWidth);
 
     const firstPoint = {
       x: coord.x,
@@ -107,7 +112,7 @@ export const usePointillism = ({
       const triangleInfo = getTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
-    drawDimmer();
+    // drawDimmer();
     setCanvasStatus("done");
   };
 
@@ -122,6 +127,7 @@ export const usePointillism = ({
 
 interface usePointillismParams {
   thumbnailSource: string | null;
-  noiseEffect: string | null;
   noiseStrength: number;
+  canvasWidth: number;
+  canvasHeight: number;
 }

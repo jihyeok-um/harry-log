@@ -1,15 +1,23 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+import { Carousel } from "../components/Carousel";
 import { ROUTE_PATH } from "../constants/route";
+import { usePointillism } from "../hooks/usePointillism";
 import { Styles } from "../styles/Styles";
 
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
-  const [noiseStrength, setNoiseStrength] = useState(1);
-  const thumbnailSource = searchParams.get("thumbnail-source");
-  const noiseStrengths = [1, 2, 3, 4, 5];
   const navigate = useNavigate();
+  const [noiseStrength, setNoiseStrength] = useState(1);
+  const thumbnailSource = String(searchParams.get("thumbnail-source"));
+  const noiseStrengths = [1, 2, 3, 4, 5, 6];
+  const { canvasRef } = usePointillism({
+    thumbnailSource,
+    noiseStrength: 1,
+    canvasWidth: 600,
+    canvasHeight: 600,
+  });
 
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -20,14 +28,7 @@ export const ThumbnailOptions = () => {
 
   return (
     <S.Container>
-      <S.Title>옵션 페이지</S.Title>
-      <S.OptionsContainer>
-        {noiseStrengths.map((el) => (
-          <S.Option key={el} onClick={() => setNoiseStrength(el)}>
-            {el}
-          </S.Option>
-        ))}
-      </S.OptionsContainer>
+      <Carousel thumbnailSource={thumbnailSource} />
       <S.Button onClick={handleClickButton}>결과 페이지로 이동</S.Button>
     </S.Container>
   );
@@ -39,27 +40,44 @@ const S = {
     ${Styles.FullWidthAndHeight}
     flex-direction: column;
     gap: 20px;
+    perspective: 2000px;
   `,
 
-  Title: styled.h1`
-    font-size: 28px;
-    font-weight: 700;
-  `,
-
-  OptionsContainer: styled.div`
+  Carousel: styled.div`
     ${Styles.FlexCenter}
+    position: relative;
     flex-direction: row;
     gap: 20px;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
   `,
 
-  Option: styled.button`
+  CarouselItem: styled.canvas<{ rotateYPercent: number }>`
+    position: absolute;
+    text-align: center;
+    width: 600px;
+    height: 600px;
     background-color: ${(props) => props.theme.GRAY_700};
-    border-radius: 50%;
-    padding: 10px;
     color: ${(props) => props.theme.WHITE};
+    transform: rotateY(${(props) => props.rotateYPercent}deg) translateZ(550px);
+    font-size: 24px;
+
+    @media (max-width: 1000px) {
+      width: 300px;
+      height: 300px;
+      transform: rotateY(${(props) => props.rotateYPercent}deg) translateZ(300px);
+    }
+  `,
+
+  ItemImage: styled.img`
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   `,
 
   Button: styled.button`
+    position: absolute;
+    bottom: 100px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;
