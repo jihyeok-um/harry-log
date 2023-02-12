@@ -26,7 +26,7 @@ export const ThumbnailOptions = () => {
         <S.LeftButton
           onClick={() => {
             setFocusIndex(focusIndex + 60);
-            setNoiseStrength((prev) => prev - 1);
+            setNoiseStrength((prev) => (prev === 1 ? 6 : prev - 1));
           }}
         >
           {"<"}
@@ -35,7 +35,7 @@ export const ThumbnailOptions = () => {
         <S.RightButton
           onClick={() => {
             setFocusIndex(focusIndex - 60);
-            setNoiseStrength((prev) => prev + 1);
+            setNoiseStrength((prev) => (prev === 6 ? 1 : prev + 1));
           }}
         >
           {">"}
