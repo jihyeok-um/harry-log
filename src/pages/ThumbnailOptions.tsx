@@ -11,13 +11,6 @@ export const ThumbnailOptions = () => {
   const navigate = useNavigate();
   const [noiseStrength, setNoiseStrength] = useState(1);
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
-  const noiseStrengths = [1, 2, 3, 4, 5, 6];
-  const { canvasRef } = usePointillism({
-    thumbnailSource,
-    noiseStrength: 1,
-    canvasWidth: 600,
-    canvasHeight: 600,
-  });
 
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -40,7 +33,7 @@ const S = {
     ${Styles.FullWidthAndHeight}
     flex-direction: column;
     gap: 20px;
-    perspective: 2000px;
+    perspective: 3000px;
   `,
 
   Carousel: styled.div`
@@ -65,7 +58,7 @@ const S = {
     @media (max-width: 1000px) {
       width: 300px;
       height: 300px;
-      transform: rotateY(${(props) => props.rotateYPercent}deg) translateZ(300px);
+      transform: rotateY(${(props) => props.rotateYPercent}deg) translateZ(250px);
     }
   `,
 
