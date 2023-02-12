@@ -7,7 +7,8 @@ import { Styles } from "../styles/Styles";
 
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
-  const [noiseStrength] = useState(1);
+  const [noiseStrength, setNoiseStrength] = useState(1);
+  const [focusIndex, setFocusIndex] = useState(0);
   const navigate = useNavigate();
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
 
@@ -20,8 +21,26 @@ export const ThumbnailOptions = () => {
 
   return (
     <S.Container>
-      <Carousel thumbnailSource={thumbnailSource} />
-      <S.Button onClick={handleClickButton}>결과 페이지로 이동</S.Button>
+      <Carousel thumbnailSource={thumbnailSource} focusIndex={focusIndex} />
+      <S.ButtonContainer>
+        <S.LeftButton
+          onClick={() => {
+            setFocusIndex(focusIndex + 60);
+            setNoiseStrength((prev) => prev - 1);
+          }}
+        >
+          {"<"}
+        </S.LeftButton>
+        <S.Button onClick={handleClickButton}>선택 완료</S.Button>
+        <S.RightButton
+          onClick={() => {
+            setFocusIndex(focusIndex - 60);
+            setNoiseStrength((prev) => prev + 1);
+          }}
+        >
+          {">"}
+        </S.RightButton>
+      </S.ButtonContainer>
     </S.Container>
   );
 };
@@ -35,41 +54,31 @@ const S = {
     perspective: 3000px;
   `,
 
-  Carousel: styled.div`
-    ${Styles.FlexCenter}
-    position: relative;
-    flex-direction: row;
-    gap: 20px;
-    transform-style: preserve-3d;
-    transform: rotateY(0deg);
-  `,
-
-  CarouselItem: styled.canvas<{ rotateYPercent: number }>`
+  ButtonContainer: styled.div`
     position: absolute;
-    text-align: center;
-    width: 600px;
-    height: 600px;
-    background-color: ${(props) => props.theme.GRAY_700};
-    color: ${(props) => props.theme.WHITE};
-    transform: rotateY(${(props) => props.rotateYPercent}deg) translateZ(550px);
-    font-size: 24px;
-
-    @media (max-width: 1000px) {
-      width: 300px;
-      height: 300px;
-      transform: rotateY(${(props) => props.rotateYPercent}deg) translateZ(250px);
-    }
+    bottom: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   `,
 
-  ItemImage: styled.img`
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  LeftButton: styled.button`
+    background-color: ${(props) => props.theme.GRAY_500};
+    border-radius: 10px;
+    padding: 10px;
+    color: ${(props) => props.theme.WHITE};
   `,
 
   Button: styled.button`
-    position: absolute;
-    bottom: 100px;
+    background-color: ${(props) => props.theme.GRAY_500};
+    border-radius: 10px;
+    padding: 10px;
+    color: ${(props) => props.theme.WHITE};
+  `,
+
+  RightButton: styled.button`
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;

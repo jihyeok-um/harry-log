@@ -110,7 +110,10 @@ export const usePointillism = ({
     setCanvasStatus("done");
   };
 
-  image.addEventListener("load", () => requestAnimationFrame(drawPointillism));
+  useEffect(() => {
+    drawPointillism();
+  }, []);
+
   if (thumbnailSource) image.src = thumbnailSource;
 
   return {

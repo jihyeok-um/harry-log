@@ -15,7 +15,7 @@ export const ThumbnailSourceConfirm = ({
   return (
     <S.Container>
       <canvas ref={canvasRef} width={600} height={600} style={{ display: "none" }} />
-      <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isDimmed} />
+      {thumbnailSource && <S.ThumbnailSource src={thumbnailSource} isImageDimmer={isDimmed} />}
       <S.CancelButton
         onMouseEnter={() => setIsDimmed(true)}
         onMouseLeave={() => setIsDimmed(false)}
@@ -43,6 +43,7 @@ const S = {
     position: relative;
     width: 279px;
     height: 279px;
+    background-color: ${(props) => props.theme.GRAY_500};
 
     @media (max-width: 600px) {
       width: 232px;
@@ -52,9 +53,14 @@ const S = {
 
   ThumbnailSource: styled.img<{ isImageDimmer: boolean }>`
     object-fit: cover;
-    width: inherit;
-    height: inherit;
+    width: 278px;
+    height: 278px;
     border: 1px solid ${(props) => props.theme.GRAY_400};
+
+    @media (max-width: 600px) {
+      width: 232px;
+      height: 232px;
+    }
 
     ${(props) =>
       props.isImageDimmer

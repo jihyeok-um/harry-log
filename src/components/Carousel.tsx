@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Styles } from "../styles/Styles";
 import { CarouselItem } from "./CarouselItem";
 
-export const Carousel = ({ thumbnailSource }: CarouselProps) => {
-  const [focusIndex, setFocusIndex] = useState(0);
+export const Carousel = ({ thumbnailSource, focusIndex }: CarouselProps) => {
   const noiseStrengths = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -19,13 +18,6 @@ export const Carousel = ({ thumbnailSource }: CarouselProps) => {
           />
         ))}
       </S.Container>
-      <S.Button
-        onClick={() => {
-          setFocusIndex(focusIndex - 60);
-        }}
-      >
-        캐러셀 돌리기
-      </S.Button>
     </>
   );
 };
@@ -41,13 +33,9 @@ const S = {
 
     transform: rotateY(${(props) => props.focusIndex}deg);
   `,
-
-  Button: styled.button`
-    position: absolute;
-    top: 10px;
-  `,
 };
 
 interface CarouselProps {
   thumbnailSource: string;
+  focusIndex: number;
 }
