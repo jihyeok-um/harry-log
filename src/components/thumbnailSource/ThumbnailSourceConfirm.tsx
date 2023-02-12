@@ -3,15 +3,18 @@ import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import camera from "../../assets/icons/camera.svg";
 import { Image } from "../@shared/Image";
+import { useRgba } from "../../hooks/useRgba";
 
 export const ThumbnailSourceConfirm = ({
   thumbnailSource,
   handleClickCancelButton,
 }: ThumbnailSourceConfirmProps) => {
   const [isDimmed, setIsDimmed] = useState(false);
+  const { canvasRef } = useRgba({ thumbnailSource, canvasWidth: 600, canvasHeight: 600 });
 
   return (
     <S.Container>
+      <canvas ref={canvasRef} width={600} height={600} style={{ display: "none" }} />
       <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isDimmed} />
       <S.CancelButton
         onMouseEnter={() => setIsDimmed(true)}

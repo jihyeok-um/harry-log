@@ -4,7 +4,7 @@ import { usePointillism } from "../hooks/usePointillism";
 export const CarouselItem = ({ rotateY, thumbnailSource, noiseStrength }: CarouselItem) => {
   const { canvasRef } = usePointillism({
     thumbnailSource,
-    noiseStrength: noiseStrength,
+    noiseStrength,
     canvasWidth: 600,
     canvasHeight: 600,
   });

@@ -3,13 +3,12 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { Carousel } from "../components/Carousel";
 import { ROUTE_PATH } from "../constants/route";
-import { usePointillism } from "../hooks/usePointillism";
 import { Styles } from "../styles/Styles";
 
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
+  const [noiseStrength] = useState(1);
   const navigate = useNavigate();
-  const [noiseStrength, setNoiseStrength] = useState(1);
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
 
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
