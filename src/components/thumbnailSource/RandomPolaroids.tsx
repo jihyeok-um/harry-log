@@ -1,22 +1,13 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Coordinate } from "../../types";
 import { randomInt } from "../../utils/randomInt";
 import { photos } from "../../constants/photos";
-import { debounce } from "../../utils/debounce";
 import { Polaroid } from "./Polaroid";
 import { Styles } from "../../styles/Styles";
 
 export const RandomPolaroids = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
-
-  const handleResizeWindow = () => {
-    window.location.reload();
-  };
-
-  window.addEventListener("resize", () => debounce({ callback: handleResizeWindow, delay: 500 }));
-
   return (
     <S.Container>
       {photos.map((photo) => {

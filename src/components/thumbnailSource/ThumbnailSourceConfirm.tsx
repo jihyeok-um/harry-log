@@ -3,16 +3,19 @@ import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import camera from "../../assets/icons/camera.svg";
 import { Image } from "../@shared/Image";
+import { useRgba } from "../../hooks/useRgba";
 
 export const ThumbnailSourceConfirm = ({
   thumbnailSource,
   handleClickCancelButton,
 }: ThumbnailSourceConfirmProps) => {
   const [isDimmed, setIsDimmed] = useState(false);
+  const { canvasRef } = useRgba({ thumbnailSource, canvasWidth: 600, canvasHeight: 600 });
 
   return (
     <S.Container>
-      <S.ThumbnailSource src={thumbnailSource!} isImageDimmer={isDimmed} />
+      <canvas ref={canvasRef} width={600} height={600} style={{ display: "none" }} />
+      {thumbnailSource && <S.ThumbnailSource src={thumbnailSource} isImageDimmer={isDimmed} />}
       <S.CancelButton
         onMouseEnter={() => setIsDimmed(true)}
         onMouseLeave={() => setIsDimmed(false)}
@@ -40,6 +43,7 @@ const S = {
     position: relative;
     width: 279px;
     height: 279px;
+    background-color: ${(props) => props.theme.GRAY_500};
 
     @media (max-width: 600px) {
       width: 232px;
@@ -49,9 +53,14 @@ const S = {
 
   ThumbnailSource: styled.img<{ isImageDimmer: boolean }>`
     object-fit: cover;
-    width: inherit;
-    height: inherit;
+    width: 278px;
+    height: 278px;
     border: 1px solid ${(props) => props.theme.GRAY_400};
+
+    @media (max-width: 600px) {
+      width: 232px;
+      height: 232px;
+    }
 
     ${(props) =>
       props.isImageDimmer

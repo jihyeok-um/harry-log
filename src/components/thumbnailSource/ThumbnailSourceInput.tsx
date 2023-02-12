@@ -15,7 +15,7 @@ export const ThumbnailSourceInput = ({
       onDrop={handleDropThumbnailSourceInput}
     >
       <S.Label htmlFor="imageInput">
-        <S.PolaroidContent alt="이미지 추가" src={addPictureIcon} height={300} width={300} />
+        <S.PolaroidContent alt="이미지 추가" src={addPictureIcon} height={600} width={600} />
       </S.Label>
       <S.Input
         id="imageInput"

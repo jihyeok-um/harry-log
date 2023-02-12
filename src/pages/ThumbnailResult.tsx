@@ -1,23 +1,36 @@
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { DownloadButton } from "../components/DownloadButton";
 import { Pointillism } from "../components/Pointillism";
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { usePointillism } from "../hooks/usePointillism";
+import { useRgba } from "../hooks/useRgba";
 import { Styles } from "../styles/Styles";
 
 export const ThumbnailResult = () => {
   const [searchParams] = useSearchParams();
-  const thumbnailSource = searchParams.get("thumbnail-source");
-  const noiseEffect = searchParams.get("noise-effect");
+  const location = useLocation();
   const noiseStrength = searchParams.get("noise-strength");
+  const { canvasRef: rgbaRef } = useRgba({
+    thumbnailSource: location.state.thumbnailSource,
+    canvasWidth: THUMBNAIL_WIDTH,
+    canvasHeight: THUMBNAIL_HEIGHT,
+  });
   const { canvasRef, canvasStatus } = usePointillism({
-    thumbnailSource,
-    noiseEffect,
-    noiseStrength,
+    thumbnailSource: location.state.thumbnailSource,
+    noiseStrength: Number(noiseStrength) - 1,
+    canvasWidth: THUMBNAIL_WIDTH,
+    canvasHeight: THUMBNAIL_HEIGHT,
   });
 
   return (
     <S.Container>
+      <canvas
+        ref={rgbaRef}
+        width={THUMBNAIL_WIDTH}
+        height={THUMBNAIL_HEIGHT}
+        style={{ display: "none" }}
+      />
       <Pointillism canvasRef={canvasRef} />
       <DownloadButton canvasRef={canvasRef} canvasStatus={canvasStatus} />
     </S.Container>

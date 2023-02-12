@@ -1,50 +1,53 @@
+import { useRgba } from "./useRgba";
+import { RgbaContext, RgbaDispatcherContext } from "./../context/RgbaContext";
 import { NOISE_STRENGTH } from "../constants/pointillism";
-import { useRef, useState } from "react";
-import {
-  RESOLUTION,
-  RGBA_ARRAY_SIZE,
-  THUMBNAIL_HEIGHT,
-  THUMBNAIL_WIDTH,
-} from "../constants/pointillism";
+import { useContext, useEffect, useRef, useState } from "react";
+import { RESOLUTION, THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { CanvasStatus, DrawTriangleParams, TriangleInfo } from "./../types/index";
 import { randomInt } from "../utils/randomInt";
 import { getCoordinate, getRgbaPixel } from "../utils/triangle";
 
 export const usePointillism = ({
   thumbnailSource,
-  noiseEffect,
   noiseStrength,
+  canvasWidth,
+  canvasHeight,
 }: usePointillismParams) => {
+  const rgba = useContext(RgbaContext);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const image = new Image();
   const [canvasStatus, setCanvasStatus] = useState<CanvasStatus>("none");
+  const { getPixelData, getRgbaValues } = useRgba({ thumbnailSource, canvasWidth, canvasHeight });
 
-  const getImageData = (): Uint8ClampedArray | undefined => {
+  const drawImage = () => {
     if (canvasRef.current) {
       const ctx = canvasRef.current.getContext("2d", { willReadFrequently: true });
 
       if (ctx) {
-        ctx.drawImage(image, 0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
-        return ctx.getImageData(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).data;
+        ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
       }
     }
   };
 
   const getTriangleInfo = (triangleIndex: number): TriangleInfo => {
-    const coord = getCoordinate(triangleIndex, NOISE_STRENGTH[3].TRIANGLE_GAP);
-    const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y });
+    const coord = getCoordinate(
+      triangleIndex,
+      NOISE_STRENGTH[noiseStrength].TRIANGLE_GAP,
+      canvasWidth
+    );
+    const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y }, canvasWidth);
 
     const firstPoint = {
       x: coord.x,
-      y: coord.y + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
+      y: coord.y + randomInt(NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE),
     };
     const secondPoint = {
-      x: coord.x + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
+      x: coord.x + randomInt(NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE),
       y: coord.y,
     };
     const thirdPoint = {
-      x: coord.x + randomInt(NOISE_STRENGTH[3].TRIANGLE_SIZE),
-      y: coord.y + NOISE_STRENGTH[3].TRIANGLE_SIZE,
+      x: coord.x + randomInt(NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE),
+      y: coord.y + NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE,
     };
 
     return { firstPoint, secondPoint, thirdPoint, rgbaPixel };
@@ -68,18 +71,6 @@ export const usePointillism = ({
     ctx.fill();
   };
 
-  const getRgbaValues = (imageData: Uint8ClampedArray | undefined) => {
-    if (!imageData) return;
-
-    const rgbas: number[][] = Array.from({ length: imageData.length }, () => []);
-    let rgbaFirstIndex = 0;
-
-    return rgbas.map((el, i) => {
-      rgbaFirstIndex = i * 4;
-      return Array.from(imageData.slice(rgbaFirstIndex, rgbaFirstIndex + RGBA_ARRAY_SIZE));
-    });
-  };
-
   const drawDimmer = () => {
     if (canvasRef.current) {
       const ctx = canvasRef.current.getContext("2d", { willReadFrequently: true });
@@ -93,22 +84,36 @@ export const usePointillism = ({
 
   const drawPointillism = () => {
     if (canvasStatus !== "none") return;
-
     setCanvasStatus("loading");
 
-    const imageData = getImageData();
-    const rgba = getRgbaValues(imageData);
-    const triangleDrawCount = Array.from({ length: NOISE_STRENGTH[2].TRIANGLE_COUNT }, () => 0);
+    drawImage();
+    const triangleDrawCount = Array.from({
+      length: NOISE_STRENGTH[noiseStrength].TRIANGLE_COUNT,
+    });
+
+    if (rgba.length !== canvasWidth * canvasHeight * 4) {
+      const pixelData = getPixelData(canvasRef);
+      const rgbaValues = getRgbaValues(pixelData);
+
+      triangleDrawCount.forEach((el, i) => {
+        const triangleInfo = getTriangleInfo(i);
+        drawTriangles({ triangleInfo, rgba: rgbaValues });
+      });
+      setCanvasStatus("done");
+      return;
+    }
 
     triangleDrawCount.forEach((el, i) => {
       const triangleInfo = getTriangleInfo(i);
       drawTriangles({ triangleInfo, rgba });
     });
-    // drawDimmer();
     setCanvasStatus("done");
   };
 
-  image.addEventListener("load", drawPointillism);
+  useEffect(() => {
+    drawPointillism();
+  }, []);
+
   if (thumbnailSource) image.src = thumbnailSource;
 
   return {
@@ -119,6 +124,7 @@ export const usePointillism = ({
 
 interface usePointillismParams {
   thumbnailSource: string | null;
-  noiseEffect: string | null;
-  noiseStrength: string | null;
+  noiseStrength: number;
+  canvasWidth: number;
+  canvasHeight: number;
 }
