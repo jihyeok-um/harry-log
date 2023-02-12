@@ -246,12 +246,12 @@ Error generating stack: `+i.message+`
       height: 300px;
       transform: rotateY(${e=>e.rotateY}deg) translateZ(280px);
     }
-
+    /* 
     @media (max-width: 600px) {
       width: 250px;
       height: 250px;
       transform: rotateY(${e=>e.rotateY}deg) translateZ(230px);
-    }
+    } */
   `},kT=({thumbnailSource:e})=>{const[t,n]=x.useState(0),r=[1,2,3,4,5,6];return xn(oh,{children:[U(Gp.Container,{focusIndex:t,children:r.map((o,i)=>U(xT,{rotateY:360/r.length*i,thumbnailSource:e,noiseStrength:r[i]-1},o))}),U(Gp.Button,{onClick:()=>{n(t-60)},children:"캐러셀 돌리기"})]})},Gp={Container:ne.div`
     ${Ue.FlexCenter}
     position: relative;
