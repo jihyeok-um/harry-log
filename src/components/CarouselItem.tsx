@@ -16,23 +16,32 @@ const S = {
   Canvas: styled.canvas<{ rotateY: number }>`
     position: absolute;
     text-align: center;
-    width: 500px;
-    height: 500px;
     background-color: ${(props) => props.theme.GRAY_200};
     color: ${(props) => props.theme.WHITE};
-    transform: rotateY(${(props) => props.rotateY}deg) translateZ(450px);
     font-size: 24px;
 
+    @media (min-width: 1600px) {
+      width: 600px;
+      height: 600px;
+      transform: rotateY(${(props) => props.rotateY}deg) translateZ(550px);
+    }
+
+    @media (max-width: 1600px) {
+      width: 500px;
+      height: 500px;
+      transform: rotateY(${(props) => props.rotateY}deg) translateZ(450px);
+    }
+
     @media (max-width: 1000px) {
-      width: 300px;
-      height: 300px;
-      transform: rotateY(${(props) => props.rotateY}deg) translateZ(280px);
+      width: 400px;
+      height: 400px;
+      transform: rotateY(${(props) => props.rotateY}deg) translateZ(380px);
     }
 
     @media (max-width: 600px) {
-      width: 250px;
-      height: 250px;
-      transform: rotateY(${(props) => props.rotateY}deg) translateZ(230px);
+      width: 300px;
+      height: 300px;
+      transform: rotateY(${(props) => props.rotateY}deg) translateZ(280px);
     }
   `,
 };

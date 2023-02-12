@@ -76,7 +76,7 @@ export const usePointillism = ({
   const getRgbaValues = (imageData: Uint8ClampedArray | undefined) => {
     if (!imageData) return;
 
-    const rgbas: [][] = Array.from({ length: imageData.length }, () => []);
+    const rgbas: Array<Array<number>> = Array.from({ length: imageData.length }, () => []);
     let rgbaFirstIndex = 0;
 
     return rgbas.map((el, i) => {
@@ -103,10 +103,7 @@ export const usePointillism = ({
 
     const imageData = getImageData();
     const rgba = getRgbaValues(imageData);
-    const triangleDrawCount = Array.from(
-      { length: NOISE_STRENGTH[noiseStrength].TRIANGLE_COUNT },
-      () => 0
-    );
+    const triangleDrawCount = Array.from({ length: NOISE_STRENGTH[noiseStrength].TRIANGLE_COUNT });
 
     triangleDrawCount.forEach((el, i) => {
       const triangleInfo = getTriangleInfo(i);
