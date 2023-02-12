@@ -276,7 +276,7 @@ Error generating stack: `+i.message+`
     transition-duration: 300ms;
 
     transform: rotateY(${e=>e.focusIndex}deg);
-  `},_E=()=>{const[e]=c0(),[t,n]=C.useState(1),[r,o]=C.useState(0),i=Ic(),s=String(e.get("thumbnail-source")),l=a=>{a.preventDefault(),i(`${vr.THUMBNAIL_RESULT}?noise-strength=${t}`,{state:{thumbnailSource:s}})};return yn(Qr.Container,{children:[j(AE,{thumbnailSource:s,focusIndex:r}),yn(Qr.ButtonContainer,{children:[j(Qr.LeftButton,{onClick:()=>{o(r+60),n(a=>a-1)},children:"<"}),j(Qr.Button,{onClick:l,children:"선택 완료"}),j(Qr.RightButton,{onClick:()=>{o(r-60),n(a=>a+1)},children:">"})]})]})},Qr={Container:ie.div`
+  `},_E=()=>{const[e]=c0(),[t,n]=C.useState(1),[r,o]=C.useState(0),i=Ic(),s=String(e.get("thumbnail-source")),l=a=>{a.preventDefault(),i(`${vr.THUMBNAIL_RESULT}?noise-strength=${t}`,{state:{thumbnailSource:s}})};return yn(Qr.Container,{children:[j(AE,{thumbnailSource:s,focusIndex:r}),yn(Qr.ButtonContainer,{children:[j(Qr.LeftButton,{onClick:()=>{o(r+60),n(a=>a===1?6:a-1)},children:"<"}),j(Qr.Button,{onClick:l,children:"선택 완료"}),j(Qr.RightButton,{onClick:()=>{o(r-60),n(a=>a===6?1:a+1)},children:">"})]})]})},Qr={Container:ie.div`
     ${Xe.FlexCenter}
     ${Xe.FullWidthAndHeight}
     flex-direction: column;
