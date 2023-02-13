@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { Styles } from "../styles/Styles";
 import { CarouselItem } from "./CarouselItem";

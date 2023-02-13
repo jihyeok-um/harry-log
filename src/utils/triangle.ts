@@ -1,4 +1,3 @@
-import { THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { Coordinate } from "../types/index";
 
 export const getCoordinate = (index: number, triangleGap: number, canvasWidth: number) => {

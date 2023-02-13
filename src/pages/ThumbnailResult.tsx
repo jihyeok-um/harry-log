@@ -1,11 +1,8 @@
-import { useEffect } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { DownloadButton } from "../components/DownloadButton";
 import { Pointillism } from "../components/Pointillism";
-import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { usePointillism } from "../hooks/usePointillism";
-import { useRgba } from "../hooks/useRgba";
 import { Styles } from "../styles/Styles";
 
 export const ThumbnailResult = () => {

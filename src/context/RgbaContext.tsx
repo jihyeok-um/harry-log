@@ -1,5 +1,4 @@
 import { createContext, Dispatch, SetStateAction, useState } from "react";
-import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 
 const INITIAL_VALUE: number[][] = [[]];
 
