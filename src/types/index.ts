@@ -11,11 +11,11 @@ export interface TriangleInfo {
   firstPoint: Coordinate;
   secondPoint: Coordinate;
   thirdPoint: Coordinate;
-  rgbaPixel: number;
+  currentPixel: number;
 }
 
 export interface DrawTriangleParams {
-  rgba: number[][] | undefined;
+  rgba: Uint8ClampedArray | undefined;
   triangleInfo: TriangleInfo;
 }
 

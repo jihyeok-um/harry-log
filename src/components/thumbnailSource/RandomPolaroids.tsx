@@ -17,14 +17,6 @@ export const RandomPolaroids = () => {
         return (
           <motion.div
             key={photo}
-            drag
-            dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
-            dragConstraints={{
-              top: -150,
-              left: -150,
-              right: 150,
-              bottom: 150,
-            }}
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{

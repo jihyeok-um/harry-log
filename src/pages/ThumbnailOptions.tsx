@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import { Carousel } from "../components/Carousel";
+import { Carousel } from "../components/carousel/Carousel";
+import { MAX_NOISE_LEVEL, MIN_NOISE_LEVEL, ROTATE_DEGREE } from "../constants/pointillism";
 import { ROUTE_PATH } from "../constants/route";
 import { Styles } from "../styles/Styles";
+import leftArrow from "../assets/icons/leftArrow.png";
+import rightArrow from "../assets/icons/rightArrow.png";
 
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
   const [noiseStrength, setNoiseStrength] = useState(1);
-  const [focusIndex, setFocusIndex] = useState(0);
+  const [carouselContainerRotateY, setCarouselContainerRotateY] = useState(0);
   const navigate = useNavigate();
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
 
@@ -16,29 +19,33 @@ export const ThumbnailOptions = () => {
     e.preventDefault();
     navigate(`${ROUTE_PATH.THUMBNAIL_RESULT}?noise-strength=${noiseStrength}`, {
       state: { thumbnailSource },
+      replace: true,
     });
   };
 
   return (
     <S.Container>
-      <Carousel thumbnailSource={thumbnailSource} focusIndex={focusIndex} />
+      <Carousel
+        thumbnailSource={thumbnailSource}
+        carouselContainerRotateY={carouselContainerRotateY}
+      />
       <S.ButtonContainer>
         <S.LeftButton
           onClick={() => {
-            setFocusIndex(focusIndex + 60);
-            setNoiseStrength((prev) => (prev === 1 ? 6 : prev - 1));
+            setCarouselContainerRotateY(carouselContainerRotateY + ROTATE_DEGREE);
+            setNoiseStrength((prev) => (prev === MIN_NOISE_LEVEL ? MAX_NOISE_LEVEL : prev - 1));
           }}
         >
-          {"<"}
+          <img src={leftArrow} width={30} height={30} />
         </S.LeftButton>
-        <S.Button onClick={handleClickButton}>선택 완료</S.Button>
+        <S.Button onClick={handleClickButton}>노이즈 강도 선택</S.Button>
         <S.RightButton
           onClick={() => {
-            setFocusIndex(focusIndex - 60);
-            setNoiseStrength((prev) => (prev === 6 ? 1 : prev + 1));
+            setCarouselContainerRotateY(carouselContainerRotateY - ROTATE_DEGREE);
+            setNoiseStrength((prev) => (prev === MAX_NOISE_LEVEL ? MIN_NOISE_LEVEL : prev + 1));
           }}
         >
-          {">"}
+          <img src={rightArrow} width={30} height={30} />
         </S.RightButton>
       </S.ButtonContainer>
     </S.Container>
@@ -52,19 +59,22 @@ const S = {
     flex-direction: column;
     gap: 20px;
     perspective: 3000px;
+    background-color: ${(props) => props.theme.BACKGROUND};
   `,
 
   ButtonContainer: styled.div`
     position: absolute;
-    bottom: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    bottom: 50px;
     gap: 10px;
   `,
 
   LeftButton: styled.button`
+    width: 44px;
+    height: 44px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;
@@ -72,6 +82,7 @@ const S = {
   `,
 
   Button: styled.button`
+    height: 44px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;
@@ -79,6 +90,8 @@ const S = {
   `,
 
   RightButton: styled.button`
+    width: 44px;
+    height: 44px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;

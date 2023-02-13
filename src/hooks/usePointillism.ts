@@ -1,7 +1,7 @@
 import { useRgba } from "./useRgba";
-import { RgbaContext, RgbaDispatcherContext } from "./../context/RgbaContext";
+import { RgbaContext } from "./../context/RgbaContext";
 import { NOISE_STRENGTH } from "../constants/pointillism";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { RESOLUTION, THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { CanvasStatus, DrawTriangleParams, TriangleInfo } from "./../types/index";
 import { randomInt } from "../utils/randomInt";
@@ -17,7 +17,7 @@ export const usePointillism = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const image = new Image();
   const [canvasStatus, setCanvasStatus] = useState<CanvasStatus>("none");
-  const { getPixelData, getRgbaValues } = useRgba({ thumbnailSource, canvasWidth, canvasHeight });
+  const { getPixelData } = useRgba({ thumbnailSource, canvasWidth, canvasHeight });
 
   const drawImage = () => {
     if (canvasRef.current) {
@@ -35,7 +35,7 @@ export const usePointillism = ({
       NOISE_STRENGTH[noiseStrength].TRIANGLE_GAP,
       canvasWidth
     );
-    const rgbaPixel = getRgbaPixel({ x: coord.x, y: coord.y }, canvasWidth);
+    const currentPixel = getRgbaPixel({ x: coord.x, y: coord.y }, canvasWidth);
 
     const firstPoint = {
       x: coord.x,
@@ -50,24 +50,28 @@ export const usePointillism = ({
       y: coord.y + NOISE_STRENGTH[noiseStrength].TRIANGLE_SIZE,
     };
 
-    return { firstPoint, secondPoint, thirdPoint, rgbaPixel };
+    return { firstPoint, secondPoint, thirdPoint, currentPixel };
   };
 
   const drawTriangles = ({ triangleInfo, rgba }: DrawTriangleParams) => {
     if (!canvasRef.current || !rgba) return;
 
-    const { firstPoint, secondPoint, thirdPoint, rgbaPixel } = triangleInfo;
+    const { firstPoint, secondPoint, thirdPoint, currentPixel } = triangleInfo;
     const ctx = canvasRef.current.getContext("2d");
 
     if (!ctx) return;
-    if (rgbaPixel >= RESOLUTION) return;
-    if (rgbaPixel <= 0) return;
+    if (currentPixel >= RESOLUTION) return;
+    if (currentPixel <= 0) return;
 
     ctx.beginPath();
     ctx.moveTo(firstPoint.x, firstPoint.y);
     ctx.lineTo(secondPoint.x, secondPoint.y);
     ctx.lineTo(thirdPoint.x, thirdPoint.y);
-    ctx.fillStyle = `rgba(${rgba[rgbaPixel][0]}, ${rgba[rgbaPixel][1]}, ${rgba[rgbaPixel][2]}, ${rgba[rgbaPixel][3]})`;
+
+    ctx.fillStyle = `rgba(${rgba[currentPixel * 4]}, ${rgba[currentPixel * 4 + 1]}, ${
+      rgba[currentPixel * 4 + 2]
+    }, ${rgba[currentPixel * 4 + 3]})`;
+
     ctx.fill();
   };
 
@@ -91,13 +95,12 @@ export const usePointillism = ({
       length: NOISE_STRENGTH[noiseStrength].TRIANGLE_COUNT,
     });
 
-    if (rgba.length !== canvasWidth * canvasHeight * 4) {
+    if (rgba && rgba.length !== canvasWidth * canvasHeight) {
       const pixelData = getPixelData(canvasRef);
-      const rgbaValues = getRgbaValues(pixelData);
 
       triangleDrawCount.forEach((el, i) => {
         const triangleInfo = getTriangleInfo(i);
-        drawTriangles({ triangleInfo, rgba: rgbaValues });
+        drawTriangles({ triangleInfo, rgba: pixelData });
       });
       setCanvasStatus("done");
       return;
@@ -110,10 +113,7 @@ export const usePointillism = ({
     setCanvasStatus("done");
   };
 
-  useEffect(() => {
-    drawPointillism();
-  }, []);
-
+  image.addEventListener("load", drawPointillism);
   if (thumbnailSource) image.src = thumbnailSource;
 
   return {

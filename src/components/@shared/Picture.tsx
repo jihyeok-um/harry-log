@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
-export const Image = ({ ...props }: ImageProps) => {
+export const Picture = ({ ...props }: ImageProps) => {
   return <S.Image {...props} />;
 };
 

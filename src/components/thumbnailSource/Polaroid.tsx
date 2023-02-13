@@ -13,6 +13,16 @@ interface PolaroidProps {
 
 const S = {
   Container: styled.img<PolaroidProps>`
+    width: 225px;
+    height: 300px;
+    box-shadow: 1px 1px 1px 1px ${(props) => props.theme.GRAY_800};
+    transform: rotate(${(props) => props.randomRotate}deg);
+
+    @media (max-width: 600px) {
+      width: 150px;
+      height: 200px;
+    }
+
     ${(props) =>
       props.randomCoord && props.randomRotate
         ? css`
@@ -21,16 +31,5 @@ const S = {
             left: ${props.randomCoord.x}px;
           `
         : css``}
-
-    width: 225px;
-    height: 300px;
-    box-shadow: 1px 1px 1px 1px ${(props) => props.theme.GRAY_800};
-
-    @media (max-width: 600px) {
-      width: 150px;
-      height: 200px;
-    }
-
-    transform: rotate(${(props) => props.randomRotate}deg);
   `,
 };

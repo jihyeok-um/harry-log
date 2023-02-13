@@ -1,5 +1,6 @@
 export const ColorPalette = {
   Light: {
+    GRAY_300: "#E0E0E0",
     GRAY_400: "#BDBDBD",
     GRAY_500: "#9E9E9E",
     GRAY_600: "#757575",

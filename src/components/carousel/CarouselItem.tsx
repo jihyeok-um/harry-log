@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import { usePointillism } from "../hooks/usePointillism";
+import { usePointillism } from "../../hooks/usePointillism";
 
 export const CarouselItem = ({ rotateY, thumbnailSource, noiseStrength }: CarouselItem) => {
   const { canvasRef } = usePointillism({
     thumbnailSource,
     noiseStrength,
-    canvasWidth: 600,
-    canvasHeight: 600,
+    canvasWidth: 1200,
+    canvasHeight: 1200,
   });
 
-  return <S.Canvas ref={canvasRef} rotateY={rotateY} width={600} height={600}></S.Canvas>;
+  return <S.Canvas ref={canvasRef} rotateY={rotateY} width={1200} height={1200}></S.Canvas>;
 };
 
 const S = {
@@ -17,6 +17,7 @@ const S = {
     position: absolute;
     text-align: center;
     background-color: ${(props) => props.theme.GRAY_200};
+    box-shadow: 1px 1px 1px 1px ${(props) => props.theme.GRAY_600};
     color: ${(props) => props.theme.WHITE};
     font-size: 24px;
 
@@ -39,9 +40,9 @@ const S = {
     }
 
     @media (max-width: 600px) {
-      width: 300px;
-      height: 300px;
-      transform: rotateY(${(props) => props.rotateY}deg) translateZ(280px);
+      width: 250px;
+      height: 250px;
+      transform: rotateY(${(props) => props.rotateY}deg) translateZ(230px);
     }
   `,
 };
