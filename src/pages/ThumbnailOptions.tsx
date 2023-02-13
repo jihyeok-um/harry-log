@@ -63,8 +63,6 @@ const S = {
   `,
 
   ButtonContainer: styled.div`
-    position: absolute;
-    bottom: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;

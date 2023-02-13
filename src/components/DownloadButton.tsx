@@ -21,6 +21,7 @@ interface DownloadButtonProps {
 
 const S = {
   Spinner: styled.div`
+    box-sizing: border-box;
     width: 44px;
     height: 44px;
     margin-bottom: 20px;

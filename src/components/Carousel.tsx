@@ -25,6 +25,9 @@ const S = {
     position: relative;
     flex-direction: row;
     gap: 20px;
+    width: 100%;
+    height: 580px;
+
     transform-style: preserve-3d;
     transition-duration: 300ms;
 
