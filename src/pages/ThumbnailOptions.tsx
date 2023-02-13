@@ -5,6 +5,8 @@ import { Carousel } from "../components/Carousel";
 import { MAX_NOISE_LEVEL, MIN_NOISE_LEVEL, ROTATE_DEGREE } from "../constants/pointillism";
 import { ROUTE_PATH } from "../constants/route";
 import { Styles } from "../styles/Styles";
+import leftArrow from "../assets/icons/leftArrow.png";
+import rightArrow from "../assets/icons/rightArrow.png";
 
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
@@ -34,7 +36,7 @@ export const ThumbnailOptions = () => {
             setNoiseStrength((prev) => (prev === MIN_NOISE_LEVEL ? MAX_NOISE_LEVEL : prev - 1));
           }}
         >
-          {"<"}
+          <img src={leftArrow} width={30} height={30} />
         </S.LeftButton>
         <S.Button onClick={handleClickButton}>선택 완료</S.Button>
         <S.RightButton
@@ -43,7 +45,7 @@ export const ThumbnailOptions = () => {
             setNoiseStrength((prev) => (prev === MAX_NOISE_LEVEL ? MIN_NOISE_LEVEL : prev + 1));
           }}
         >
-          {">"}
+          <img src={rightArrow} width={30} height={30} />
         </S.RightButton>
       </S.ButtonContainer>
     </S.Container>
@@ -62,7 +64,7 @@ const S = {
 
   ButtonContainer: styled.div`
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -71,6 +73,8 @@ const S = {
   `,
 
   LeftButton: styled.button`
+    width: 44px;
+    height: 44px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;
@@ -78,6 +82,7 @@ const S = {
   `,
 
   Button: styled.button`
+    height: 44px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;
@@ -85,6 +90,8 @@ const S = {
   `,
 
   RightButton: styled.button`
+    width: 44px;
+    height: 44px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
     padding: 10px;

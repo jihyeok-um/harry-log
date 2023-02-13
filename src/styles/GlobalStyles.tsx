@@ -25,9 +25,12 @@ export const GlobalStyle = createGlobalStyle`
     -o-user-drag: none;
   }
 
-  button {
+  button, a {
     all: unset;
+    ${Styles.FlexCenter}
+    box-sizing: border-box;
     cursor: pointer;
+    
 
     :hover {
       filter: brightness(0.8);

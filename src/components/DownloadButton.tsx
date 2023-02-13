@@ -21,12 +21,12 @@ interface DownloadButtonProps {
 
 const S = {
   Spinner: styled.div`
-    width: 20px;
-    height: 20px;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 20px;
     border: 8px solid ${(props) => props.theme.GRAY_500};
     border-top: 8px solid ${(props) => props.theme.GRAY_300};
     border-radius: 50px;
-    margin-bottom: 20px;
 
     animation: spinner 1.5s linear infinite;
     @keyframes spinner {
@@ -40,12 +40,12 @@ const S = {
   `,
 
   DownloadButton: styled.a`
-    all: unset;
-    cursor: pointer;
+    height: 44px;
+    margin-bottom: 20px;
+    padding: 10px;
     background-color: ${(props) => props.theme.GRAY_500};
     border-radius: 10px;
-    padding: 10px;
     color: ${(props) => props.theme.WHITE};
-    margin-bottom: 20px;
+    cursor: pointer;
   `,
 };

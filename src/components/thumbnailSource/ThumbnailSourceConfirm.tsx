@@ -85,8 +85,8 @@ const S = {
   SubmitButton: styled.button`
     width: 44px;
     height: 44px;
-    margin-left: 110px;
-    margin-top: 15px;
+    margin-left: 117px;
+    margin-top: 20px;
 
     @media (max-width: 600px) {
       margin-left: 90px;
