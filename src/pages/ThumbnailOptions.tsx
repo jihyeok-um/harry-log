@@ -63,10 +63,12 @@ const S = {
   `,
 
   ButtonContainer: styled.div`
+    position: absolute;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    bottom: 250px;
     gap: 10px;
   `,
 
