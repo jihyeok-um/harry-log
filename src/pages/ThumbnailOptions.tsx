@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { Carousel } from "../components/Carousel";
+import { MAX_NOISE_LEVEL, MIN_NOISE_LEVEL, ROTATE_DEGREE } from "../constants/pointillism";
 import { ROUTE_PATH } from "../constants/route";
 import { Styles } from "../styles/Styles";
 
@@ -28,8 +29,8 @@ export const ThumbnailOptions = () => {
       <S.ButtonContainer>
         <S.LeftButton
           onClick={() => {
-            setCarouselContainerRotateY(carouselContainerRotateY + 60);
-            setNoiseStrength((prev) => (prev === 1 ? 6 : prev - 1));
+            setCarouselContainerRotateY(carouselContainerRotateY + ROTATE_DEGREE);
+            setNoiseStrength((prev) => (prev === MIN_NOISE_LEVEL ? MAX_NOISE_LEVEL : prev - 1));
           }}
         >
           {"<"}
@@ -37,8 +38,8 @@ export const ThumbnailOptions = () => {
         <S.Button onClick={handleClickButton}>선택 완료</S.Button>
         <S.RightButton
           onClick={() => {
-            setCarouselContainerRotateY(carouselContainerRotateY - 60);
-            setNoiseStrength((prev) => (prev === 6 ? 1 : prev + 1));
+            setCarouselContainerRotateY(carouselContainerRotateY - ROTATE_DEGREE);
+            setNoiseStrength((prev) => (prev === MAX_NOISE_LEVEL ? MIN_NOISE_LEVEL : prev + 1));
           }}
         >
           {">"}
@@ -55,6 +56,7 @@ const S = {
     flex-direction: column;
     gap: 20px;
     perspective: 3000px;
+    background-color: ${(props) => props.theme.BACKGROUND};
   `,
 
   ButtonContainer: styled.div`

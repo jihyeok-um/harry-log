@@ -36,3 +36,7 @@ export const NOISE_STRENGTH = [
 ];
 
 export const RGBA_ARRAY_SIZE = 4;
+export const MAX_NOISE_LEVEL = 6;
+export const MIN_NOISE_LEVEL = 1;
+
+export const ROTATE_DEGREE = 60;
