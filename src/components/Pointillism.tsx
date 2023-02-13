@@ -17,6 +17,11 @@ const S = {
     position: relative;
     box-shadow: 2px 2px 2px 2px ${(props) => props.theme.GRAY_600};
 
+    @media (min-width: 100rem) {
+      width: 1000px;
+      height: 1000px;
+    }
+
     @media (max-width: 1600px) {
       width: 600px;
       height: 600px;
