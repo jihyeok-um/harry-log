@@ -1,7 +1,7 @@
 import { useRgba } from "./useRgba";
-import { RgbaContext, RgbaDispatcherContext } from "./../context/RgbaContext";
+import { RgbaContext } from "./../context/RgbaContext";
 import { NOISE_STRENGTH } from "../constants/pointillism";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { RESOLUTION, THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { CanvasStatus, DrawTriangleParams, TriangleInfo } from "./../types/index";
 import { randomInt } from "../utils/randomInt";
@@ -110,10 +110,7 @@ export const usePointillism = ({
     setCanvasStatus("done");
   };
 
-  useEffect(() => {
-    drawPointillism();
-  }, []);
-
+  image.addEventListener("load", drawPointillism);
   if (thumbnailSource) image.src = thumbnailSource;
 
   return {

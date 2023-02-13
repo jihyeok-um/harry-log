@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { Styles } from "../styles/Styles";
 import { CarouselItem } from "./CarouselItem";
 
-export const Carousel = ({ thumbnailSource, focusIndex }: CarouselProps) => {
+export const Carousel = ({ thumbnailSource, carouselContainerRotateY }: CarouselProps) => {
   const noiseStrengths = [1, 2, 3, 4, 5, 6];
 
   return (
     <>
-      <S.Container focusIndex={focusIndex}>
+      <S.Container rotateY={carouselContainerRotateY}>
         {noiseStrengths.map((el, index) => (
           <CarouselItem
             key={el}
@@ -23,7 +23,7 @@ export const Carousel = ({ thumbnailSource, focusIndex }: CarouselProps) => {
 };
 
 const S = {
-  Container: styled.div<{ focusIndex: number }>`
+  Container: styled.div<{ rotateY: number }>`
     ${Styles.FlexCenter}
     position: relative;
     flex-direction: row;
@@ -31,11 +31,11 @@ const S = {
     transform-style: preserve-3d;
     transition-duration: 300ms;
 
-    transform: rotateY(${(props) => props.focusIndex}deg);
+    transform: rotateY(${(props) => props.rotateY}deg);
   `,
 };
 
 interface CarouselProps {
   thumbnailSource: string;
-  focusIndex: number;
+  carouselContainerRotateY: number;
 }

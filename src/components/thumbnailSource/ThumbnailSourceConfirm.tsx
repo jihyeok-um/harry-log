@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import camera from "../../assets/icons/camera.svg";
-import { Image } from "../@shared/Image";
+import { Picture } from "../@shared/Picture";
 import { useRgba } from "../../hooks/useRgba";
 
 export const ThumbnailSourceConfirm = ({
@@ -10,11 +10,15 @@ export const ThumbnailSourceConfirm = ({
   handleClickCancelButton,
 }: ThumbnailSourceConfirmProps) => {
   const [isDimmed, setIsDimmed] = useState(false);
-  const { canvasRef } = useRgba({ thumbnailSource, canvasWidth: 600, canvasHeight: 600 });
+  const { canvasRef } = useRgba({
+    thumbnailSource,
+    canvasWidth: 1200,
+    canvasHeight: 1200,
+  });
 
   return (
     <S.Container>
-      <canvas ref={canvasRef} width={600} height={600} style={{ display: "none" }} />
+      <canvas ref={canvasRef} width={1200} height={1200} style={{ display: "none" }} />
       {thumbnailSource && <S.ThumbnailSource src={thumbnailSource} isImageDimmer={isDimmed} />}
       <S.CancelButton
         onMouseEnter={() => setIsDimmed(true)}
@@ -24,10 +28,10 @@ export const ThumbnailSourceConfirm = ({
           setIsDimmed(false);
         }}
       >
-        <Image src={cancelIcon} alt="이미지 삭제 아이콘" width={44} height={44} />
+        <Picture src={cancelIcon} alt="이미지 삭제 아이콘" width={44} height={44} />
       </S.CancelButton>
       <S.SubmitButton>
-        <Image src={camera} alt="이미지 제출 아이콘" width={60} height={60} />
+        <Picture src={camera} alt="이미지 제출 아이콘" width={60} height={60} />
       </S.SubmitButton>
     </S.Container>
   );

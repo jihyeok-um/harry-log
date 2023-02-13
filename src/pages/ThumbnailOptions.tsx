@@ -8,7 +8,7 @@ import { Styles } from "../styles/Styles";
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
   const [noiseStrength, setNoiseStrength] = useState(1);
-  const [focusIndex, setFocusIndex] = useState(0);
+  const [carouselContainerRotateY, setCarouselContainerRotateY] = useState(0);
   const navigate = useNavigate();
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
 
@@ -21,11 +21,14 @@ export const ThumbnailOptions = () => {
 
   return (
     <S.Container>
-      <Carousel thumbnailSource={thumbnailSource} focusIndex={focusIndex} />
+      <Carousel
+        thumbnailSource={thumbnailSource}
+        carouselContainerRotateY={carouselContainerRotateY}
+      />
       <S.ButtonContainer>
         <S.LeftButton
           onClick={() => {
-            setFocusIndex(focusIndex + 60);
+            setCarouselContainerRotateY(carouselContainerRotateY + 60);
             setNoiseStrength((prev) => (prev === 1 ? 6 : prev - 1));
           }}
         >
@@ -34,7 +37,7 @@ export const ThumbnailOptions = () => {
         <S.Button onClick={handleClickButton}>선택 완료</S.Button>
         <S.RightButton
           onClick={() => {
-            setFocusIndex(focusIndex - 60);
+            setCarouselContainerRotateY(carouselContainerRotateY - 60);
             setNoiseStrength((prev) => (prev === 6 ? 1 : prev + 1));
           }}
         >
