@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
-import camera from "../../assets/icons/camera.svg";
 import logo from "../../assets/images/logo.png";
 import { Picture } from "../@shared/Picture";
 import { useRgba } from "../../hooks/useRgba";
