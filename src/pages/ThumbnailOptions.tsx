@@ -17,6 +17,7 @@ export const ThumbnailOptions = () => {
     e.preventDefault();
     navigate(`${ROUTE_PATH.THUMBNAIL_RESULT}?noise-strength=${noiseStrength}`, {
       state: { thumbnailSource },
+      replace: true,
     });
   };
 

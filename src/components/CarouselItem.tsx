@@ -17,6 +17,7 @@ const S = {
     position: absolute;
     text-align: center;
     background-color: ${(props) => props.theme.GRAY_200};
+    box-shadow: 1px 1px 1px 1px ${(props) => props.theme.GRAY_600};
     color: ${(props) => props.theme.WHITE};
     font-size: 24px;
 

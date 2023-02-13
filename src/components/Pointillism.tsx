@@ -15,6 +15,7 @@ interface PointillismProps {
 const S = {
   Container: styled.div`
     position: relative;
+    box-shadow: 2px 2px 2px 2px ${(props) => props.theme.GRAY_600};
 
     @media (max-width: 1600px) {
       width: 600px;
