@@ -20,10 +20,10 @@ export const RandomPolaroids = () => {
             drag
             dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
             dragConstraints={{
-              top: -150,
-              left: -150,
-              right: 150,
-              bottom: 150,
+              top: -300,
+              left: -300,
+              right: 300,
+              bottom: 300,
             }}
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}

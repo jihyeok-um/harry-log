@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import { Carousel } from "../components/Carousel";
+import { Carousel } from "../components/carousel/Carousel";
 import { MAX_NOISE_LEVEL, MIN_NOISE_LEVEL, ROTATE_DEGREE } from "../constants/pointillism";
 import { ROUTE_PATH } from "../constants/route";
 import { Styles } from "../styles/Styles";
@@ -63,12 +63,10 @@ const S = {
   `,
 
   ButtonContainer: styled.div`
-    position: absolute;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    bottom: 250px;
     gap: 10px;
   `,
 

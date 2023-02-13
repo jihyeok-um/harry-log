@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Styles } from "../styles/Styles";
+import { Styles } from "../../styles/Styles";
 import { CarouselItem } from "./CarouselItem";
 
 export const Carousel = ({ thumbnailSource, carouselContainerRotateY }: CarouselProps) => {
@@ -25,10 +25,26 @@ const S = {
     position: relative;
     flex-direction: row;
     gap: 20px;
+    width: 100%;
     transform-style: preserve-3d;
     transition-duration: 300ms;
-
     transform: rotateY(${(props) => props.rotateY}deg);
+
+    @media (min-width: 1600px) {
+      height: 720px;
+    }
+
+    @media (max-width: 1600px) {
+      height: 580px;
+    }
+
+    @media (max-width: 1000px) {
+      height: 450px;
+    }
+
+    @media (max-width: 600px) {
+      height: 270px;
+    }
   `,
 };
 

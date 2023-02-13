@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { usePointillism } from "../hooks/usePointillism";
+import { usePointillism } from "../../hooks/usePointillism";
 
 export const CarouselItem = ({ rotateY, thumbnailSource, noiseStrength }: CarouselItem) => {
   const { canvasRef } = usePointillism({

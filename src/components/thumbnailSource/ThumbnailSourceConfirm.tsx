@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import cancelIcon from "../../assets/icons/cancelIcon.svg";
 import camera from "../../assets/icons/camera.svg";
+import logo from "../../assets/images/logo.png";
 import { Picture } from "../@shared/Picture";
 import { useRgba } from "../../hooks/useRgba";
 
@@ -31,7 +32,7 @@ export const ThumbnailSourceConfirm = ({
         <Picture src={cancelIcon} alt="이미지 삭제 아이콘" width={44} height={44} />
       </S.CancelButton>
       <S.SubmitButton>
-        <Picture src={camera} alt="이미지 제출 아이콘" width={60} height={60} />
+        <Picture src={logo} alt="이미지 제출 아이콘" width={90} height={90} />
       </S.SubmitButton>
     </S.Container>
   );
@@ -86,11 +87,11 @@ const S = {
     width: 44px;
     height: 44px;
     margin-left: 117px;
-    margin-top: 20px;
+    margin-top: 25px;
 
     @media (max-width: 600px) {
-      margin-left: 90px;
-      margin-top: 13px;
+      margin-left: 94px;
+      margin-top: 20px;
     }
   `,
 };
