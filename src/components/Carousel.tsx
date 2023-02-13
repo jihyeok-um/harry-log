@@ -6,18 +6,16 @@ export const Carousel = ({ thumbnailSource, carouselContainerRotateY }: Carousel
   const noiseStrengths = [1, 2, 3, 4, 5, 6];
 
   return (
-    <>
-      <S.Container rotateY={carouselContainerRotateY}>
-        {noiseStrengths.map((el, index) => (
-          <CarouselItem
-            key={el}
-            rotateY={(360 / noiseStrengths.length) * index}
-            thumbnailSource={thumbnailSource}
-            noiseStrength={noiseStrengths[index] - 1}
-          />
-        ))}
-      </S.Container>
-    </>
+    <S.Container rotateY={carouselContainerRotateY}>
+      {noiseStrengths.map((el, index) => (
+        <CarouselItem
+          key={el}
+          rotateY={(360 / noiseStrengths.length) * index}
+          thumbnailSource={thumbnailSource}
+          noiseStrength={noiseStrengths[index] - 1}
+        />
+      ))}
+    </S.Container>
   );
 };
 

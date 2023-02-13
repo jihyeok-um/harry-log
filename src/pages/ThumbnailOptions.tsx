@@ -38,7 +38,7 @@ export const ThumbnailOptions = () => {
         >
           <img src={leftArrow} width={30} height={30} />
         </S.LeftButton>
-        <S.Button onClick={handleClickButton}>선택 완료</S.Button>
+        <S.Button onClick={handleClickButton}>노이즈 강도 선택</S.Button>
         <S.RightButton
           onClick={() => {
             setCarouselContainerRotateY(carouselContainerRotateY - ROTATE_DEGREE);

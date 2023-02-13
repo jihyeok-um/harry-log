@@ -23,8 +23,8 @@ const S = {
     }
 
     @media (max-width: 600px) {
-      width: 100vw;
-      height: 100vw;
+      width: 95vw;
+      height: 95vw;
     }
   `,
 
