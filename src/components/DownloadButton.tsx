@@ -44,7 +44,7 @@ const S = {
     height: 44px;
     margin-bottom: 20px;
     padding: 10px;
-    background-color: ${(props) => props.theme.GRAY_500};
+    background-color: ${(props) => props.theme.GRAY_700};
     border-radius: 10px;
     color: ${(props) => props.theme.WHITE};
     cursor: pointer;

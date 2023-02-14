@@ -14,7 +14,6 @@ export const ThumbnailOptions = () => {
   const [carouselContainerRotateY, setCarouselContainerRotateY] = useState(0);
   const navigate = useNavigate();
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
-
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     navigate(`${ROUTE_PATH.THUMBNAIL_RESULT}?noise-strength=${noiseStrength}`, {
@@ -75,7 +74,7 @@ const S = {
   LeftButton: styled.button`
     width: 44px;
     height: 44px;
-    background-color: ${(props) => props.theme.GRAY_500};
+    background-color: ${(props) => props.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${(props) => props.theme.WHITE};
@@ -83,7 +82,7 @@ const S = {
 
   Button: styled.button`
     height: 44px;
-    background-color: ${(props) => props.theme.GRAY_500};
+    background-color: ${(props) => props.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${(props) => props.theme.WHITE};
@@ -92,7 +91,7 @@ const S = {
   RightButton: styled.button`
     width: 44px;
     height: 44px;
-    background-color: ${(props) => props.theme.GRAY_500};
+    background-color: ${(props) => props.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${(props) => props.theme.WHITE};
