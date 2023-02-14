@@ -19,7 +19,13 @@ export const ThumbnailSourceConfirm = ({
   return (
     <S.Container>
       <canvas ref={canvasRef} width={1200} height={1200} style={{ display: "none" }} />
-      {thumbnailSource && <S.ThumbnailSource src={thumbnailSource} isImageDimmer={isDimmed} />}
+      {thumbnailSource && (
+        <S.ThumbnailSource
+          src={thumbnailSource}
+          alt="제출할 썸네일 소스"
+          isImageDimmer={isDimmed}
+        />
+      )}
       <S.CancelButton
         onMouseEnter={() => setIsDimmed(true)}
         onMouseLeave={() => setIsDimmed(false)}

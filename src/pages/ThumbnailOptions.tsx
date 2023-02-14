@@ -14,7 +14,6 @@ export const ThumbnailOptions = () => {
   const [carouselContainerRotateY, setCarouselContainerRotateY] = useState(0);
   const navigate = useNavigate();
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
-
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     navigate(`${ROUTE_PATH.THUMBNAIL_RESULT}?noise-strength=${noiseStrength}`, {
@@ -36,7 +35,7 @@ export const ThumbnailOptions = () => {
             setNoiseStrength((prev) => (prev === MIN_NOISE_LEVEL ? MAX_NOISE_LEVEL : prev - 1));
           }}
         >
-          <img src={leftArrow} width={30} height={30} />
+          <img src={leftArrow} alt="좌측 화살표 버튼" width={30} height={30} />
         </S.LeftButton>
         <S.Button onClick={handleClickButton}>노이즈 강도 선택</S.Button>
         <S.RightButton
@@ -45,7 +44,7 @@ export const ThumbnailOptions = () => {
             setNoiseStrength((prev) => (prev === MAX_NOISE_LEVEL ? MIN_NOISE_LEVEL : prev + 1));
           }}
         >
-          <img src={rightArrow} width={30} height={30} />
+          <img src={rightArrow} alt="우측 화살표 버튼" width={30} height={30} />
         </S.RightButton>
       </S.ButtonContainer>
     </S.Container>
@@ -75,7 +74,7 @@ const S = {
   LeftButton: styled.button`
     width: 44px;
     height: 44px;
-    background-color: ${(props) => props.theme.GRAY_500};
+    background-color: ${(props) => props.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${(props) => props.theme.WHITE};
@@ -83,7 +82,7 @@ const S = {
 
   Button: styled.button`
     height: 44px;
-    background-color: ${(props) => props.theme.GRAY_500};
+    background-color: ${(props) => props.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${(props) => props.theme.WHITE};
@@ -92,7 +91,7 @@ const S = {
   RightButton: styled.button`
     width: 44px;
     height: 44px;
-    background-color: ${(props) => props.theme.GRAY_500};
+    background-color: ${(props) => props.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${(props) => props.theme.WHITE};

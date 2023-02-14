@@ -7,6 +7,7 @@ export const Polaroid = ({ ...props }: PolaroidProps) => {
 
 interface PolaroidProps {
   src: string;
+  alt: string;
   randomCoord?: Coordinate;
   randomRotate?: number;
 }
