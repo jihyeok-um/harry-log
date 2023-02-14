@@ -18,8 +18,8 @@ const S = {
     box-shadow: 2px 2px 2px 2px ${(props) => props.theme.GRAY_600};
 
     @media (min-width: 1600px) {
-      width: 900px;
-      height: 900px;
+      width: 800px;
+      height: 800px;
     }
 
     @media (max-width: 1600px) {
