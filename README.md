@@ -5,7 +5,7 @@
 <br/>
 <br/>
 
-# Noise Effector
+# ⚡ Noise Effector
 
 <p align="center">
     <img width="1200" alt="noiseEffect-logo" src="https://velog.velcdn.com/images/thumb_hyeok/post/5c6775b4-6bc1-40d4-b310-557078ca4171/image.png" />
