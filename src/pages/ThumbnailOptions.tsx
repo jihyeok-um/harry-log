@@ -36,7 +36,7 @@ export const ThumbnailOptions = () => {
             setNoiseStrength((prev) => (prev === MIN_NOISE_LEVEL ? MAX_NOISE_LEVEL : prev - 1));
           }}
         >
-          <img src={leftArrow} width={30} height={30} />
+          <img src={leftArrow} alt="좌측 화살표 버튼" width={30} height={30} />
         </S.LeftButton>
         <S.Button onClick={handleClickButton}>노이즈 강도 선택</S.Button>
         <S.RightButton
@@ -45,7 +45,7 @@ export const ThumbnailOptions = () => {
             setNoiseStrength((prev) => (prev === MAX_NOISE_LEVEL ? MIN_NOISE_LEVEL : prev + 1));
           }}
         >
-          <img src={rightArrow} width={30} height={30} />
+          <img src={rightArrow} alt="우측 화살표 버튼" width={30} height={30} />
         </S.RightButton>
       </S.ButtonContainer>
     </S.Container>

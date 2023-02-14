@@ -25,7 +25,12 @@ export const RandomPolaroids = () => {
               damping: 20,
             }}
           >
-            <Polaroid src={photo} randomCoord={randomCoord} randomRotate={randomRotate} />
+            <Polaroid
+              src={photo}
+              alt="베경 폴라로이드 "
+              randomCoord={randomCoord}
+              randomRotate={randomRotate}
+            />
           </motion.div>
         );
       })}
