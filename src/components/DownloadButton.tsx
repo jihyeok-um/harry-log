@@ -9,7 +9,7 @@ export const DownloadButton = ({ canvasRef, canvasStatus }: DownloadButtonProps)
 
   return (
     <S.DownloadButton href={thumbnailURL} download="thumbnail">
-      썸네일 다운로드
+      이미지 다운로드
     </S.DownloadButton>
   );
 };
