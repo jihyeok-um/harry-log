@@ -97,7 +97,7 @@ Error generating stack: `+i.message+`
   `},BA="/noise-effector/assets/cancelIcon.svg",UA="/noise-effector/assets/logo.png",Hp=({...e})=>j(bA.Image,{...e}),bA={Image:ne.img`
     width: ${e=>e.width}px;
     height: ${e=>e.height}px;
-  `},Kg=x.createContext(void 0),Qg=x.createContext(()=>{}),HA=({children:e})=>{const[t,n]=x.useState(void 0);return j(Qg.Provider,{value:n,children:j(Kg.Provider,{value:t,children:e})})},Xg=({thumbnailSource:e,canvasWidth:t,canvasHeight:n})=>{const r=x.useContext(Qg),o=x.useRef(null),i=new Image,s=()=>{if(o.current){const u=o.current.getContext("2d",{willReadFrequently:!0});u&&u.drawImage(i,0,0,t,n)}},l=u=>{if(u.current){const c=u.current.getContext("2d",{willReadFrequently:!0});if(c){const d=c.getImageData(0,0,t,n).data;return r(d),d}}},a=()=>{s(),l(o)};return i.addEventListener("load",a),e&&(i.src=e),{canvasRef:o,getPixelData:l}},WA=({thumbnailSource:e,handleClickCancelButton:t})=>{const[n,r]=x.useState(!1),{canvasRef:o}=Xg({thumbnailSource:e,canvasWidth:1200,canvasHeight:1200});return mn(_i.Container,{children:[j("canvas",{ref:o,width:1200,height:1200,style:{display:"none"}}),e&&j(_i.ThumbnailSource,{src:e,isImageDimmer:n}),j(_i.CancelButton,{onMouseEnter:()=>r(!0),onMouseLeave:()=>r(!1),onClick:i=>{t(i),r(!1)},children:j(Hp,{src:BA,alt:"이미지 삭제 아이콘",width:44,height:44})}),j(_i.SubmitButton,{children:j(Hp,{src:UA,alt:"이미지 제출 아이콘",width:90,height:90})})]})},_i={Container:ne.div`
+  `},Kg=x.createContext(void 0),Qg=x.createContext(()=>{}),HA=({children:e})=>{const[t,n]=x.useState(void 0);return j(Qg.Provider,{value:n,children:j(Kg.Provider,{value:t,children:e})})},Xg=({thumbnailSource:e,canvasWidth:t,canvasHeight:n})=>{const r=x.useContext(Qg),o=x.useRef(null),i=new Image,s=()=>{if(o.current){const u=o.current.getContext("2d",{willReadFrequently:!0});u&&u.drawImage(i,0,0,t,n)}},l=u=>{if(u.current){const c=u.current.getContext("2d",{willReadFrequently:!0});if(c){const d=c.getImageData(0,0,t,n).data;return r(d),d}}},a=()=>{s(),l(o)};return i.addEventListener("load",a),e&&(i.src=e),{canvasRef:o,getPixelData:l}},WA=({thumbnailSource:e,handleClickCancelButton:t})=>{const[n,r]=x.useState(!1),{canvasRef:o}=Xg({thumbnailSource:e,canvasWidth:1200,canvasHeight:1200});return mn(_i.Container,{children:[j("canvas",{ref:o,width:1200,height:1200,style:{display:"none"}}),e&&j(_i.ThumbnailSource,{src:e,alt:"제출할 썸네일 소스",isImageDimmer:n}),j(_i.CancelButton,{onMouseEnter:()=>r(!0),onMouseLeave:()=>r(!1),onClick:i=>{t(i),r(!1)},children:j(Hp,{src:BA,alt:"이미지 삭제 아이콘",width:44,height:44})}),j(_i.SubmitButton,{children:j(Hp,{src:UA,alt:"이미지 제출 아이콘",width:90,height:90})})]})},_i={Container:ne.div`
     position: relative;
     width: 279px;
     height: 279px;
@@ -216,7 +216,7 @@ Error generating stack: `+i.message+`
             top: ${e.randomCoord.y}px;
             left: ${e.randomCoord.x}px;
           `:At``}
-  `},hE=()=>{const e=window.innerWidth,t=window.innerHeight;return j(mE.Container,{children:fE.map(n=>{const r={x:Sr(e/1.5),y:Sr(t/1.5)},o=Sr(45,-45);return j(Yg.div,{initial:{scale:.8},animate:{scale:1},transition:{type:"spring",stiffness:260,damping:20},children:j(dE,{src:n,randomCoord:r,randomRotate:o})},n)})})},mE={Container:ne.div`
+  `},hE=()=>{const e=window.innerWidth,t=window.innerHeight;return j(mE.Container,{children:fE.map(n=>{const r={x:Sr(e/1.5),y:Sr(t/1.5)},o=Sr(45,-45);return j(Yg.div,{initial:{scale:.8},animate:{scale:1},transition:{type:"spring",stiffness:260,damping:20},children:j(dE,{src:n,alt:"베경 폴라로이드 ",randomCoord:r,randomRotate:o})},n)})})},mE={Container:ne.div`
     ${Ue.FullWidthAndHeight}
     position: absolute;
     overflow: hidden;
@@ -252,7 +252,7 @@ Error generating stack: `+i.message+`
     height: 44px;
     margin-bottom: 20px;
     padding: 10px;
-    background-color: ${e=>e.theme.GRAY_500};
+    background-color: ${e=>e.theme.GRAY_700};
     border-radius: 10px;
     color: ${e=>e.theme.WHITE};
     cursor: pointer;
@@ -340,7 +340,7 @@ Error generating stack: `+i.message+`
     @media (max-width: 600px) {
       height: 270px;
     }
-  `},LE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAEAQAAABQ8GUWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAAAqo0jMgAAAAlwSFlzAAAAYAAAAGAA8GtCzwAAAAd0SU1FB+cCDQs7LqMOBzEAAAIzSURBVHja7Zq9SuxQFEZPFAQZBTt/CxufQCwGA76CIuhY2Bj1AawE38FHmBewUEFB1FZsLGwUnUpRVBBs/d/LIvfC5eokAefM1mTv9oTkW2ufk+SQOPcLCglDZH8fHh7g+hpZXYWuLu1cTYKfnYXXVz7V0RGUStr5mgD/9kbdWlrSzugPnkrl687/W9vb2jn9wKd2/k/J3p52Vj14AJaXtfMqwp+cIB0d2pkbB8/0dPqa/1u1GvT3a2c2eIM3eIM3eIM3eIM3eIOvCz81ZfAGXzj4SiX7lvb8HPr6tDM3EL5chqenYnZeBgbg5qaQnXfOOVhbK2TnY/jhYRApJHwsYGOjkNM+hi+V4PExGf7qKpedjwWMjyfDi8DoqHbOetXyfQNhmDy+sxMEBwfaoP4EBL29yQesr2tD+hXgUgQEtZo2pGcBv7saIODuLnGYoSFtSL8CuL1NHA8mJrQhvRZMTqY/Bstl7Zz+BEhnJzw/J0u4vISeHu2s/iSwtZX+Knx6inR3a2f1I0BGRrJths7OcrkfcM452NxMF5BjCTA4iNzfZ5OQ0+WAhGH6DTH3MyGKst0P8jwTiCJ4f7eZYBJMgkkwCSbBJJiEzxLm5kyCSTAJJsEkmIT/JMj8fHYJx8fQ3q6dWVnC4qJ2Xj8SMi+HavW71/qR3waDoFp1bmHBOZHkI19etLN6rfTlMDOjndG/BKLoyx8vZXcXWlu18zVJwthY/N3h4gI5PISVFaStrRHn/gC1KPXxRIl1cQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QxMTo1OTo0NiswMDowMMV/NkkAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMTE6NTk6NDYrMDA6MDC0Io71AAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDExOjU5OjQ2KzAwOjAw4zevKgAAAABJRU5ErkJggg==",IE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAEAQAAABQ8GUWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAAAqo0jMgAAAAlwSFlzAAAAYAAAAGAA8GtCzwAAAAd0SU1FB+cCDQwAA98sovkAAAIzSURBVHja7ZkxLzRRFIbvfNlEZElUdrfQKPwAldiIUifRLwUK1AqVn6DT+QEqJFsgtAqFRIJINBIS0RAd4e55FJJPIWbvZu84m9nztieZfZ9ncu/emXEuQpCeHlhfh9NTuLuDeh0mJ2Ncu+ODFArI0RE/4j0sLGj3+wMBtRq/ptHIvQTY2iI1IrC8rN3zt/xr/xKFQvo8SZzb3OxkCW0FlpYISk6XA/T2wvl5sARZXNTuHF+CDA7CxUWYhM7eE0yCSYgi4fLSJLQkYWVFu7NJMAkmwSSYBJNgEkyCSfhTCZTLyPV1mIRGA+bntTsrS/Aepqe1O2cgoVIJl/DyAsPD2p3jS5BSKXxP2NnR7tsBEsbGtPtmIyF4OdTr2l2zlcD9fbqAtzekv1+7a4YSqtWv//+0zMy0+zsRPoxkkyQ5OXHu8DDdUrWaWwFfgHt7qfOkUsm3gOTmJnVOuZxvAS5J0ueQcwEjI6nj5PEx5wKa7PI8PGg3zCzIxETzw1AOH4ycCz0Ivb5CsajdNRv4oKPw7q521/jwUirB1VVzeBEYHdXuqwQPsL2t3TcufEsvRJ6ekKEh7c5K8O/vyNSUdmcleO+RWk27czz4lta898jcnHZngzd4gzd4gzd4gzd4gzd4gzd4g/+G7+sL/6bvPTI7q905rgDW1roW3jnnkOPjroV3zjnY3++qNf9DgKyuduWd/y+AYhHOzn7Cf3zkHv5bwsAAsrEBt7fw/AwHBzA+rt0rJJ8/6vH10RfdUwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QxMjowMDowMyswMDowMCOF/FIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMTI6MDA6MDMrMDA6MDBS2ETuAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDEyOjAwOjAzKzAwOjAwBc1lMQAAAABJRU5ErkJggg==",ME=()=>{const[e]=d0(),[t,n]=x.useState(1),[r,o]=x.useState(0),i=Ic(),s=String(e.get("thumbnail-source")),l=a=>{a.preventDefault(),i(`${vr.THUMBNAIL_RESULT}?noise-strength=${t}`,{state:{thumbnailSource:s},replace:!0})};return mn(Qr.Container,{children:[j(RE,{thumbnailSource:s,carouselContainerRotateY:r}),mn(Qr.ButtonContainer,{children:[j(Qr.LeftButton,{onClick:()=>{o(r+Xp),n(a=>a===Qp?Kp:a-1)},children:j("img",{src:LE,width:30,height:30})}),j(Qr.Button,{onClick:l,children:"노이즈 강도 선택"}),j(Qr.RightButton,{onClick:()=>{o(r-Xp),n(a=>a===Kp?Qp:a+1)},children:j("img",{src:IE,width:30,height:30})})]})]})},Qr={Container:ne.div`
+  `},LE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAEAQAAABQ8GUWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAAAqo0jMgAAAAlwSFlzAAAAYAAAAGAA8GtCzwAAAAd0SU1FB+cCDQs7LqMOBzEAAAIzSURBVHja7Zq9SuxQFEZPFAQZBTt/CxufQCwGA76CIuhY2Bj1AawE38FHmBewUEFB1FZsLGwUnUpRVBBs/d/LIvfC5eokAefM1mTv9oTkW2ufk+SQOPcLCglDZH8fHh7g+hpZXYWuLu1cTYKfnYXXVz7V0RGUStr5mgD/9kbdWlrSzugPnkrl687/W9vb2jn9wKd2/k/J3p52Vj14AJaXtfMqwp+cIB0d2pkbB8/0dPqa/1u1GvT3a2c2eIM3eIM3eIM3eIM3eIOvCz81ZfAGXzj4SiX7lvb8HPr6tDM3EL5chqenYnZeBgbg5qaQnXfOOVhbK2TnY/jhYRApJHwsYGOjkNM+hi+V4PExGf7qKpedjwWMjyfDi8DoqHbOetXyfQNhmDy+sxMEBwfaoP4EBL29yQesr2tD+hXgUgQEtZo2pGcBv7saIODuLnGYoSFtSL8CuL1NHA8mJrQhvRZMTqY/Bstl7Zz+BEhnJzw/J0u4vISeHu2s/iSwtZX+Knx6inR3a2f1I0BGRrJths7OcrkfcM452NxMF5BjCTA4iNzfZ5OQ0+WAhGH6DTH3MyGKst0P8jwTiCJ4f7eZYBJMgkkwCSbBJJiEzxLm5kyCSTAJJsEkmIT/JMj8fHYJx8fQ3q6dWVnC4qJ2Xj8SMi+HavW71/qR3waDoFp1bmHBOZHkI19etLN6rfTlMDOjndG/BKLoyx8vZXcXWlu18zVJwthY/N3h4gI5PISVFaStrRHn/gC1KPXxRIl1cQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QxMTo1OTo0NiswMDowMMV/NkkAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMTE6NTk6NDYrMDA6MDC0Io71AAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDExOjU5OjQ2KzAwOjAw4zevKgAAAABJRU5ErkJggg==",IE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAEAQAAABQ8GUWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAAAqo0jMgAAAAlwSFlzAAAAYAAAAGAA8GtCzwAAAAd0SU1FB+cCDQwAA98sovkAAAIzSURBVHja7ZkxLzRRFIbvfNlEZElUdrfQKPwAldiIUifRLwUK1AqVn6DT+QEqJFsgtAqFRIJINBIS0RAd4e55FJJPIWbvZu84m9nztieZfZ9ncu/emXEuQpCeHlhfh9NTuLuDeh0mJ2Ncu+ODFArI0RE/4j0sLGj3+wMBtRq/ptHIvQTY2iI1IrC8rN3zt/xr/xKFQvo8SZzb3OxkCW0FlpYISk6XA/T2wvl5sARZXNTuHF+CDA7CxUWYhM7eE0yCSYgi4fLSJLQkYWVFu7NJMAkmwSSYBJNgEkyCSfhTCZTLyPV1mIRGA+bntTsrS/Aepqe1O2cgoVIJl/DyAsPD2p3jS5BSKXxP2NnR7tsBEsbGtPtmIyF4OdTr2l2zlcD9fbqAtzekv1+7a4YSqtWv//+0zMy0+zsRPoxkkyQ5OXHu8DDdUrWaWwFfgHt7qfOkUsm3gOTmJnVOuZxvAS5J0ueQcwEjI6nj5PEx5wKa7PI8PGg3zCzIxETzw1AOH4ycCz0Ivb5CsajdNRv4oKPw7q521/jwUirB1VVzeBEYHdXuqwQPsL2t3TcufEsvRJ6ekKEh7c5K8O/vyNSUdmcleO+RWk27czz4lta898jcnHZngzd4gzd4gzd4gzd4gzd4gzd4g/+G7+sL/6bvPTI7q905rgDW1roW3jnnkOPjroV3zjnY3++qNf9DgKyuduWd/y+AYhHOzn7Cf3zkHv5bwsAAsrEBt7fw/AwHBzA+rt0rJJ8/6vH10RfdUwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QxMjowMDowMyswMDowMCOF/FIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMTI6MDA6MDMrMDA6MDBS2ETuAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDEyOjAwOjAzKzAwOjAwBc1lMQAAAABJRU5ErkJggg==",ME=()=>{const[e]=d0(),[t,n]=x.useState(1),[r,o]=x.useState(0),i=Ic(),s=String(e.get("thumbnail-source")),l=a=>{a.preventDefault(),i(`${vr.THUMBNAIL_RESULT}?noise-strength=${t}`,{state:{thumbnailSource:s},replace:!0})};return mn(Qr.Container,{children:[j(RE,{thumbnailSource:s,carouselContainerRotateY:r}),mn(Qr.ButtonContainer,{children:[j(Qr.LeftButton,{onClick:()=>{o(r+Xp),n(a=>a===Qp?Kp:a-1)},children:j("img",{src:LE,alt:"좌측 화살표 버튼",width:30,height:30})}),j(Qr.Button,{onClick:l,children:"노이즈 강도 선택"}),j(Qr.RightButton,{onClick:()=>{o(r-Xp),n(a=>a===Kp?Qp:a+1)},children:j("img",{src:IE,alt:"우측 화살표 버튼",width:30,height:30})})]})]})},Qr={Container:ne.div`
     ${Ue.FlexCenter}
     ${Ue.FullWidthAndHeight}
     flex-direction: column;
@@ -358,20 +358,20 @@ Error generating stack: `+i.message+`
   `,LeftButton:ne.button`
     width: 44px;
     height: 44px;
-    background-color: ${e=>e.theme.GRAY_500};
+    background-color: ${e=>e.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${e=>e.theme.WHITE};
   `,Button:ne.button`
     height: 44px;
-    background-color: ${e=>e.theme.GRAY_500};
+    background-color: ${e=>e.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${e=>e.theme.WHITE};
   `,RightButton:ne.button`
     width: 44px;
     height: 44px;
-    background-color: ${e=>e.theme.GRAY_500};
+    background-color: ${e=>e.theme.GRAY_700};
     border-radius: 10px;
     padding: 10px;
     color: ${e=>e.theme.WHITE};
