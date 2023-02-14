@@ -230,7 +230,7 @@ Error generating stack: `+i.message+`
   `,Title:ne.h1`
     font-size: 20px;
     font-weight: 700;
-  `},vE=({canvasRef:e,canvasStatus:t})=>{const[n,r]=x.useState();return x.useEffect(()=>{!e.current||t!=="done"||r(e.current.toDataURL())},[t]),{thumbnailURL:n}},wE=({canvasRef:e,canvasStatus:t})=>{const{thumbnailURL:n}=vE({canvasRef:e,canvasStatus:t});return n?j(Gp.DownloadButton,{href:n,download:"thumbnail",children:"썸네일 다운로드"}):j(Gp.Spinner,{})},Gp={Spinner:ne.div`
+  `},vE=({canvasRef:e,canvasStatus:t})=>{const[n,r]=x.useState();return x.useEffect(()=>{!e.current||t!=="done"||r(e.current.toDataURL())},[t]),{thumbnailURL:n}},wE=({canvasRef:e,canvasStatus:t})=>{const{thumbnailURL:n}=vE({canvasRef:e,canvasStatus:t});return n?j(Gp.DownloadButton,{href:n,download:"thumbnail",children:"이미지 다운로드"}):j(Gp.Spinner,{})},Gp={Spinner:ne.div`
     box-sizing: border-box;
     width: 44px;
     height: 44px;
