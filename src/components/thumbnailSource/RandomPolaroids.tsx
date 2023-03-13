@@ -12,13 +12,15 @@ export const RandomPolaroids = () => {
   return (
     <S.Container>
       {photos.map((photo) => {
-        const randomCoord = { x: randomInt(width / 3), y: randomInt(height / 3) };
+        const randomCoord = { x: randomInt(width), y: randomInt(height) };
         const randomRotate = randomInt(45, -45);
+
+        console.log(randomCoord);
 
         return (
           <motion.div
             key={photo}
-            initial={{ scale: 0.8, x: randomCoord.x, y: randomCoord.y }}
+            initial={{ scale: 0.8, x: randomCoord.x, y: randomCoord.y, rotate: randomRotate }}
             animate={{ scale: 1 }}
             transition={{
               type: "spring",
@@ -28,12 +30,7 @@ export const RandomPolaroids = () => {
             drag
             dragTransition={{ bounceStiffness: 100, bounceDamping: 10 }}
           >
-            <Polaroid
-              src={photo}
-              alt="베경 폴라로이드"
-              randomCoord={randomCoord}
-              randomRotate={randomRotate}
-            />
+            <Polaroid src={photo} alt="베경 폴라로이드" />
           </motion.div>
         );
       })}
