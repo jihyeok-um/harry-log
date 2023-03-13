@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { useRgba } from "./useRgba";
 import { RgbaContext } from "./../context/RgbaContext";
 import { NOISE_STRENGTH } from "../constants/pointillism";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { RESOLUTION, THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from "../constants/pointillism";
 import { CanvasStatus, DrawTriangleParams, TriangleInfo } from "./../types/index";
 import { randomInt } from "../utils/randomInt";
 import { getCoordinate, getRgbaPixel } from "../utils/triangle";
+import { ROUTE_PATH } from "../constants/route";
 
 export const usePointillism = ({
   thumbnailSource,
@@ -123,7 +125,7 @@ export const usePointillism = ({
 };
 
 interface usePointillismParams {
-  thumbnailSource: string | null;
+  thumbnailSource: string;
   noiseStrength: number;
   canvasWidth: number;
   canvasHeight: number;

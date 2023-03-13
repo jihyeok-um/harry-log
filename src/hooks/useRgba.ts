@@ -1,6 +1,5 @@
-import { RgbaContext, RgbaDispatcherContext } from "./../context/RgbaContext";
-import { useContext, useRef, useState } from "react";
-import { RGBA_ARRAY_SIZE } from "../constants/pointillism";
+import { RgbaDispatcherContext } from "./../context/RgbaContext";
+import { useContext, useRef } from "react";
 
 export const useRgba = ({ thumbnailSource, canvasWidth, canvasHeight }: useRgbaProps) => {
   const setRgba = useContext(RgbaDispatcherContext);

@@ -15,8 +15,6 @@ export const RandomPolaroids = () => {
         const randomCoord = { x: randomInt(width), y: randomInt(height) };
         const randomRotate = randomInt(45, -45);
 
-        console.log(randomCoord);
-
         return (
           <motion.div
             key={photo}

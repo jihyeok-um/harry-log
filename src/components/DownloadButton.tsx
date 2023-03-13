@@ -1,11 +1,16 @@
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { useThumbnailURL } from "../hooks/useThumbnailURL";
 import { CanvasStatus } from "../types";
+import { Spinner } from "./@shared/Spinner";
 
 export const DownloadButton = ({ canvasRef, canvasStatus }: DownloadButtonProps) => {
+  const location = useLocation();
   const { thumbnailURL } = useThumbnailURL({ canvasRef, canvasStatus });
 
-  if (!thumbnailURL) return <S.Spinner />;
+  if (!thumbnailURL) return <Spinner />;
+
+  URL.revokeObjectURL(location.state.thumbnailSource);
 
   return (
     <S.DownloadButton href={thumbnailURL} download="thumbnail">
@@ -20,26 +25,6 @@ interface DownloadButtonProps {
 }
 
 const S = {
-  Spinner: styled.div`
-    box-sizing: border-box;
-    width: 44px;
-    height: 44px;
-    margin-bottom: 20px;
-    border: 8px solid ${(props) => props.theme.GRAY_500};
-    border-top: 8px solid ${(props) => props.theme.GRAY_300};
-    border-radius: 50px;
-
-    animation: spinner 1.5s linear infinite;
-    @keyframes spinner {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  `,
-
   DownloadButton: styled.a`
     height: 44px;
     margin-bottom: 20px;
