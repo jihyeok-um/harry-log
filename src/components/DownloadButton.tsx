@@ -5,12 +5,9 @@ import { CanvasStatus } from "../types";
 import { Spinner } from "./@shared/Spinner";
 
 export const DownloadButton = ({ canvasRef, canvasStatus }: DownloadButtonProps) => {
-  const location = useLocation();
   const { thumbnailURL } = useThumbnailURL({ canvasRef, canvasStatus });
 
   if (!thumbnailURL) return <Spinner />;
-
-  URL.revokeObjectURL(location.state.thumbnailSource);
 
   return (
     <S.DownloadButton href={thumbnailURL} download="thumbnail">

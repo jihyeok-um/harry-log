@@ -8,7 +8,6 @@ import { Styles } from "../styles/Styles";
 import leftArrow from "../assets/icons/leftArrow.png";
 import rightArrow from "../assets/icons/rightArrow.png";
 import { RgbaContext } from "../context/RgbaContext";
-import { Spinner } from "../components/@shared/Spinner";
 
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
@@ -22,7 +21,6 @@ export const ThumbnailOptions = () => {
     e.preventDefault();
     navigate(`${ROUTE_PATH.THUMBNAIL_RESULT}?noise-strength=${noiseStrength}`, {
       state: { thumbnailSource },
-      replace: true,
     });
   };
 
