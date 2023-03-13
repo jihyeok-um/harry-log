@@ -8,26 +8,29 @@ import { Styles } from "../../styles/Styles";
 export const RandomPolaroids = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
+
   return (
     <S.Container>
       {photos.map((photo) => {
-        const randomCoord = { x: randomInt(width / 1.5), y: randomInt(height / 1.5) };
+        const randomCoord = { x: randomInt(width / 3), y: randomInt(height / 3) };
         const randomRotate = randomInt(45, -45);
 
         return (
           <motion.div
             key={photo}
-            initial={{ scale: 0.8 }}
+            initial={{ scale: 0.8, x: randomCoord.x, y: randomCoord.y }}
             animate={{ scale: 1 }}
             transition={{
               type: "spring",
               stiffness: 260,
               damping: 20,
             }}
+            drag
+            dragTransition={{ bounceStiffness: 100, bounceDamping: 10 }}
           >
             <Polaroid
               src={photo}
-              alt="베경 폴라로이드 "
+              alt="베경 폴라로이드"
               randomCoord={randomCoord}
               randomRotate={randomRotate}
             />
