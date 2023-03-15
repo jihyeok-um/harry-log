@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useRgba } from "./useRgba";
 import { RgbaContext } from "./../context/RgbaContext";
 import { NOISE_STRENGTH } from "../constants/pointillism";
@@ -123,7 +124,7 @@ export const usePointillism = ({
 };
 
 interface usePointillismParams {
-  thumbnailSource: string | null;
+  thumbnailSource: string;
   noiseStrength: number;
   canvasWidth: number;
   canvasHeight: number;

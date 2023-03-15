@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { Carousel } from "../components/carousel/Carousel";
@@ -7,20 +7,29 @@ import { ROUTE_PATH } from "../constants/route";
 import { Styles } from "../styles/Styles";
 import leftArrow from "../assets/icons/leftArrow.png";
 import rightArrow from "../assets/icons/rightArrow.png";
+import { RgbaContext } from "../context/RgbaContext";
 
 export const ThumbnailOptions = () => {
   const [searchParams] = useSearchParams();
   const [noiseStrength, setNoiseStrength] = useState(1);
   const [carouselContainerRotateY, setCarouselContainerRotateY] = useState(0);
+  const rgba = useContext(RgbaContext);
   const navigate = useNavigate();
   const thumbnailSource = String(searchParams.get("thumbnail-source"));
+
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     navigate(`${ROUTE_PATH.THUMBNAIL_RESULT}?noise-strength=${noiseStrength}`, {
       state: { thumbnailSource },
-      replace: true,
     });
   };
+
+  useEffect(() => {
+    if (!rgba) {
+      alert("이미지 정보가 사라졌습니다. 다시 시도해주세요.");
+      navigate(ROUTE_PATH.HOME);
+    }
+  }, [rgba]);
 
   return (
     <S.Container>
